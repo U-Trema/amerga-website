@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+@tailwind utilities;
+
+:root {
+  --background: #f2efe9;
+  --foreground: #171717;
+}
+
+@theme {
+  --color-white: #FFFFFF;
+  --color-grey-primary: #E7E5DE;
+  --color-grey-secondary: #D1CFC9;
+  --color-soft-black: #1E1E1E;
+
+  --spacing-md: 1rem;
+
+  --font-display-franklin: 'Libre Franklin', sans-serif;
+  --font-display-fira: 'Fira Sans Condensed', sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  font-family: var(--font-display-franklin), sans-serif;
+  color: var(--color-soft-black);
+}
+
+/* les <h1> auront par défaut les styles définis ici */
+@layer base {
+  h1 {
+    font-family: var(--font-display-fira), sans-serif;
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: -.18rem;
+  }
+}

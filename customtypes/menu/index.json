@@ -1,0 +1,71 @@
+{
+  "id": "menu",
+  "json": {
+    "Main": {
+      "assurances": {
+        "type": "Group",
+        "config": {
+          "label": "Assurances",
+          "repeat": false,
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "label",
+                "placeholder": "assurances"
+              }
+            },
+            "auto": {
+              "type": "Link",
+              "config": {
+                "label": "auto",
+                "placeholder": "auto",
+                "select": null,
+                "allowTargetBlank": false,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "maison": {
+              "type": "Link",
+              "config": {
+                "label": "maison",
+                "placeholder": "maison",
+                "select": null,
+                "allowTargetBlank": false,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "contact": {
+        "type": "Link",
+        "config": {
+          "label": "contact",
+          "placeholder": "contact",
+          "select": null,
+          "allowTargetBlank": false,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "nous_connaitre": {
+        "type": "Link",
+        "config": {
+          "label": "nous connaitre",
+          "placeholder": "nous connaitre",
+          "select": null,
+          "allowTargetBlank": false,
+          "allowText": true,
+          "repeat": false
+        }
+      }
+    }
+  },
+  "label": "menu",
+  "repeatable": false,
+  "status": true,
+  "format": "custom"
+}
