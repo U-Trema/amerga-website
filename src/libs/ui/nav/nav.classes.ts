@@ -15,11 +15,18 @@ export const navTabCVA = {
 }
 
 export const navListCVA = {
-  root: cva(['!gap-1 h-full'])
+  root: cva(['!gap-1 h-full relative'])
 }
 
 export const tabsTabCVA = {
-  root: cva(['!text-soft-black !text-sm !font-semibold !rounded-[10px] hover:!bg-grey-secondary !py-2.5 !px-4'])
+  root: cva(['!z-5 !text-soft-black !text-sm !font-semibold !rounded-[10px] hover:!bg-grey-secondary !py-2.5 !px-4'], {
+    variants: {
+      active: {
+        true: '!bg-grey-secondary',
+        false: ''
+      }
+    }
+  })
 }
 
 export const responsiveMenuCVA = {
