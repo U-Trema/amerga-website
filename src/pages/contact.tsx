@@ -1,15 +1,13 @@
-import { createClient } from "@/prismicio";
-import {homepageCVA} from "@/styles/page.styles";
 import {GetStaticPropsContext} from "next";
+import {createClient} from "@/prismicio";
 
-export default function Home({ nav }: { nav: any }) {
-  console.log('%cnav', 'color: orange; font-size: 12px;', nav.data)
-
+export default function Contact({ nav }: any) {
+  console.log(nav)
   return (
-    <div className={homepageCVA.root()}>
-      <h1>home</h1>
+    <div>
+      <h1>contact</h1>
     </div>
-  );
+  )
 }
 
 export async function getStaticProps({ previewData }: GetStaticPropsContext) {
