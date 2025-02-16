@@ -37,6 +37,8 @@ export const Nav: FC<any> = ({ nav }) => {
     setControlsRefs(controlsRefs);
   };
 
+  if (!nav) return null
+
   return (
     <div className={`${isOpen ? 'bg-white' : 'bg-transparent'}`}>
       <div className={navContainerCVA.root()}>
