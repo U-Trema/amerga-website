@@ -3,7 +3,7 @@ import {homepageCVA} from "@/styles/page.styles";
 import {GetStaticPropsContext} from "next";
 
 export default function Home({ nav }: { nav: any }) {
-  console.log('%cprops', 'color: orange; font-size: 12px;', nav)
+  console.log('%cnav', 'color: orange; font-size: 12px;', nav.data)
 
   return (
     <div className={homepageCVA.root()}>

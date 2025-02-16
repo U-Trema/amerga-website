@@ -3,10 +3,10 @@ import {FloatingIndicator, Menu, TabsList, TabsTab, UnstyledButton} from "@manti
 import {ArrowDown} from "@/libs/ui/icons/ArrowDown";
 import Link from "next/link";
 import {cva} from "class-variance-authority";
-import {useRouter} from "next/router";
+import {linkResolver} from "@/prismicio";
 
 const indicatorCVA = {
-  root: cva(['bg-transparent !rounded-[10px]'], {
+  root: cva(['bg-transparent !rounded-[10px] !h-full'], {
     variants: {
       active: {
         true: '!bg-grey-secondary',
@@ -16,11 +16,23 @@ const indicatorCVA = {
   })
 }
 
-export const MenuItems = ({ setRootRef, setControlRef, value, controlsRefs, rootRef, setValue }: any) => {
-  const router = useRouter()
-
+export const MenuItems = ({
+  setControlRef,
+  controlsRefs,
+  setRootRef,
+  setValue,
+  rootRef,
+  value,
+  nav
+}: any) => {
   return (
     <TabsList className={navListCVA.root()} grow={false} ref={setRootRef}>
+      <Link href={linkResolver(nav.data.home)}>
+        <TabsTab value="0" ref={setControlRef('0')} className={tabsTabCVA.root()}>
+          {nav.data.home.text}
+        </TabsTab>
+      </Link>
+
       <TabsTab
         value="1"
         ref={setControlRef('1')}
@@ -33,42 +45,42 @@ export const MenuItems = ({ setRootRef, setControlRef, value, controlsRefs, root
               className=' !text-soft-black !text-sm !font-semibold !rounded-[10px] hover:!bg-grey-secondary'
               component='div'
             >
-              Assurances
+              {nav.data.assurances[0].label}
             </UnstyledButton>
           </Menu.Target>
 
           <Menu.Dropdown>
-            <Link href='/assurances/auto' onClick={() => setValue('1')}>
+            <Link href={linkResolver(nav.data.assurances[0].auto)} onClick={() => setValue('1')}>
               <Menu.Item className='hover:!bg-grey-secondary !pl-5 !pr-10' value='assurances/auto'>
-                Assurances auto
+                {nav.data.assurances[0].auto.text}
               </Menu.Item>
             </Link>
 
-            <Link href='/assurances/habitation' onClick={() => setValue('1')}>
+            <Link href={linkResolver(nav.data.assurances[0].maison)} onClick={() => setValue('1')}>
               <Menu.Item className='hover:!bg-grey-secondary !pl-5 !pr-10'>
-                Assurance habitation
+                {nav.data.assurances[0].maison.text}
               </Menu.Item>
             </Link>
           </Menu.Dropdown>
         </Menu>
       </TabsTab>
 
-      <Link href='/contact'>
+      <Link href={linkResolver(nav.data.contact)}>
         <TabsTab value="2" ref={setControlRef('2')} className={tabsTabCVA.root()}>
-          Contact
+          {nav.data.contact.text}
         </TabsTab>
       </Link>
 
-      <Link href='/nous-connaitre'>
+      <Link href={linkResolver(nav.data.nous_connaitre)}>
         <TabsTab value="3" ref={setControlRef('3')} className={tabsTabCVA.root()}>
-          Nous connaître
+          {nav.data.nous_connaitre.text}
         </TabsTab>
       </Link>
 
       <FloatingIndicator
         target={value ? controlsRefs[value] : null}
         parent={rootRef}
-        className={indicatorCVA.root({ active: router.route !== '/'})}
+        className={indicatorCVA.root({ active: true })}
       />
     </TabsList>
   )

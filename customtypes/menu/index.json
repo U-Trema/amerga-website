@@ -1,7 +1,22 @@
 {
   "id": "menu",
+  "label": "menu",
+  "repeatable": false,
+  "status": true,
+  "format": "custom",
   "json": {
     "Main": {
+      "home": {
+        "type": "Link",
+        "config": {
+          "label": "home",
+          "placeholder": "Accueil",
+          "select": null,
+          "allowTargetBlank": false,
+          "allowText": true,
+          "repeat": false
+        }
+      },
       "assurances": {
         "type": "Group",
         "config": {
@@ -63,9 +78,5 @@
         }
       }
     }
-  },
-  "label": "menu",
-  "repeatable": false,
-  "status": true,
-  "format": "custom"
+  }
 }

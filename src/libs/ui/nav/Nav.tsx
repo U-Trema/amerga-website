@@ -14,6 +14,7 @@ import { MenuItems } from "./MenuItems";
 import {useRouter} from "next/router";
 
 const routes = {
+  '/': '0',
   '/assurances/[uid]': '1',
   '/contact': '2',
   '/nous-connaitre': '3'
@@ -44,7 +45,7 @@ export const Nav: FC<any> = ({ nav }) => {
         >
           <GridCol>
             <Flex align="stretch" gap='80px' className='z-20 relative justify-between md:justify-start' direction='row'>
-              <Link href='/'>
+              <Link href='/' onClick={() => setValue('0')}>
                 <img
                   src="/amerga-logo_2.gif" alt="Amerga"
                   style={{ width: 100, height: 'auto', display: 'block' }}
@@ -56,13 +57,18 @@ export const Nav: FC<any> = ({ nav }) => {
                 value={value}
                 onChange={(val) => {
                   if (val === '1') return
-
                   setValue(val)
                 }}
-                // defaultValue="insurances"
                 className={navTabCVA.root({ opened: isOpen })}
               >
-                <MenuItems setRootRef={setRootRef} setControlRef={setControlRef} rootRef={rootRef} value={value} controlsRefs={controlsRefs} setValue={setValue} />
+                <MenuItems
+                  rootRef={rootRef} value={value}
+                  setControlRef={setControlRef}
+                  controlsRefs={controlsRefs}
+                  setRootRef={setRootRef}
+                  setValue={setValue}
+                  nav={nav}
+                />
               </Tabs>
 
               <div onClick={toggleMenu} className='md:hidden flex items-center cursor-pointer z-20'>
