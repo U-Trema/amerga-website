@@ -1,4 +1,5 @@
 import {
+  Accordion,
   Container,
   Flex,
   Grid,
@@ -7,11 +8,12 @@ import {
   Text
 } from "@mantine/core"
 import Link from "next/link"
-import {navContainerCVA, navTabCVA, responsiveMenuCVA} from "./nav.classes"
+import {accordionCVA, mobileLinksCVA, navContainerCVA, navTabCVA, responsiveMenuCVA} from "./nav.classes"
 import {BurgerMenu} from "@/libs/ui/icons/BurgerMenu"
 import {FC, useState} from "react";
 import { MenuItems } from "./MenuItems";
 import {useRouter} from "next/router";
+import {linkResolver} from "@/prismicio";
 
 const routes = {
   '/': '0',
@@ -80,9 +82,77 @@ export const Nav: FC<any> = ({ nav }) => {
       </div>
 
       <Container fluid bg='var(--color-white)' className={responsiveMenuCVA.root({ opened: isOpen })}>
-        <Text className='!font-semibold'>Assurances</Text>
-        <Text className='!font-semibold'>Contact</Text>
-        <Text className='!font-semibold'>Nous connaître</Text>
+        <Flex direction='column' gap='sm'>
+          <Link
+            href={linkResolver(nav.data.home)}
+            onClick={() => {
+              setValue('0');
+              toggleMenu()
+            }}
+          >
+            <Text className={mobileLinksCVA.root({ active: value === '0', subItem: false })}>
+              {nav.data.home.text}
+            </Text>
+          </Link>
+
+          <Accordion chevronPosition='right' chevron={<p>xxx</p>} unstyled>
+            <Accordion.Item key={'item.value'} value={'item.value'}>
+              <Accordion.Control className={accordionCVA.root({ active: value === '1' })}>
+                {nav.data.assurances[0].label}
+              </Accordion.Control>
+              <Accordion.Panel>
+                <Link
+                  className={mobileLinksCVA.root({ subItem: true })}
+                  href={linkResolver(nav.data.assurances[0].auto)}
+                  onClick={() => {
+                    setValue('1');
+                    toggleMenu()
+                  }}
+                >
+                  {nav.data.assurances[0].auto.text}
+                </Link>
+              </Accordion.Panel>
+
+              <Accordion.Panel>
+                <Link
+                  className={mobileLinksCVA.root({ subItem: true })}
+                  href={linkResolver(nav.data.assurances[0].maison)}
+                  onClick={() => {
+                    setValue('1');
+                    toggleMenu()
+                  }}
+                >
+                  {nav.data.assurances[0].maison.text}
+                </Link>
+              </Accordion.Panel>
+            </Accordion.Item>
+          </Accordion>
+
+
+          <Link
+            href={linkResolver(nav.data.contact)}
+            onClick={() => {
+              setValue('2');
+              toggleMenu()
+            }}
+          >
+            <Text className={mobileLinksCVA.root({ active: value === '2', subItem: false })}>
+              {nav.data.contact.text}
+            </Text>
+          </Link>
+
+          <Link
+            href={linkResolver(nav.data.nous_connaitre)}
+            onClick={() => {
+              setValue('3');
+              toggleMenu()
+            }}
+          >
+            <Text className={mobileLinksCVA.root({ active: value === '3', subItem: false })}>
+              {nav.data.nous_connaitre.text}
+            </Text>
+          </Link>
+        </Flex>
       </Container>
     </div>
   )

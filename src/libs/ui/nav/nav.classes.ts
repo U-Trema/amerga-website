@@ -39,3 +39,29 @@ export const responsiveMenuCVA = {
     }
   })
 }
+
+export const accordionCVA = {
+  root: cva(['!flex justify-between w-full flex-row-reverse !font-semibold p-2.5  rounded-[10px]'], {
+    variants: {
+      active: {
+        true: '!bg-grey-secondary',
+        false: ''
+      }
+    }
+  })
+}
+
+export const mobileLinksCVA = {
+  root: cva(['!p-2.5 !rounded-[10px] hover:!bg-grey-secondary'], {
+    variants: {
+      active: {
+        true: '!bg-grey-secondary',
+        false: ''
+      },
+      subItem: {
+        true: '!px-5 !py-1.5 !text-sm block !font-normal',
+        false: '!font-semibold'
+      }
+    }
+  })
+}
