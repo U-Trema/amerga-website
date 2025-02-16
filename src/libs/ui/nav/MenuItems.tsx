@@ -25,6 +25,8 @@ export const MenuItems = ({
   value,
   nav
 }: any) => {
+  if (!nav) return null
+
   return (
     <TabsList className={navListCVA.root()} grow={false} ref={setRootRef}>
       <Link href={linkResolver(nav.data.home)}>
