@@ -10,10 +10,11 @@ import {
 import Link from "next/link"
 import {accordionCVA, mobileLinksCVA, navContainerCVA, navTabCVA, responsiveMenuCVA} from "./nav.classes"
 import {BurgerMenu} from "@/libs/ui/icons/BurgerMenu"
-import {FC, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import { MenuItems } from "./MenuItems";
 import {useRouter} from "next/router";
 import {linkResolver} from "@/prismicio";
+import {ArrowDown} from "@/libs/ui/icons/ArrowDown";
 
 const routes = {
   '/': '0',
@@ -97,8 +98,12 @@ export const Nav: FC<any> = ({ nav }) => {
             </Text>
           </Link>
 
-          <Accordion chevronPosition='right' chevron={<p>xxx</p>} unstyled>
-            <Accordion.Item key={'item.value'} value={'item.value'}>
+          <Accordion chevronPosition='right' chevron={<ArrowDown />} unstyled>
+            <Accordion.Item
+              key='assurance-accordion'
+              value='assurance-accordion'
+              className='[&:has([data-active="true"])>button[aria-expanded="true"]]:!bg-grey-secondary [&>button]:transition-colors [&>button]:duration-300'
+            >
               <Accordion.Control className={accordionCVA.root({ active: value === '1' })}>
                 {nav.data.assurances[0].label}
               </Accordion.Control>

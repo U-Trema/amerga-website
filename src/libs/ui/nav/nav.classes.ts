@@ -19,10 +19,14 @@ export const navListCVA = {
 }
 
 export const tabsTabCVA = {
-  root: cva(['!z-5 !text-soft-black !text-sm !font-semibold !rounded-[10px] hover:!bg-grey-secondary !py-2.5 !px-4'], {
+  root: cva(['focus:!outline-orange focus:!outline-1 !z-5 !text-soft-black !text-sm !tracking-[-0.14px] !font-semibold !rounded-[10px] hover:!bg-grey-secondary !py-2.5 !px-4'], {
     variants: {
       active: {
-        true: '!bg-grey-secondary',
+        true: '!bg-grey-secondary !outline-orange !outline-1',
+        false: ''
+      },
+      isDropdown: {
+        true: '[&:has([aria-expanded="true"])]:!bg-white [&:has([aria-expanded="true"])]:!outline-orange [&:has([aria-expanded="true"])]:!outline-1',
         false: ''
       }
     }
@@ -41,7 +45,7 @@ export const responsiveMenuCVA = {
 }
 
 export const accordionCVA = {
-  root: cva(['!flex justify-between w-full flex-row-reverse !font-semibold p-2.5  rounded-[10px]'], {
+  root: cva(['!flex justify-between w-full flex-row-reverse !font-semibold p-2.5 rounded-[10px] [&:has([aria-expanded="true"])]:!bg-red-500'], {
     variants: {
       active: {
         true: '!bg-grey-secondary',
