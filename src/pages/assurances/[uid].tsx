@@ -13,11 +13,13 @@ export default function Assurances({ uid, nav }: { uid: string, nav: any }) {
 export async function getStaticProps({ params, previewData }: GetStaticPropsContext<{ uid: string }> & GetStaticPropsContext) {
   const client = createClient({ previewData })
   const document = await client.getSingle("menu");
+  const footer = await client.getSingle("footer");
 
   return {
     props: {
       nav: document,
       uid: params!.uid,
+      footer
     },
   }
 }

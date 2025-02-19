@@ -1,0 +1,86 @@
+{
+  "format": "custom",
+  "id": "footer",
+  "label": "Footer",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "footer_logo": {
+        "type": "Image",
+        "config": {
+          "label": "Footer logo",
+          "constraint": {
+            "width": 110
+          },
+          "thumbnails": []
+        }
+      },
+      "footer_slogan": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Footer slogan",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "columns": {
+        "type": "Group",
+        "config": {
+          "label": "Columns",
+          "repeat": true,
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": "Titre de la colonne"
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "Lien",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": true
+              }
+            }
+          }
+        }
+      },
+      "footer_copyright": {
+        "type": "Text",
+        "config": {
+          "label": "Footer copyright",
+          "placeholder": ""
+        }
+      },
+      "legal_link": {
+        "type": "Link",
+        "config": {
+          "label": "Legal link",
+          "placeholder": "Label du lien",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": true
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "footer_section": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}
