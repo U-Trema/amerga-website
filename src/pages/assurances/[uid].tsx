@@ -1,32 +1,41 @@
-import {GetStaticPropsContext} from "next";
-import {createClient} from "@/prismicio";
+import {GetStaticPropsContext, InferGetStaticPropsType} from "next"
+import {createClient} from "@/prismicio"
+import {HeroSection} from "@/components/Hero/Hero";
+import {ContentSection} from "@/components/Content/Content";
 
-export default function Assurances({ uid, nav }: { uid: string, nav: any }) {
-  console.log('%cnav', 'color: pink; font-size: 12px;', nav)
+type Params = { uid: string }
+
+export default function Assurance({page}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <div>
-      <h1>hello - {uid}</h1>
-    </div>
+    <>
+      <HeroSection data={page.data.hero}/>
+      <ContentSection data={page.data.content}/>
+    </>
   )
 }
 
-export async function getStaticProps({ params, previewData }: GetStaticPropsContext<{ uid: string }> & GetStaticPropsContext) {
-  const client = createClient({ previewData })
-  const document = await client.getSingle("menu");
-  const footer = await client.getSingle("footer");
+export async function getStaticProps({params, previewData}: GetStaticPropsContext<Params>) {
+  const client = createClient({previewData})
+
+  const document = await client.getSingle("menu")
+  const footer = await client.getSingle("footer")
+  const page = await client.getByUID("assurances", params!.uid)
 
   return {
     props: {
       nav: document,
       uid: params!.uid,
-      footer
+      footer,
+      page
     },
   }
 }
 
 export async function getStaticPaths() {
-  return {
-    paths: ['/assurances/auto', '/assurances/habitation'],
-    fallback: true,
-  }
+  const client = createClient()
+
+  const pages = await client.getAllByType("assurances")
+  const paths = pages.map((page) => (`/assurances/${page.uid}`))
+
+  return {paths, fallback: false}
 }
