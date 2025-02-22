@@ -50,7 +50,7 @@ export const footerColumnCVA = {
     grid: cva(['grid grid-cols-1 gap-y-8 xs:grid-cols-2 sm:grid-cols-3']),
     col: cva(['flex-col gap-4']),
     title: cva(['text-white opacity-60 font-semibold']),
-    link: cva(['hover:text-(--color-amerga-organge) underline decoration-transparent hover:decoration-inherit transition duration-125']),
+    link: cva(['hover:text-amerga-orange underline decoration-transparent hover:decoration-inherit transition duration-125']),
 };
 
 export const footerBottomCVA = {

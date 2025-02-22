@@ -19,14 +19,14 @@ export const navListCVA = {
 }
 
 export const tabsTabCVA = {
-  root: cva(['focus:!outline-orange focus:!outline-1 !z-5 !text-soft-black !text-sm !tracking-[-0.14px] !font-semibold !rounded-[10px] hover:!bg-grey-secondary !py-2.5 !px-4'], {
+  root: cva(['focus:!outline-amerga-orange focus:!outline-1 !z-5 !text-soft-black !text-sm !tracking-[-0.14px] !font-semibold !rounded-[10px] hover:!bg-grey-secondary !py-2.5 !px-4'], {
     variants: {
       active: {
-        true: '!bg-grey-secondary !outline-orange !outline-1',
+        true: '!bg-grey-secondary !outline-amerga-orange !outline-1',
         false: ''
       },
       isDropdown: {
-        true: '[&:has([aria-expanded="true"])]:!bg-white [&:has([aria-expanded="true"])]:!outline-orange [&:has([aria-expanded="true"])]:!outline-1',
+        true: '[&:has([aria-expanded="true"])]:!bg-white [&:has([aria-expanded="true"])]:!outline-amerga-orange [&:has([aria-expanded="true"])]:!outline-1',
         false: ''
       }
     }
