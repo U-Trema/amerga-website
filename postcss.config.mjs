@@ -3,6 +3,7 @@ const config = {
   plugins: {
     // tailwindcss: {},
     "@tailwindcss/postcss": {},
+    "postcss-import": {},
     'postcss-preset-mantine': {},
     'postcss-simple-vars': {
       // variables: {
