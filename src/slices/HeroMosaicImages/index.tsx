@@ -4,7 +4,7 @@ import {PrismicRichText, SliceComponentProps} from "@prismicio/react";
 import {PrismicNextImage, PrismicNextLink} from "@prismicio/next";
 
 import styles from './styles.module.css'
-import {globalStyles} from "@/styles/globals.styles";
+import {globalStyles} from "@/styles/project.classname";
 import {HeroMosaicImagesSliceDefaultPrimaryImagesItem, Simplify} from "../../../prismicio-types";
 
 /**
