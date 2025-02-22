@@ -1,7 +1,7 @@
 {
   "format": "custom",
   "id": "footer",
-  "label": "Footer",
+  "label": "footer",
   "repeatable": false,
   "status": true,
   "json": {

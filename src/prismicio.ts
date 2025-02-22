@@ -25,7 +25,11 @@ const routes: prismic.ClientConfig["routes"] = [
   {
     type: "contact",
     path: "/contact",
-  }
+  },
+  {
+    type: "assurances",
+    path: "/assurances/:uid",
+  },
 ];
 
 export function linkResolver(doc: LinkType) {

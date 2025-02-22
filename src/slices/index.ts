@@ -4,4 +4,5 @@ import dynamic from "next/dynamic";
 
 export const components = {
   footer_section: dynamic(() => import("./FooterSection")),
+  hero_mosaic_images: dynamic(() => import("./HeroMosaicImages")),
 };

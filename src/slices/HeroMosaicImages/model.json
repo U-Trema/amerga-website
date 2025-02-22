@@ -1,0 +1,89 @@
+{
+  "id": "hero_mosaic_images",
+  "type": "SharedSlice",
+  "name": "HeroMosaicImages",
+  "description": "HeroMosaicImages",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titre",
+            "placeholder": "Titre",
+            "allowTargetBlank": false,
+            "multi": "heading1"
+          }
+        },
+        "sub_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Sous titre",
+            "placeholder": "Sous titre",
+            "allowTargetBlank": false,
+            "multi": "heading2"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Bouton",
+            "placeholder": "Bouton",
+            "select": null,
+            "allowTargetBlank": false,
+            "allowText": true,
+            "repeat": false,
+            "variants": [
+              "primary",
+              "secondary"
+            ]
+          }
+        },
+        "images": {
+          "type": "Group",
+          "config": {
+            "label": "Images",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {
+                    "width": 600
+                  },
+                  "thumbnails": []
+                }
+              },
+              "image_title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Titre image",
+                  "placeholder": "Titre image",
+                  "allowTargetBlank": false,
+                  "multi": "heading3"
+                }
+              },
+              "image_sub_title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Sous titre image",
+                  "placeholder": "Sous titre image",
+                  "allowTargetBlank": false,
+                  "multi": "heading4"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

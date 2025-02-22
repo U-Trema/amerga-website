@@ -157,11 +157,11 @@ export type ContactDocument<Lang extends string = string> =
   >;
 
 /**
- * Item in *Footer → Columns*
+ * Item in *footer → Columns*
  */
 export interface FooterDocumentDataColumnsItem {
   /**
-   * Title field in *Footer → Columns*
+   * Title field in *footer → Columns*
    *
    * - **Field Type**: Text
    * - **Placeholder**: Titre de la colonne
@@ -171,7 +171,7 @@ export interface FooterDocumentDataColumnsItem {
   title: prismic.KeyTextField;
 
   /**
-   * Link field in *Footer → Columns*
+   * Link field in *footer → Columns*
    *
    * - **Field Type**: Link
    * - **Placeholder**: Lien
@@ -186,11 +186,11 @@ export interface FooterDocumentDataColumnsItem {
 type FooterDocumentDataSlicesSlice = FooterSectionSlice;
 
 /**
- * Content for Footer documents
+ * Content for footer documents
  */
 interface FooterDocumentData {
   /**
-   * Footer logo field in *Footer*
+   * Footer logo field in *footer*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -201,7 +201,7 @@ interface FooterDocumentData {
   footer_logo: prismic.ImageField<never>;
 
   /**
-   * Footer slogan field in *Footer*
+   * Footer slogan field in *footer*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -212,7 +212,7 @@ interface FooterDocumentData {
   footer_slogan: prismic.RichTextField;
 
   /**
-   * Columns field in *Footer*
+   * Columns field in *footer*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -223,7 +223,7 @@ interface FooterDocumentData {
   columns: prismic.GroupField<Simplify<FooterDocumentDataColumnsItem>>;
 
   /**
-   * Footer copyright field in *Footer*
+   * Footer copyright field in *footer*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -234,7 +234,7 @@ interface FooterDocumentData {
   footer_copyright: prismic.KeyTextField;
 
   /**
-   * Legal link field in *Footer*
+   * Legal link field in *footer*
    *
    * - **Field Type**: Link
    * - **Placeholder**: Label du lien
@@ -247,7 +247,7 @@ interface FooterDocumentData {
   >;
 
   /**
-   * Slice Zone field in *Footer*
+   * Slice Zone field in *footer*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -259,7 +259,7 @@ interface FooterDocumentData {
 }
 
 /**
- * Footer document from Prismic
+ * footer document from Prismic
  *
  * - **API ID**: `footer`
  * - **Repeatable**: `false`
@@ -274,7 +274,7 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomeDocumentDataSlicesSlice = never;
+type HomeDocumentDataSlicesSlice = HeroMosaicImagesSlice;
 
 /**
  * Content for home documents
@@ -605,6 +605,124 @@ export type FooterSectionSlice = prismic.SharedSlice<
   FooterSectionSliceVariation
 >;
 
+/**
+ * Item in *HeroMosaicImages → Default → Primary → Images*
+ */
+export interface HeroMosaicImagesSliceDefaultPrimaryImagesItem {
+  /**
+   * Image field in *HeroMosaicImages → Default → Primary → Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_mosaic_images.default.primary.images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Titre image field in *HeroMosaicImages → Default → Primary → Images*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Titre image
+   * - **API ID Path**: hero_mosaic_images.default.primary.images[].image_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  image_title: prismic.RichTextField;
+
+  /**
+   * Sous titre image field in *HeroMosaicImages → Default → Primary → Images*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Sous titre image
+   * - **API ID Path**: hero_mosaic_images.default.primary.images[].image_sub_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  image_sub_title: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *HeroMosaicImages → Default → Primary*
+ */
+export interface HeroMosaicImagesSliceDefaultPrimary {
+  /**
+   * Titre field in *HeroMosaicImages → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Titre
+   * - **API ID Path**: hero_mosaic_images.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Sous titre field in *HeroMosaicImages → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Sous titre
+   * - **API ID Path**: hero_mosaic_images.default.primary.sub_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_title: prismic.RichTextField;
+
+  /**
+   * Bouton field in *HeroMosaicImages → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Bouton
+   * - **API ID Path**: hero_mosaic_images.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    "primary" | "secondary"
+  >;
+
+  /**
+   * Images field in *HeroMosaicImages → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_mosaic_images.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<
+    Simplify<HeroMosaicImagesSliceDefaultPrimaryImagesItem>
+  >;
+}
+
+/**
+ * Default variation for HeroMosaicImages Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroMosaicImagesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeroMosaicImagesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HeroMosaicImages*
+ */
+type HeroMosaicImagesSliceVariation = HeroMosaicImagesSliceDefault;
+
+/**
+ * HeroMosaicImages Shared Slice
+ *
+ * - **API ID**: `hero_mosaic_images`
+ * - **Description**: HeroMosaicImages
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroMosaicImagesSlice = prismic.SharedSlice<
+  "hero_mosaic_images",
+  HeroMosaicImagesSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -651,6 +769,11 @@ declare module "@prismicio/client" {
       FooterSectionSliceSocialsPrimary,
       FooterSectionSliceVariation,
       FooterSectionSliceSocials,
+      HeroMosaicImagesSlice,
+      HeroMosaicImagesSliceDefaultPrimaryImagesItem,
+      HeroMosaicImagesSliceDefaultPrimary,
+      HeroMosaicImagesSliceVariation,
+      HeroMosaicImagesSliceDefault,
     };
   }
 }

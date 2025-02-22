@@ -7,16 +7,24 @@
 :root {
   --background: #f2efe9;
   --foreground: #171717;
+
+  --spacing-32: 32px;
+  --spacing-24: 24px;
 }
 
 @theme {
   --color-white: #FFFFFF;
+  --color-background: #f2efe9;
   --color-grey-primary: #E7E5DE;
   --color-grey-secondary: #D1CFC9;
   --color-soft-black: #1E1E1E;
   --color-amerga-orange: #E57634;
+  --color-amerga-orange-hover: #E88248; /* TODO trouver mieux comme couleur */
 
+  --spacing-32: 32px;
+  --spacing-24: 24px;
   --spacing-md: 1rem;
+  --spacing-lg: 2.5rem;
   --spacing-container: 1280px;
 
   --font-display-franklin: 'Libre Franklin', sans-serif;
@@ -40,8 +48,10 @@ body {
 @layer base {
   h1 {
     font-family: var(--font-display-fira), sans-serif;
-    font-size: 5rem;
+    font-size: 4.5rem;
     font-weight: 700;
     letter-spacing: -.18rem;
+    line-height: normal;
+    margin-bottom: var(--spacing-md);
   }
 }
