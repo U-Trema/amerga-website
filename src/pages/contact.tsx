@@ -13,10 +13,12 @@ export default function Contact({ nav }: any) {
 export async function getStaticProps({ previewData }: GetStaticPropsContext) {
   const client = createClient({ previewData })
   const document = await client.getSingle("menu");
+  const footer = await client.getSingle("footer");
 
   return {
     props: {
       nav: document,
+      footer,
     },
   };
 }

@@ -14,9 +14,11 @@
   --color-grey-primary: #E7E5DE;
   --color-grey-secondary: #D1CFC9;
   --color-soft-black: #1E1E1E;
+  --color-amerga-organge: #E57634;
   --color-orange: #ED9159;
 
   --spacing-md: 1rem;
+  --spacing-container: 1280px;
 
   --font-display-franklin: 'Libre Franklin', sans-serif;
   --font-display-fira: 'Fira Sans Condensed', sans-serif;

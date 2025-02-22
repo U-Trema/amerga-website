@@ -1,0 +1,49 @@
+{
+  "id": "footer_section",
+  "type": "SharedSlice",
+  "name": "FooterSection",
+  "description": "FooterSection",
+  "variations": [
+    {
+      "id": "socials",
+      "name": "Socials",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_links": {
+          "type": "Group",
+          "config": {
+            "label": "Section links",
+            "repeat": true,
+            "fields": {
+              "section_link_icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Section link icon",
+                  "constraint": {
+                    "width": 24
+                  },
+                  "thumbnails": []
+                }
+              },
+              "section_link_url": {
+                "type": "Link",
+                "config": {
+                  "label": "Section link url",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": false,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

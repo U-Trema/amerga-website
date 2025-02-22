@@ -156,6 +156,124 @@ export type ContactDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Footer → Columns*
+ */
+export interface FooterDocumentDataColumnsItem {
+  /**
+   * Title field in *Footer → Columns*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titre de la colonne
+   * - **API ID Path**: footer.columns[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Link field in *Footer → Columns*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Lien
+   * - **API ID Path**: footer.columns[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+}
+
+type FooterDocumentDataSlicesSlice = FooterSectionSlice;
+
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Footer logo field in *Footer*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.footer_logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  footer_logo: prismic.ImageField<never>;
+
+  /**
+   * Footer slogan field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.footer_slogan
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  footer_slogan: prismic.RichTextField;
+
+  /**
+   * Columns field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.columns[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  columns: prismic.GroupField<Simplify<FooterDocumentDataColumnsItem>>;
+
+  /**
+   * Footer copyright field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.footer_copyright
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  footer_copyright: prismic.KeyTextField;
+
+  /**
+   * Legal link field in *Footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Label du lien
+   * - **API ID Path**: footer.legal_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  legal_link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * Slice Zone field in *Footer*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<FooterDocumentDataSlicesSlice>;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
+    Lang
+  >;
+
 type HomeDocumentDataSlicesSlice = never;
 
 /**
@@ -404,9 +522,88 @@ export type NousConnaitreDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | AssurancesDocument
   | ContactDocument
+  | FooterDocument
   | HomeDocument
   | MenuDocument
   | NousConnaitreDocument;
+
+/**
+ * Item in *FooterSection → Socials → Primary → Section links*
+ */
+export interface FooterSectionSliceSocialsPrimarySectionLinksItem {
+  /**
+   * Section link icon field in *FooterSection → Socials → Primary → Section links*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.socials.primary.section_links[].section_link_icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  section_link_icon: prismic.ImageField<never>;
+
+  /**
+   * Section link url field in *FooterSection → Socials → Primary → Section links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.socials.primary.section_links[].section_link_url
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  section_link_url: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Primary content in *FooterSection → Socials → Primary*
+ */
+export interface FooterSectionSliceSocialsPrimary {
+  /**
+   * Section links field in *FooterSection → Socials → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_section.socials.primary.section_links[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  section_links: prismic.GroupField<
+    Simplify<FooterSectionSliceSocialsPrimarySectionLinksItem>
+  >;
+}
+
+/**
+ * Socials variation for FooterSection Slice
+ *
+ * - **API ID**: `socials`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FooterSectionSliceSocials = prismic.SharedSliceVariation<
+  "socials",
+  Simplify<FooterSectionSliceSocialsPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FooterSection*
+ */
+type FooterSectionSliceVariation = FooterSectionSliceSocials;
+
+/**
+ * FooterSection Shared Slice
+ *
+ * - **API ID**: `footer_section`
+ * - **Description**: FooterSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FooterSectionSlice = prismic.SharedSlice<
+  "footer_section",
+  FooterSectionSliceVariation
+>;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -435,6 +632,10 @@ declare module "@prismicio/client" {
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
+      FooterDocument,
+      FooterDocumentData,
+      FooterDocumentDataColumnsItem,
+      FooterDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
@@ -445,6 +646,11 @@ declare module "@prismicio/client" {
       NousConnaitreDocumentData,
       NousConnaitreDocumentDataSlicesSlice,
       AllDocumentTypes,
+      FooterSectionSlice,
+      FooterSectionSliceSocialsPrimarySectionLinksItem,
+      FooterSectionSliceSocialsPrimary,
+      FooterSectionSliceVariation,
+      FooterSectionSliceSocials,
     };
   }
 }
