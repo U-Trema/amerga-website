@@ -38,13 +38,13 @@ export const MenuItems = ({
       <TabsTab
         value="1"
         ref={setControlRef('1')}
-        className={tabsTabCVA.root()}
+        className={tabsTabCVA.root({ isDropdown: true, active: value === '1' })}
         rightSection={<ArrowDown />}
       >
         <Menu shadow="md" offset={20} position='bottom'>
           <Menu.Target>
             <UnstyledButton
-              className=' !text-soft-black !text-sm !font-semibold !rounded-[10px] hover:!bg-grey-secondary'
+              className='!text-soft-black !text-sm !font-semibold !rounded-[10px]'
               component='div'
             >
               {nav.data.assurances[0].label}
