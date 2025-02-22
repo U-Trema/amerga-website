@@ -38,6 +38,12 @@ export const Nav: FC<any> = ({ nav }) => {
     setControlsRefs(controlsRefs);
   };
 
+  useEffect(() => {
+    if (router.route === ('/assurances/[uid]')) {
+      setValue('1')
+    }
+  }, [router])
+
   if (!nav) return null
 
   return (
@@ -52,7 +58,8 @@ export const Nav: FC<any> = ({ nav }) => {
             <Flex align="stretch" gap='80px' className='z-20 relative justify-between md:justify-start' direction='row'>
               <Link href='/' onClick={() => setValue('0')}>
                 <img
-                  src="/amerga-logo_2.gif" alt="Amerga"
+                  src="/amerga-logo_2.gif"
+                  alt="Amerga"
                   style={{ width: 100, height: 'auto', display: 'block' }}
                 />
               </Link>

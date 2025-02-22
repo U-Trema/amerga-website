@@ -24,7 +24,7 @@ export const Footer: FC<any> = ({footer}) => {
                     <GridCol span={5} className={footerGridCVA.firstCol()}>
                         <section>
                             <Flex direction='column' gap='xs' className={footerGridCVA.firstColBox()}>
-                                <PrismicNextImage field={footer.data.footer_logo}/>
+                                <PrismicNextImage field={footer.data.footer_logo} alt="" />
                                 <PrismicRichText field={footer.data.footer_slogan}/>
                             </Flex>
                         </section>
@@ -55,9 +55,9 @@ export const Footer: FC<any> = ({footer}) => {
                     <Flex direction='column' >
                         <Flex direction='row' gap={8} className={footerBottomCVA.first()}>
                             {footer.data.slices.map((slice: any) =>
-                                slice.primary.section_links.map((item: any) => (
-                                    <PrismicNextLink key={item.section_link_url} field={item.section_link_url}>
-                                        <PrismicNextImage field={item.section_link_icon}/>
+                                slice.primary.section_links.map((item: any, index: number) => (
+                                    <PrismicNextLink key={index} field={item.section_link_url}>
+                                        <PrismicNextImage field={item.section_link_icon} alt="" />
                                     </PrismicNextLink>
                                 ))
                             )}
@@ -65,8 +65,8 @@ export const Footer: FC<any> = ({footer}) => {
                         <Flex className={footerBottomCVA.second()}>
                             <span className={footerBottomCVA.copyright()}>{footer.data.footer_copyright}</span>
                             <Flex className={footerBottomCVA.legal()}>
-                                {footer.data.legal_link.map((link: any) => (
-                                    <PrismicNextLink key={link.key} field={link}/>
+                                {footer.data.legal_link.map((link: any, index: number) => (
+                                    <PrismicNextLink key={index} field={link}/>
                                 ))}
                             </Flex>
                         </Flex>

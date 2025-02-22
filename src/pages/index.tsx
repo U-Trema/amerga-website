@@ -1,13 +1,14 @@
 import { createClient } from "@/prismicio";
 import {homepageCVA} from "@/styles/page.styles";
 import {GetStaticPropsContext} from "next";
+import HeroMosaicImages from "@/slices/HeroMosaicImages";
 
-export default function Home({ nav }: { nav: any; footer: any }) {
-  console.log('%cnav', 'color: orange; font-size: 12px;', nav.data)
-
+export default function Home({ home }: { nav: any; footer: any, home: any }) {
   return (
     <div className={homepageCVA.root()}>
-      <h1>home</h1>
+      {home.data.slices?.map((slice: any, index: number) => (
+        <HeroMosaicImages key={index} slice={slice} slices={home.data.slices} index={index} context='home-hero' />
+      ))}
     </div>
   );
 }
@@ -16,11 +17,13 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
   const client = createClient({ previewData })
   const document = await client.getSingle("menu");
   const footer = await client.getSingle("footer");
+  const home = await client.getSingle("home");
 
   return {
     props: {
       nav: document,
-      footer
+      footer,
+      home
     },
   };
 }
