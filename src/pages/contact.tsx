@@ -10,22 +10,29 @@ export default function Contact({page}: InferGetStaticPropsType<typeof getStatic
   console.log({content})
 
   return (
-    <Container id='Contact-section' fluid className={contactpageCVA.root()}>
-      <Box className={contactpageCVA.title()}>
-        <Title>{title}</Title>
+    <Box id='Contact-section'>
+      <Box className={contactpageCVA.hero()}>
+      <Container  fluid className={contactpageCVA.root()}>
+        <Title className={contactpageCVA.title()}>{title}</Title>
+        <Space h='xl'/>
+        <Space h='xl'/>
+      </Container>
       </Box>
-      <Space h='xl'/>
-      <Box className={contactpageCVA.info()}>
-        {content.map(({info}, index: number) => (
-          <>
-            <PrismicRichText key={index} field={info}/>
-            <Space h='xl'/>
-          </>
-        ))}
-      </Box>
-      <Space h='xl'/>
-      <Space h='xl'/>
-    </Container>
+      <Container fluid className={contactpageCVA.root()}>
+        <Space h='xl'/>
+        <Space h='xl'/>
+        <Box className={contactpageCVA.info()}>
+          {content.map(({info}, index: number) => (
+            <>
+              <PrismicRichText key={index} field={info}/>
+              <Space h='xl'/>
+            </>
+          ))}
+        </Box>
+        <Space h='xl'/>
+        <Space h='xl'/>
+      </Container>
+    </Box>
   )
 }
 
