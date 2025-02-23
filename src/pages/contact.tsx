@@ -11,25 +11,28 @@ export default function Contact({page}: InferGetStaticPropsType<typeof getStatic
   return (
     <Box id='Contact-section'>
       <Box className={contactpageCVA.hero()}>
-        <Container  fluid className={contactpageCVA.root()}>
-          <h1 className={contactpageCVA.title()}>{title}</h1>
-          <Space h='xl'/>
-          <Space h='xl'/>
-        </Container>
+        <header>
+          <Container  fluid className={contactpageCVA.root()}>
+            <h1 className={contactpageCVA.title()}>{title}</h1>
+            <Space h='xl'/>
+          </Container>
+        </header>
       </Box>
       <Container fluid className={contactpageCVA.root()}>
-        <Space h='xl'/>
-        <Space h='xl'/>
-        <Box className={contactpageCVA.info()}>
-          {content.map(({info}, index: number) => (
-            <>
-              <PrismicRichText key={index} field={info}/>
-              <Space h='xl'/>
-            </>
-          ))}
-        </Box>
-        <Space h='xl'/>
-        <Space h='xl'/>
+        <section>
+          <Space h='xl'/>
+          <Space h='xl'/>
+          <Box className={contactpageCVA.info()}>
+            {content.map(({info}, index: number) => (
+              <>
+                <PrismicRichText key={index} field={info}/>
+                <Space h='xl'/>
+              </>
+            ))}
+          </Box>
+          <Space h='xl'/>
+          <Space h='xl'/>
+        </section>
       </Container>
     </Box>
   )

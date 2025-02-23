@@ -17,49 +17,51 @@ export function ContentSection({data} = {data: []} as any) {
   const pattern: Array<'right' | 'left'> = ['right', 'right', 'left']
 
   return (
-    <Container id='content-section' fluid className={contentCVA.root()}>
-      {contents.map((block: any, blockIndex: number) => {
-        const hasText = block.some(({type}: any) => type === 'paragraph')
+    <section id='content-section'>
+      <Container fluid className={contentCVA.root()}>
+        {contents.map((block: any, blockIndex: number) => {
+          const hasText = block.some(({type}: any) => type === 'paragraph')
 
-        return (
-          <Box className={contentContainerCVA.root()} key={blockIndex}>
-            {block.map((item: any, itemIndex: number) => {
-              if (!hasText && item.type === 'image') {
-                return (
-                  <Box key={`${blockIndex}-${itemIndex}`} className={imgCVA.root({floatSide: 'center'})}>
-                    <PrismicNextImage field={item} style={{width: '100%'}}/>
-                  </Box>
-                )
-              }
+          return (
+            <Box className={contentContainerCVA.root()} key={blockIndex}>
+              {block.map((item: any, itemIndex: number) => {
+                if (!hasText && item.type === 'image') {
+                  return (
+                    <Box key={`${blockIndex}-${itemIndex}`} className={imgCVA.root({floatSide: 'center'})}>
+                      <PrismicNextImage field={item} style={{width: '100%'}}/>
+                    </Box>
+                  )
+                }
 
-              if (item.type === 'image') {
-                globalImageIndex++
+                if (item.type === 'image') {
+                  globalImageIndex++
 
-                return (
-                  <Box key={`${blockIndex}-${itemIndex}`}
-                       className={imgCVA.root({floatSide: pattern[globalImageIndex % pattern.length]})}>
-                    <PrismicNextImage field={item}/>
-                  </Box>
-                )
+                  return (
+                    <Box key={`${blockIndex}-${itemIndex}`}
+                         className={imgCVA.root({floatSide: pattern[globalImageIndex % pattern.length]})}>
+                      <PrismicNextImage field={item}/>
+                    </Box>
+                  )
 
-              }
+                }
 
-              if (item.type === 'paragraph') {
-                return (
-                  <Box key={`${blockIndex}-${itemIndex}`} className={paragraphCVA.root()}>
-                    <PrismicRichText field={[item]}/>
-                  </Box>
-                )
-              }
+                if (item.type === 'paragraph') {
+                  return (
+                    <Box key={`${blockIndex}-${itemIndex}`} className={paragraphCVA.root()}>
+                      <PrismicRichText field={[item]}/>
+                    </Box>
+                  )
+                }
 
-              return null
-            })}
+                return null
+              })}
 
-            <Box className={imgCVA.clear()}/>
-            <Space h='xl'/>
-          </Box>
-        )
-      })}
-    </Container>
+              <Box className={imgCVA.clear()}/>
+              <Space h='xl'/>
+            </Box>
+          )
+        })}
+      </Container>
+    </section>
   )
 }

@@ -14,11 +14,13 @@ export function HeroSection({data} = {data: []} as any) {
   return (
     <Container id='hero-section' fluid className={assurancesCVA.root()}>
       <Grid className={containerCVA.root()}>
-        <GridCol span={{ base: 12 }} className={pictureCVA.block()} >
-          <PrismicNextImage field={hero.image} className={pictureCVA.img()}/>
-          <Box style={{ backgroundColor: hero.badge_color }} className={pictureCVA.badge()}>
-            <Box className={pictureCVA.badgeText({ textColor: badgeColor })}>{hero.badge}</Box>
-          </Box>
+        <GridCol span={{ base: 12 }} className={pictureCVA.block()}>
+          <header>
+            <PrismicNextImage field={hero.image} className={pictureCVA.img()}/>
+            <Box style={{ backgroundColor: hero.badge_color }} className={pictureCVA.badge()}>
+              <Box className={pictureCVA.badgeText({ textColor: badgeColor })}>{hero.badge}</Box>
+            </Box>
+          </header>
         </GridCol>
         <Box className={cardCVA.root()}>
           <Flex direction='column' className={cardCVA.content()}>
