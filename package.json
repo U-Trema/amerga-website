@@ -17,6 +17,8 @@
     "@prismicio/react": "^3.0.0",
     "@tailwindcss/postcss": "^4.0.3",
     "class-variance-authority": "^0.7.1",
+    "embla-carousel-auto-scroll": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "next": "15.1.7",
     "postcss-import": "^16.1.0",
     "react": "^19.0.0",
