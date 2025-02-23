@@ -1,0 +1,48 @@
+{
+  "id": "collaborators",
+  "type": "SharedSlice",
+  "name": "Collaborators",
+  "description": "Collaborators",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "photo": {
+          "type": "Image",
+          "config": {
+            "label": "Photo",
+            "constraint": {
+              "width": 600,
+              "height": 600
+            },
+            "thumbnails": []
+          }
+        },
+        "name": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Nom",
+            "placeholder": "Nom Prénom",
+            "allowTargetBlank": false,
+            "single": "paragraph"
+          }
+        },
+        "job": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Job",
+            "placeholder": "Job",
+            "allowTargetBlank": false,
+            "multi": "paragraph"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

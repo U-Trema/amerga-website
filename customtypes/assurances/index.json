@@ -12,11 +12,78 @@
           "label": "UID"
         }
       },
-      "titre": {
-        "type": "Text",
+      "hero": {
+        "type": "Group",
         "config": {
-          "label": "Titre",
-          "placeholder": "Titre"
+          "label": "Hero",
+          "repeat": false,
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "badge": {
+              "type": "Text",
+              "config": {
+                "label": "Badge",
+                "placeholder": "Petit titre présent dans l'encart de l'image"
+              }
+            },
+            "badge_color": {
+              "type": "Color",
+              "config": {
+                "label": "Badge color",
+                "placeholder": "Couleurs du badge"
+              }
+            },
+            "titre": {
+              "type": "Text",
+              "config": {
+                "label": "Long titre",
+                "placeholder": "Titre présent dans la carte"
+              }
+            },
+            "overview": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Overview",
+                "placeholder": "Long text présent dans la carte",
+                "allowTargetBlank": true,
+                "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,embed,list-item,o-list-item,rtl"
+              }
+            },
+            "support_text": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Support text",
+                "placeholder": "Texte d'appuis en bas de carte",
+                "allowTargetBlank": true,
+                "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,rtl"
+              }
+            }
+          }
+        }
+      },
+      "content": {
+        "type": "Group",
+        "config": {
+          "label": "Additional content",
+          "repeat": true,
+          "fields": {
+            "content": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Content",
+                "placeholder": "Texte supplémentaire",
+                "allowTargetBlank": true,
+                "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+              }
+            }
+          }
         }
       },
       "slices": {

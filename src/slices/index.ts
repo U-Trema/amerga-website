@@ -3,6 +3,8 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  collaborators: dynamic(() => import("./Collaborators")),
   footer_section: dynamic(() => import("./FooterSection")),
   hero_mosaic_images: dynamic(() => import("./HeroMosaicImages")),
+  membership_slider: dynamic(() => import("./MembershipSlider")),
 };

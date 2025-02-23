@@ -1,0 +1,54 @@
+{
+  "id": "membership_slider",
+  "type": "SharedSlice",
+  "name": "MembershipSlider",
+  "description": "MembershipSlider",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titre",
+            "placeholder": "Titre",
+            "allowTargetBlank": false,
+            "multi": "heading2,em",
+            "labels": [
+              "orange-text"
+            ]
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Description",
+            "allowTargetBlank": false,
+            "multi": "paragraph,em,strong",
+            "labels": [
+              "orange-text"
+            ]
+          }
+        },
+        "collaborators": {
+          "type": "Link",
+          "config": {
+            "label": "Collaborateurs",
+            "select": "document",
+            "repeat": false,
+            "customtypes": [
+              "collaborators"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
