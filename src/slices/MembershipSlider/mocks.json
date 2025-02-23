@@ -1,0 +1,39 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "About"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ullamco excepteur eu proident enim reprehenderit ea dolor ipsum proident deserunt esse excepteur. Nisi ex proident sit aliquip ex exercitation tempor qui anim nulla minim enim ea."
+						}
+					}
+				]
+			},
+			"collaborators": {
+				"key": "9288d254-3b37-431a-b9a1-54367c7e5957",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "DocumentLink",
+					"id": "mock_document_id"
+				}
+			}
+		},
+		"items": []
+	}
+]

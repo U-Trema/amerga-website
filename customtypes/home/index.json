@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "membership_slider": {
+              "type": "SharedSlice"
+            },
             "hero_mosaic_images": {
               "type": "SharedSlice"
             }

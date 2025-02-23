@@ -80,6 +80,40 @@ export type AssurancesDocument<Lang extends string = string> =
     Lang
   >;
 
+type CollaboratorsDocumentDataSlicesSlice = CollaboratorsSlice;
+
+/**
+ * Content for collaborators documents
+ */
+interface CollaboratorsDocumentData {
+  /**
+   * Slice Zone field in *collaborators*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collaborators.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CollaboratorsDocumentDataSlicesSlice>;
+}
+
+/**
+ * collaborators document from Prismic
+ *
+ * - **API ID**: `collaborators`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CollaboratorsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CollaboratorsDocumentData>,
+    "collaborators",
+    Lang
+  >;
+
 type ContactDocumentDataSlicesSlice = never;
 
 /**
@@ -274,7 +308,9 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomeDocumentDataSlicesSlice = HeroMosaicImagesSlice;
+type HomeDocumentDataSlicesSlice =
+  | MembershipSliderSlice
+  | HeroMosaicImagesSlice;
 
 /**
  * Content for home documents
@@ -521,11 +557,77 @@ export type NousConnaitreDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | AssurancesDocument
+  | CollaboratorsDocument
   | ContactDocument
   | FooterDocument
   | HomeDocument
   | MenuDocument
   | NousConnaitreDocument;
+
+/**
+ * Primary content in *Collaborators → Default → Primary*
+ */
+export interface CollaboratorsSliceDefaultPrimary {
+  /**
+   * Photo field in *Collaborators → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collaborators.default.primary.photo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  photo: prismic.ImageField<never>;
+
+  /**
+   * Nom field in *Collaborators → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Nom Prénom
+   * - **API ID Path**: collaborators.default.primary.name
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  name: prismic.RichTextField;
+
+  /**
+   * Job field in *Collaborators → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Job
+   * - **API ID Path**: collaborators.default.primary.job
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  job: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Collaborators Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CollaboratorsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CollaboratorsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Collaborators*
+ */
+type CollaboratorsSliceVariation = CollaboratorsSliceDefault;
+
+/**
+ * Collaborators Shared Slice
+ *
+ * - **API ID**: `collaborators`
+ * - **Description**: Collaborators
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CollaboratorsSlice = prismic.SharedSlice<
+  "collaborators",
+  CollaboratorsSliceVariation
+>;
 
 /**
  * Item in *FooterSection → Socials → Primary → Section links*
@@ -723,6 +825,71 @@ export type HeroMosaicImagesSlice = prismic.SharedSlice<
   HeroMosaicImagesSliceVariation
 >;
 
+/**
+ * Primary content in *MembershipSlider → Default → Primary*
+ */
+export interface MembershipSliderSliceDefaultPrimary {
+  /**
+   * Titre field in *MembershipSlider → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Titre
+   * - **API ID Path**: membership_slider.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *MembershipSlider → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Description
+   * - **API ID Path**: membership_slider.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Collaborateurs field in *MembershipSlider → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: membership_slider.default.primary.collaborators
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  collaborators: prismic.ContentRelationshipField<"collaborators">;
+}
+
+/**
+ * Default variation for MembershipSlider Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MembershipSliderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MembershipSliderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *MembershipSlider*
+ */
+type MembershipSliderSliceVariation = MembershipSliderSliceDefault;
+
+/**
+ * MembershipSlider Shared Slice
+ *
+ * - **API ID**: `membership_slider`
+ * - **Description**: MembershipSlider
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MembershipSliderSlice = prismic.SharedSlice<
+  "membership_slider",
+  MembershipSliderSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -747,6 +914,9 @@ declare module "@prismicio/client" {
       AssurancesDocument,
       AssurancesDocumentData,
       AssurancesDocumentDataSlicesSlice,
+      CollaboratorsDocument,
+      CollaboratorsDocumentData,
+      CollaboratorsDocumentDataSlicesSlice,
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
@@ -764,6 +934,10 @@ declare module "@prismicio/client" {
       NousConnaitreDocumentData,
       NousConnaitreDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CollaboratorsSlice,
+      CollaboratorsSliceDefaultPrimary,
+      CollaboratorsSliceVariation,
+      CollaboratorsSliceDefault,
       FooterSectionSlice,
       FooterSectionSliceSocialsPrimarySectionLinksItem,
       FooterSectionSliceSocialsPrimary,
@@ -774,6 +948,10 @@ declare module "@prismicio/client" {
       HeroMosaicImagesSliceDefaultPrimary,
       HeroMosaicImagesSliceVariation,
       HeroMosaicImagesSliceDefault,
+      MembershipSliderSlice,
+      MembershipSliderSliceDefaultPrimary,
+      MembershipSliderSliceVariation,
+      MembershipSliderSliceDefault,
     };
   }
 }
