@@ -1,15 +1,15 @@
-import React from 'react';
-import {Container, Box, Title, Text, Grid, GridCol, Flex} from '@mantine/core';
-import {PrismicNextImage} from "@prismicio/next";
-import {PrismicRichText} from "@prismicio/react";
-import {assurancesCVA, cardCVA, containerCVA, pictureCVA} from "@/components/Hero/hero.classes";
-import {getContrastYIQ} from "@/utils/getContrastYIQ";
+import React from 'react'
+import {Container, Box, Title, Grid, GridCol, Flex} from '@mantine/core'
+import {PrismicNextImage} from '@prismicio/next'
+import {PrismicRichText} from '@prismicio/react'
+import {assurancesCVA, cardCVA, containerCVA, pictureCVA} from '@/components/Hero/hero.classes'
+import {getContrastYIQ} from '@/utils/getContrastYIQ'
 
-export function HeroSection({data}: any) {
-  const [hero] = data;
-  if (!hero) return null;
+export function HeroSection({data} = {data: []} as any) {
+  const [hero] = data || []
+  if (!hero) return null
 
-  const badgeColor = getContrastYIQ(hero.badge_color);
+  const badgeColor = getContrastYIQ(hero.badge_color)
 
   return (
     <Container id='hero-section' fluid className={assurancesCVA.root()}>
@@ -22,10 +22,10 @@ export function HeroSection({data}: any) {
         </GridCol>
         <Box className={cardCVA.root()}>
           <Flex direction='column' className={cardCVA.content()}>
-            <Title className="!mb-4 !text-[56px] !leading-[56px]">{hero.titre}</Title>
+            <Title className={cardCVA.title()}>{hero.titre}</Title>
             <PrismicRichText
               field={hero.overview}
-              components={{paragraph: ({children}) => <p className="text-[18px]">{children}</p>}}
+              components={{paragraph: ({children}) => <p className='text-[18px]'>{children}</p>}}
             />
           </Flex>
           {hero.support_text &&
@@ -36,5 +36,5 @@ export function HeroSection({data}: any) {
         </Box>
       </Grid>
     </Container>
-  );
+  )
 }

@@ -32,13 +32,6 @@
   --font-display-fira: 'Fira Sans Condensed', sans-serif;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 html, body {
   width: 100vw;
   margin: 0;
