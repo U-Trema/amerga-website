@@ -17,7 +17,7 @@ export function HeroSection({data} = {data: []} as any) {
         <GridCol span={{ base: 12 }} className={pictureCVA.block()} >
           <PrismicNextImage field={hero.image} className={pictureCVA.img()}/>
           <Box style={{ backgroundColor: hero.badge_color }} className={pictureCVA.badge()}>
-            <div className={pictureCVA.badgeText({ textColor: badgeColor })}>{hero.badge}</div>
+            <Box className={pictureCVA.badgeText({ textColor: badgeColor })}>{hero.badge}</Box>
           </Box>
         </GridCol>
         <Box className={cardCVA.root()}>

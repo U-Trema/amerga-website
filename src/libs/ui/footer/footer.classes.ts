@@ -49,13 +49,13 @@ export const footerColumnCVA = {
     block: cva(['flex flex-col gap-2 max-w-[200px]']),
     grid: cva(['grid grid-cols-1 gap-y-8 xs:grid-cols-2 sm:grid-cols-3']),
     col: cva(['flex-col gap-4']),
-    title: cva(['text-white opacity-60 font-semibold text-sm']),
-    link: cva(['hover:text-amerga-orange underline decoration-transparent hover:decoration-inherit transition duration-125']),
+    title: cva(['text-white opacity-60 font-bold text-sm uppercase']),
+    link: cva(['hover:text-amerga-orange underline decoration-transparent hover:decoration-inherit transition duration-125 text-sm']),
 }
 
 export const footerBottomCVA = {
     first: cva(['mb-4']),
     second: cva(['sm:flex-row flex-col-reverse sm:justify-between grid grid-cols-1 gap-y-4']),
     copyright: cva(['text-sm']),
-        legal: cva(['gap-x-4 text-xs font-bold']),
+    legal: cva(['gap-x-4 text-xs font-bold']),
 }
