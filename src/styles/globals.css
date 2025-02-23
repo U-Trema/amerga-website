@@ -10,6 +10,8 @@
 
   --spacing-32: 32px;
   --spacing-24: 24px;
+
+  --mantine-color-body: #F2EFE9 !important;
 }
 
 @theme {
@@ -22,6 +24,8 @@
   --color-amerga-orange: #E57634;
   --color-amerga-orange-hover: #E88248; /* TODO trouver mieux comme couleur */
 
+  --spacing-128: 128px;
+  --spacing-64: 64px;
   --spacing-32: 32px;
   --spacing-24: 24px;
   --spacing-md: 1rem;
@@ -55,4 +59,8 @@ body {
     line-height: normal;
     margin-bottom: var(--spacing-md);
   }
+}
+
+.orange-text {
+  color: var(--color-amerga-orange);
 }

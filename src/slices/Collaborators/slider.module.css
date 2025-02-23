@@ -1,0 +1,60 @@
+.embla {
+  width: 100%;
+  margin: auto;
+  --slide-height: 19rem;
+  --slide-spacing: 2rem;
+  --slide-size: 200px;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  position: relative;
+}
+
+.embla__slide__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.cardimage {
+  color: white;
+  width: 100%;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cardimage::before, .cardimage::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -1px;
+  width: 9px;
+  height: var(--spacing-32);
+  z-index: 10;
+  background-color: var(--foreground);
+}
+
+.cardimage::before {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.cardimage::after {
+  left: unset;
+  right: -1px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
