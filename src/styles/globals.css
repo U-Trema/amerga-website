@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #f2efe9;
+  --background: #F2EFE9;
   --foreground: #171717;
 
   --spacing-32: 32px;
@@ -17,6 +17,7 @@
   --color-background: #f2efe9;
   --color-grey-primary: #E7E5DE;
   --color-grey-secondary: #D1CFC9;
+  --color-soft-grey: #F2EFE9;
   --color-soft-black: #1E1E1E;
   --color-amerga-orange: #E57634;
   --color-amerga-orange-hover: #E88248; /* TODO trouver mieux comme couleur */
@@ -31,11 +32,11 @@
   --font-display-fira: 'Fira Sans Condensed', sans-serif;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 body {

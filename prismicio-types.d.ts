@@ -4,6 +4,86 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Item in *assurances → Hero*
+ */
+export interface AssurancesDocumentDataHeroItem {
+  /**
+   * Image field in *assurances → Hero*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: assurances.hero[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Badge field in *assurances → Hero*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Petit titre présent dans l'encart de l'image
+   * - **API ID Path**: assurances.hero[].badge
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  badge: prismic.KeyTextField;
+
+  /**
+   * Badge color field in *assurances → Hero*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: Couleurs du badge
+   * - **API ID Path**: assurances.hero[].badge_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  badge_color: prismic.ColorField;
+
+  /**
+   * Long titre field in *assurances → Hero*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titre présent dans la carte
+   * - **API ID Path**: assurances.hero[].titre
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titre: prismic.KeyTextField;
+
+  /**
+   * Overview field in *assurances → Hero*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Long text présent dans la carte
+   * - **API ID Path**: assurances.hero[].overview
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  overview: prismic.RichTextField;
+
+  /**
+   * Support text field in *assurances → Hero*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Texte d'appuis en bas de carte
+   * - **API ID Path**: assurances.hero[].support_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  support_text: prismic.RichTextField;
+}
+
+/**
+ * Item in *assurances → Additional content*
+ */
+export interface AssurancesDocumentDataContentItem {
+  /**
+   * Content field in *assurances → Additional content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Texte supplémentaire
+   * - **API ID Path**: assurances.content[].content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
 type AssurancesDocumentDataSlicesSlice = never;
 
 /**
@@ -11,15 +91,26 @@ type AssurancesDocumentDataSlicesSlice = never;
  */
 interface AssurancesDocumentData {
   /**
-   * Titre field in *assurances*
+   * Hero field in *assurances*
    *
-   * - **Field Type**: Text
-   * - **Placeholder**: Titre
-   * - **API ID Path**: assurances.titre
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: assurances.hero[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  titre: prismic.KeyTextField;
+  hero: prismic.GroupField<Simplify<AssurancesDocumentDataHeroItem>>;
+
+  /**
+   * Additional content field in *assurances*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: assurances.content[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  content: prismic.GroupField<Simplify<AssurancesDocumentDataContentItem>>;
 
   /**
    * Slice Zone field in *assurances*
@@ -913,6 +1004,8 @@ declare module "@prismicio/client" {
     export type {
       AssurancesDocument,
       AssurancesDocumentData,
+      AssurancesDocumentDataHeroItem,
+      AssurancesDocumentDataContentItem,
       AssurancesDocumentDataSlicesSlice,
       CollaboratorsDocument,
       CollaboratorsDocumentData,
