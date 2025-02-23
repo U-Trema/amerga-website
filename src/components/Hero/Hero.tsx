@@ -22,7 +22,7 @@ export function HeroSection({data} = {data: []} as any) {
         </GridCol>
         <Box className={cardCVA.root()}>
           <Flex direction='column' className={cardCVA.content()}>
-            <Title className={cardCVA.title()}>{hero.titre}</Title>
+            <h1 className={cardCVA.title()}>{hero.titre}</h1>
             <PrismicRichText
               field={hero.overview}
               components={{paragraph: ({children}) => <p className='text-[18px]'>{children}</p>}}

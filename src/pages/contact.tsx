@@ -7,16 +7,15 @@ import {contactpageCVA} from "@/styles/page.styles";
 
 export default function Contact({page}: InferGetStaticPropsType<typeof getStaticProps>) {
   const {titre: title, content} = page.data
-  console.log({content})
 
   return (
     <Box id='Contact-section'>
       <Box className={contactpageCVA.hero()}>
-      <Container  fluid className={contactpageCVA.root()}>
-        <Title className={contactpageCVA.title()}>{title}</Title>
-        <Space h='xl'/>
-        <Space h='xl'/>
-      </Container>
+        <Container  fluid className={contactpageCVA.root()}>
+          <h1 className={contactpageCVA.title()}>{title}</h1>
+          <Space h='xl'/>
+          <Space h='xl'/>
+        </Container>
       </Box>
       <Container fluid className={contactpageCVA.root()}>
         <Space h='xl'/>
