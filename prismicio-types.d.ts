@@ -205,6 +205,21 @@ export type CollaboratorsDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *contact → Content*
+ */
+export interface ContactDocumentDataContentItem {
+  /**
+   * Info field in *contact → Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Détails de contact ici
+   * - **API ID Path**: contact.content[].info
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  info: prismic.RichTextField;
+}
+
 type ContactDocumentDataSlicesSlice = never;
 
 /**
@@ -221,6 +236,17 @@ interface ContactDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   titre: prismic.KeyTextField;
+
+  /**
+   * Content field in *contact*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.content[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  content: prismic.GroupField<Simplify<ContactDocumentDataContentItem>>;
 
   /**
    * Slice Zone field in *contact*
@@ -1012,6 +1038,7 @@ declare module "@prismicio/client" {
       CollaboratorsDocumentDataSlicesSlice,
       ContactDocument,
       ContactDocumentData,
+      ContactDocumentDataContentItem,
       ContactDocumentDataSlicesSlice,
       FooterDocument,
       FooterDocumentData,
