@@ -21,7 +21,7 @@ export const imgCVA = {
 }
 
 export const paragraphCVA = {
-  root: cva(['text-left']),
+  root: cva(['text-left text-[18px]']),
 }
 
 export const contentContainerCVA = {
