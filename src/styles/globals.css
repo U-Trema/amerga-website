@@ -25,9 +25,12 @@
   --color-amerga-orange-hover: #E88248; /* TODO trouver mieux comme couleur */
 
   --spacing-128: 128px;
+  --spacing-80: 80px;
   --spacing-64: 64px;
   --spacing-32: 32px;
   --spacing-24: 24px;
+  --spacing-16: 16px;
+  --spacing-8: 8px;
   --spacing-md: 1rem;
   --spacing-lg: 2.5rem;
   --spacing-container: 1280px;

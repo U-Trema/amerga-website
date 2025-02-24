@@ -5,11 +5,9 @@ import HeroMosaicImages from "@/slices/HeroMosaicImages";
 import MembershipSlider from "@/slices/MembershipSlider";
 import Collaborators from "@/slices/Collaborators";
 import React from "react";
+import CartesAssurances from "@/slices/CartesAssurances";
 
 export default function Home({ home, collaborators }: { nav: any; footer: any; home: any; collaborators: any }) {
-  console.log('_ home _', home)
-  console.log('_ collab _', collaborators)
-
   return (
     <div>
       {home.data.slices?.map((slice: any, index: number) => {
@@ -27,6 +25,19 @@ export default function Home({ home, collaborators }: { nav: any; footer: any; h
               <MembershipSlider key={slice.slice_type} slice={slice} slices={home.data.slices} index={index} context='home-membership' />
               <Collaborators slice={collaborators[0]} index={index} slices={home.data.slices} context='home-collaborators' />
             </React.Fragment>
+          )
+        }
+
+        if (slice.slice_type === 'cartes_assurances') {
+          return (
+            <div className={homepageCVA.root()} key={slice.slice_type}>
+              <CartesAssurances
+                slice={slice}
+                index={index}
+                slices={home.data.slices}
+                context='home-cartes-assurances'
+              />
+            </div>
           )
         }
       })}

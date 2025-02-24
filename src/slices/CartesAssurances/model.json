@@ -1,0 +1,72 @@
+{
+  "id": "cartes_assurances",
+  "type": "SharedSlice",
+  "name": "CartesAssurances",
+  "description": "CartesAssurances",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titre",
+            "placeholder": "Title",
+            "allowTargetBlank": false,
+            "multi": "heading2"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Description",
+            "allowTargetBlank": false,
+            "multi": "paragraph,strong,em,list-item,o-list-item"
+          }
+        },
+        "cards": {
+          "type": "Group",
+          "config": {
+            "label": "Cartes",
+            "repeat": true,
+            "fields": {
+              "logo": {
+                "type": "Image",
+                "config": {
+                  "label": "Logo",
+                  "constraint": {
+                    "width": 300
+                  },
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Titre",
+                  "placeholder": "Titre",
+                  "allowTargetBlank": false,
+                  "single": "heading4"
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "Description (courte: 3 ou 4 mots)"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

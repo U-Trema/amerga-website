@@ -29,7 +29,7 @@ const HeroMosaicImages: FC<HeroMosaicImagesProps> = ({ slice }) => {
       <section
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
-        className='mt-[40px] mb-[60px] md:my-[80px]'
+        className='mt-[40px] mb-[60px] md:my-80'
       >
         <header className={styles.gridContainer}>
           <div className={styles.gridItemFirst}>
