@@ -426,6 +426,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | CartesAssurancesSlice
   | MembershipSliderSlice
   | HeroMosaicImagesSlice;
 
@@ -680,6 +681,108 @@ export type AllDocumentTypes =
   | HomeDocument
   | MenuDocument
   | NousConnaitreDocument;
+
+/**
+ * Item in *CartesAssurances → Default → Primary → Cartes*
+ */
+export interface CartesAssurancesSliceDefaultPrimaryCardsItem {
+  /**
+   * Logo field in *CartesAssurances → Default → Primary → Cartes*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cartes_assurances.default.primary.cards[].logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Titre field in *CartesAssurances → Default → Primary → Cartes*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Titre
+   * - **API ID Path**: cartes_assurances.default.primary.cards[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Description field in *CartesAssurances → Default → Primary → Cartes*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Description (courte: 3 ou 4 mots)
+   * - **API ID Path**: cartes_assurances.default.primary.cards[].description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *CartesAssurances → Default → Primary*
+ */
+export interface CartesAssurancesSliceDefaultPrimary {
+  /**
+   * Titre field in *CartesAssurances → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Title
+   * - **API ID Path**: cartes_assurances.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *CartesAssurances → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Description
+   * - **API ID Path**: cartes_assurances.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Cartes field in *CartesAssurances → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cartes_assurances.default.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  cards: prismic.GroupField<
+    Simplify<CartesAssurancesSliceDefaultPrimaryCardsItem>
+  >;
+}
+
+/**
+ * Default variation for CartesAssurances Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CartesAssurancesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CartesAssurancesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CartesAssurances*
+ */
+type CartesAssurancesSliceVariation = CartesAssurancesSliceDefault;
+
+/**
+ * CartesAssurances Shared Slice
+ *
+ * - **API ID**: `cartes_assurances`
+ * - **Description**: CartesAssurances
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CartesAssurancesSlice = prismic.SharedSlice<
+  "cartes_assurances",
+  CartesAssurancesSliceVariation
+>;
 
 /**
  * Primary content in *Collaborators → Default → Primary*
@@ -1054,6 +1157,11 @@ declare module "@prismicio/client" {
       NousConnaitreDocumentData,
       NousConnaitreDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CartesAssurancesSlice,
+      CartesAssurancesSliceDefaultPrimaryCardsItem,
+      CartesAssurancesSliceDefaultPrimary,
+      CartesAssurancesSliceVariation,
+      CartesAssurancesSliceDefault,
       CollaboratorsSlice,
       CollaboratorsSliceDefaultPrimary,
       CollaboratorsSliceVariation,

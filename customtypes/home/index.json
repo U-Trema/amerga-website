@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "cartes_assurances": {
+              "type": "SharedSlice"
+            },
             "membership_slider": {
               "type": "SharedSlice"
             },
