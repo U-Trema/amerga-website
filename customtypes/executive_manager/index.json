@@ -1,0 +1,50 @@
+{
+  "format": "custom",
+  "id": "executive_manager",
+  "label": "executive_managers",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "name",
+          "placeholder": "Nom Prénom"
+        }
+      },
+      "job_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Job title",
+          "placeholder": "Job title",
+          "allowTargetBlank": false,
+          "single": "heading2"
+        }
+      },
+      "job_description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Job description",
+          "placeholder": "Job description",
+          "allowTargetBlank": false,
+          "multi": "paragraph,strong,em,rtl,o-list-item,list-item"
+        }
+      },
+      "photo": {
+        "type": "Image",
+        "config": {
+          "label": "photo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "executives",
+  "type": "SharedSlice",
+  "name": "Executives",
+  "description": "Executives",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "executives": {
+          "type": "Group",
+          "config": {
+            "label": "executives",
+            "repeat": true,
+            "fields": {
+              "executives": {
+                "type": "Link",
+                "config": {
+                  "label": "executives",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "executive_manager"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -308,6 +308,71 @@ export type ContactDocument<Lang extends string = string> =
   >;
 
 /**
+ * Content for executive_managers documents
+ */
+interface ExecutiveManagerDocumentData {
+  /**
+   * name field in *executive_managers*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Nom Prénom
+   * - **API ID Path**: executive_manager.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Job title field in *executive_managers*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Job title
+   * - **API ID Path**: executive_manager.job_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  job_title: prismic.TitleField;
+
+  /**
+   * Job description field in *executive_managers*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Job description
+   * - **API ID Path**: executive_manager.job_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  job_description: prismic.RichTextField;
+
+  /**
+   * photo field in *executive_managers*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: executive_manager.photo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  photo: prismic.ImageField<never>;
+}
+
+/**
+ * executive_managers document from Prismic
+ *
+ * - **API ID**: `executive_manager`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ExecutiveManagerDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ExecutiveManagerDocumentData>,
+    "executive_manager",
+    Lang
+  >;
+
+/**
  * Item in *footer → Columns*
  */
 export interface FooterDocumentDataColumnsItem {
@@ -426,6 +491,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | ExecutivesSlice
   | CartesAssurancesSlice
   | MembershipSliderSlice
   | HeroMosaicImagesSlice;
@@ -677,6 +743,7 @@ export type AllDocumentTypes =
   | AssurancesDocument
   | CollaboratorsDocument
   | ContactDocument
+  | ExecutiveManagerDocument
   | FooterDocument
   | HomeDocument
   | MenuDocument
@@ -847,6 +914,68 @@ type CollaboratorsSliceVariation = CollaboratorsSliceDefault;
 export type CollaboratorsSlice = prismic.SharedSlice<
   "collaborators",
   CollaboratorsSliceVariation
+>;
+
+/**
+ * Item in *Executives → Default → Primary → executives*
+ */
+export interface ExecutivesSliceDefaultPrimaryExecutivesItem {
+  /**
+   * executives field in *Executives → Default → Primary → executives*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: executives.default.primary.executives[].executives
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  executives: prismic.ContentRelationshipField<"executive_manager">;
+}
+
+/**
+ * Primary content in *Executives → Default → Primary*
+ */
+export interface ExecutivesSliceDefaultPrimary {
+  /**
+   * executives field in *Executives → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: executives.default.primary.executives[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  executives: prismic.GroupField<
+    Simplify<ExecutivesSliceDefaultPrimaryExecutivesItem>
+  >;
+}
+
+/**
+ * Default variation for Executives Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ExecutivesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ExecutivesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Executives*
+ */
+type ExecutivesSliceVariation = ExecutivesSliceDefault;
+
+/**
+ * Executives Shared Slice
+ *
+ * - **API ID**: `executives`
+ * - **Description**: Executives
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ExecutivesSlice = prismic.SharedSlice<
+  "executives",
+  ExecutivesSliceVariation
 >;
 
 /**
@@ -1143,6 +1272,8 @@ declare module "@prismicio/client" {
       ContactDocumentData,
       ContactDocumentDataContentItem,
       ContactDocumentDataSlicesSlice,
+      ExecutiveManagerDocument,
+      ExecutiveManagerDocumentData,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataColumnsItem,
@@ -1166,6 +1297,11 @@ declare module "@prismicio/client" {
       CollaboratorsSliceDefaultPrimary,
       CollaboratorsSliceVariation,
       CollaboratorsSliceDefault,
+      ExecutivesSlice,
+      ExecutivesSliceDefaultPrimaryExecutivesItem,
+      ExecutivesSliceDefaultPrimary,
+      ExecutivesSliceVariation,
+      ExecutivesSliceDefault,
       FooterSectionSlice,
       FooterSectionSliceSocialsPrimarySectionLinksItem,
       FooterSectionSliceSocialsPrimary,
