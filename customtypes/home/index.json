@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "localisation": {
+              "type": "SharedSlice"
+            },
             "executives": {
               "type": "SharedSlice"
             },

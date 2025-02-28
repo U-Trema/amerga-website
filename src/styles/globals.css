@@ -24,10 +24,12 @@
   --color-soft-black: #1E1E1E;
   --color-amerga-orange: #E57634;
   --color-amerga-orange-hover: #E88248; /* TODO trouver mieux comme couleur */
+  --color-amerga-blue: #1D2172;
 
   --spacing-128: 128px;
   --spacing-80: 80px;
   --spacing-64: 64px;
+  --spacing-48: 48px;
   --spacing-32: 32px;
   --spacing-24: 24px;
   --spacing-16: 16px;

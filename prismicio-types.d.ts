@@ -491,6 +491,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | LocalisationSlice
   | ExecutivesSlice
   | CartesAssurancesSlice
   | MembershipSliderSlice
@@ -1175,6 +1176,71 @@ export type HeroMosaicImagesSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Localisation → Default → Primary*
+ */
+export interface LocalisationSliceDefaultPrimary {
+  /**
+   * titre field in *Localisation → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titre
+   * - **API ID Path**: localisation.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Adresse field in *Localisation → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Adresse
+   * - **API ID Path**: localisation.default.primary.address
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  address: prismic.RichTextField;
+
+  /**
+   * Image field in *Localisation → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: localisation.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Localisation Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LocalisationSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LocalisationSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Localisation*
+ */
+type LocalisationSliceVariation = LocalisationSliceDefault;
+
+/**
+ * Localisation Shared Slice
+ *
+ * - **API ID**: `localisation`
+ * - **Description**: Localisation
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LocalisationSlice = prismic.SharedSlice<
+  "localisation",
+  LocalisationSliceVariation
+>;
+
+/**
  * Primary content in *MembershipSlider → Default → Primary*
  */
 export interface MembershipSliderSliceDefaultPrimary {
@@ -1312,6 +1378,10 @@ declare module "@prismicio/client" {
       HeroMosaicImagesSliceDefaultPrimary,
       HeroMosaicImagesSliceVariation,
       HeroMosaicImagesSliceDefault,
+      LocalisationSlice,
+      LocalisationSliceDefaultPrimary,
+      LocalisationSliceVariation,
+      LocalisationSliceDefault,
       MembershipSliderSlice,
       MembershipSliderSliceDefaultPrimary,
       MembershipSliderSliceVariation,

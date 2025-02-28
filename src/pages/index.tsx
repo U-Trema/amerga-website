@@ -8,10 +8,9 @@ import React from "react";
 import CartesAssurances from "@/slices/CartesAssurances";
 import {isFilled} from "@prismicio/client";
 import Executives from "@/slices/Executives";
+import Localisation from "@/slices/Localisation";
 
 export default function Home({ home, collaborators, executiveManagers }: { nav: any; footer: any; home: any; collaborators: any, executiveManagers: any }) {
-  console.log(home)
-  console.log('e', executiveManagers)
   return (
     <div>
       {home.data.slices?.map((slice: any, index: number) => {
@@ -55,6 +54,12 @@ export default function Home({ home, collaborators, executiveManagers }: { nav: 
               context='home-executives'
               executiveManagers={executiveManagers}
             />
+          )
+        }
+
+        if (slice.slice_type === 'localisation') {
+          return (
+            <Localisation slice={slice} index={index} key={slice.slice_type} slices={home.data.slices} context='home-localisation' />
           )
         }
       })}

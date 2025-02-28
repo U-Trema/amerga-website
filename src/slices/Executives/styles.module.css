@@ -12,6 +12,10 @@
 .description { grid-area: 2 / 2 / 4 / 3; }
 
 @media screen and (max-width: 1000px) {
+  .container {
+    grid-template-rows: min-content 1fr min-content;
+  }
+
   .parent {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -40,53 +44,91 @@
 }
 
 /* styles of elements */
-@media screen and (max-width: 768px) {
+.container {
+  grid-column-gap: var(--spacing-32);
+}
+
+.tabs {
+  position: relative;
+  margin-top: var(--spacing-16);
+  margin-bottom: var(--spacing-32);
+}
+
+.tabs::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #b8b8b8;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.li {
+  cursor: pointer;
+  position: relative;
+  letter-spacing: 0.05rem;
+  flex-basis: 50%;
+  color: #b8b8b8;
+  padding: var(--spacing-16) 0;
+}
+
+.li.active {
+  color: #000;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.li::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #b8b8b8;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.li.active::before {
+  background-color: #000;
+}
+
+@media screen and (max-width: 1000px) {
   .container {
-    margin-bottom: var(--spacing-32);
+    grid-row-gap: var(--spacing-24);
   }
 
-  .li {
-    position: relative;
-    letter-spacing: 0.05rem;
-    flex-basis: 50%;
-    color: #b8b8b8;
-    padding: var(--spacing-16) 0;
-  }
-
-  .li.active {
-    color: #000;
-  }
-
-  .tabs { position: relative; }
-
-  .tabs::before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: #b8b8b8;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .li::before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: #b8b8b8;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .li.active::before {
-    background-color: #000;
+  .tabs {
+    width: 90%;
+    margin: 0 auto;
   }
 
   .image {
-    border-radius: 8px;
+    aspect-ratio: 3/4;
+  }
+
+  .description {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    grid-row-gap: 0;
+    grid-column-gap: 0;
+  }
+
+  .image {
+    aspect-ratio: 1;
   }
 
   .description {
