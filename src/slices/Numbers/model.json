@@ -1,0 +1,215 @@
+{
+  "id": "numbers",
+  "type": "SharedSlice",
+  "name": "Numbers",
+  "description": "Numbers",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "number": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Chiffre",
+            "placeholder": "Chiffre",
+            "allowTargetBlank": false,
+            "single": "paragraph,strong",
+            "labels": [
+              "orange-text",
+              "blue-text"
+            ]
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Description",
+            "allowTargetBlank": false,
+            "multi": "paragraph,em",
+            "labels": [
+              "orange-text",
+              "blue-text"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "twoNumbers",
+      "name": "TwoNumbers",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "twonumbers": {
+          "type": "Group",
+          "config": {
+            "label": "TwoNumbers",
+            "repeat": false,
+            "fields": {
+              "first_number": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "number",
+                  "placeholder": "First Number",
+                  "allowTargetBlank": false,
+                  "single": "paragraph,em",
+                  "labels": [
+                    "orange-text",
+                    "blue-text"
+                  ]
+                }
+              },
+              "first_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "First Description",
+                  "placeholder": "First Description",
+                  "allowTargetBlank": false,
+                  "multi": "paragraph,em",
+                  "labels": [
+                    "orange-text",
+                    "blue-text"
+                  ]
+                }
+              },
+              "second_number": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "number",
+                  "placeholder": "Second Number",
+                  "allowTargetBlank": false,
+                  "single": "paragraph,em",
+                  "labels": [
+                    "orange-text",
+                    "blue-text"
+                  ]
+                }
+              },
+              "second_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Second Description",
+                  "placeholder": "Second Description",
+                  "allowTargetBlank": false,
+                  "multi": "paragraph,em",
+                  "labels": [
+                    "orange-text",
+                    "blue-text"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "threeNumbers",
+      "name": "ThreeNumbers",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "threenumbers": {
+          "type": "Group",
+          "config": {
+            "label": "ThreeNumbers",
+            "repeat": false,
+            "fields": {
+              "first_number": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "First Number",
+                  "placeholder": "First Number",
+                  "allowTargetBlank": false,
+                  "single": "paragraph,em",
+                  "labels": [
+                    "orange-text",
+                    "blue-text"
+                  ]
+                }
+              },
+              "first_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "First Description",
+                  "placeholder": "First Description",
+                  "allowTargetBlank": false,
+                  "multi": "paragraph,em",
+                  "labels": [
+                    "orange-text",
+                    "blue-text"
+                  ]
+                }
+              },
+              "second_number": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Second Number",
+                  "placeholder": "Second Number",
+                  "allowTargetBlank": false,
+                  "single": "paragraph,em",
+                  "labels": [
+                    "orange-text",
+                    "blue-text"
+                  ]
+                }
+              },
+              "second_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Second Description",
+                  "placeholder": "Second Description",
+                  "allowTargetBlank": false,
+                  "multi": "paragraph,em",
+                  "labels": [
+                    "orange-text",
+                    "blue-text"
+                  ]
+                }
+              },
+              "third_number": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Third Number",
+                  "placeholder": "Third Number",
+                  "allowTargetBlank": false,
+                  "single": "paragraph,em",
+                  "labels": [
+                    "orange-text",
+                    "blue-text"
+                  ]
+                }
+              },
+              "third_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Third Description",
+                  "placeholder": "Third Description",
+                  "allowTargetBlank": false,
+                  "multi": "paragraph,em",
+                  "labels": [
+                    "orange-text",
+                    "blue-text"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

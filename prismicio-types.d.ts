@@ -491,6 +491,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | NumbersSlice
   | LocalisationSlice
   | ExecutivesSlice
   | CartesAssurancesSlice
@@ -1305,6 +1306,234 @@ export type MembershipSliderSlice = prismic.SharedSlice<
   MembershipSliderSliceVariation
 >;
 
+/**
+ * Item in *Numbers → TwoNumbers → Primary → TwoNumbers*
+ */
+export interface NumbersSliceTwoNumbersPrimaryTwonumbersItem {
+  /**
+   * number field in *Numbers → TwoNumbers → Primary → TwoNumbers*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: First Number
+   * - **API ID Path**: numbers.twoNumbers.primary.twonumbers[].first_number
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  first_number: prismic.RichTextField;
+
+  /**
+   * First Description field in *Numbers → TwoNumbers → Primary → TwoNumbers*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: First Description
+   * - **API ID Path**: numbers.twoNumbers.primary.twonumbers[].first_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  first_description: prismic.RichTextField;
+
+  /**
+   * number field in *Numbers → TwoNumbers → Primary → TwoNumbers*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Second Number
+   * - **API ID Path**: numbers.twoNumbers.primary.twonumbers[].second_number
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  second_number: prismic.RichTextField;
+
+  /**
+   * Second Description field in *Numbers → TwoNumbers → Primary → TwoNumbers*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Second Description
+   * - **API ID Path**: numbers.twoNumbers.primary.twonumbers[].second_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  second_description: prismic.RichTextField;
+}
+
+/**
+ * Item in *Numbers → ThreeNumbers → Primary → ThreeNumbers*
+ */
+export interface NumbersSliceThreeNumbersPrimaryThreenumbersItem {
+  /**
+   * First Number field in *Numbers → ThreeNumbers → Primary → ThreeNumbers*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: First Number
+   * - **API ID Path**: numbers.threeNumbers.primary.threenumbers[].first_number
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  first_number: prismic.RichTextField;
+
+  /**
+   * First Description field in *Numbers → ThreeNumbers → Primary → ThreeNumbers*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: First Description
+   * - **API ID Path**: numbers.threeNumbers.primary.threenumbers[].first_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  first_description: prismic.RichTextField;
+
+  /**
+   * Second Number field in *Numbers → ThreeNumbers → Primary → ThreeNumbers*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Second Number
+   * - **API ID Path**: numbers.threeNumbers.primary.threenumbers[].second_number
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  second_number: prismic.RichTextField;
+
+  /**
+   * Second Description field in *Numbers → ThreeNumbers → Primary → ThreeNumbers*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Second Description
+   * - **API ID Path**: numbers.threeNumbers.primary.threenumbers[].second_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  second_description: prismic.RichTextField;
+
+  /**
+   * Third Number field in *Numbers → ThreeNumbers → Primary → ThreeNumbers*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Third Number
+   * - **API ID Path**: numbers.threeNumbers.primary.threenumbers[].third_number
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  third_number: prismic.RichTextField;
+
+  /**
+   * Third Description field in *Numbers → ThreeNumbers → Primary → ThreeNumbers*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Third Description
+   * - **API ID Path**: numbers.threeNumbers.primary.threenumbers[].third_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  third_description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Numbers → Default → Primary*
+ */
+export interface NumbersSliceDefaultPrimary {
+  /**
+   * Chiffre field in *Numbers → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Chiffre
+   * - **API ID Path**: numbers.default.primary.number
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  number: prismic.RichTextField;
+
+  /**
+   * Description field in *Numbers → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Description
+   * - **API ID Path**: numbers.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Numbers Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NumbersSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NumbersSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Numbers → TwoNumbers → Primary*
+ */
+export interface NumbersSliceTwoNumbersPrimary {
+  /**
+   * TwoNumbers field in *Numbers → TwoNumbers → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: numbers.twoNumbers.primary.twonumbers[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  twonumbers: prismic.GroupField<
+    Simplify<NumbersSliceTwoNumbersPrimaryTwonumbersItem>
+  >;
+}
+
+/**
+ * TwoNumbers variation for Numbers Slice
+ *
+ * - **API ID**: `twoNumbers`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NumbersSliceTwoNumbers = prismic.SharedSliceVariation<
+  "twoNumbers",
+  Simplify<NumbersSliceTwoNumbersPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Numbers → ThreeNumbers → Primary*
+ */
+export interface NumbersSliceThreeNumbersPrimary {
+  /**
+   * ThreeNumbers field in *Numbers → ThreeNumbers → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: numbers.threeNumbers.primary.threenumbers[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  threenumbers: prismic.GroupField<
+    Simplify<NumbersSliceThreeNumbersPrimaryThreenumbersItem>
+  >;
+}
+
+/**
+ * ThreeNumbers variation for Numbers Slice
+ *
+ * - **API ID**: `threeNumbers`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NumbersSliceThreeNumbers = prismic.SharedSliceVariation<
+  "threeNumbers",
+  Simplify<NumbersSliceThreeNumbersPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Numbers*
+ */
+type NumbersSliceVariation =
+  | NumbersSliceDefault
+  | NumbersSliceTwoNumbers
+  | NumbersSliceThreeNumbers;
+
+/**
+ * Numbers Shared Slice
+ *
+ * - **API ID**: `numbers`
+ * - **Description**: Numbers
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NumbersSlice = prismic.SharedSlice<
+  "numbers",
+  NumbersSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1386,6 +1615,16 @@ declare module "@prismicio/client" {
       MembershipSliderSliceDefaultPrimary,
       MembershipSliderSliceVariation,
       MembershipSliderSliceDefault,
+      NumbersSlice,
+      NumbersSliceDefaultPrimary,
+      NumbersSliceTwoNumbersPrimaryTwonumbersItem,
+      NumbersSliceTwoNumbersPrimary,
+      NumbersSliceThreeNumbersPrimaryThreenumbersItem,
+      NumbersSliceThreeNumbersPrimary,
+      NumbersSliceVariation,
+      NumbersSliceDefault,
+      NumbersSliceTwoNumbers,
+      NumbersSliceThreeNumbers,
     };
   }
 }

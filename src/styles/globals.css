@@ -25,6 +25,7 @@
   --color-amerga-orange: #E57634;
   --color-amerga-orange-hover: #E88248; /* TODO trouver mieux comme couleur */
   --color-amerga-blue: #1D2172;
+  --color-light-blue: oklch(0.623 0.214 259.815);
 
   --spacing-128: 128px;
   --spacing-80: 80px;
@@ -69,4 +70,8 @@ body {
 
 .orange-text {
   color: var(--color-amerga-orange);
+}
+
+.blue-text {
+  color: var(--color-light-blue);
 }
