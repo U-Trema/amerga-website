@@ -22,11 +22,9 @@ const descriptionComponent = {
  * Component for "CartesAssurances" Slices.
  */
 const CartesAssurances: FC<CartesAssurancesProps> = ({ slice }) => {
-  console.log('%cslice', 'color: orange; font-size: 12px;', slice)
-
   return (
     <section
-      className='md:pr-0 py-40'
+      className='md:pr-0 py-30 md:py-40'
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

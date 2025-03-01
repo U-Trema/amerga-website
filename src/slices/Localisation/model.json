@@ -1,0 +1,43 @@
+{
+  "id": "localisation",
+  "type": "SharedSlice",
+  "name": "Localisation",
+  "description": "Localisation",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "titre",
+            "placeholder": "Titre"
+          }
+        },
+        "address": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Adresse",
+            "placeholder": "Adresse",
+            "allowTargetBlank": false,
+            "multi": "paragraph"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

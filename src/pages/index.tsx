@@ -6,8 +6,11 @@ import MembershipSlider from "@/slices/MembershipSlider";
 import Collaborators from "@/slices/Collaborators";
 import React from "react";
 import CartesAssurances from "@/slices/CartesAssurances";
+import {isFilled} from "@prismicio/client";
+import Executives from "@/slices/Executives";
+import Localisation from "@/slices/Localisation";
 
-export default function Home({ home, collaborators }: { nav: any; footer: any; home: any; collaborators: any }) {
+export default function Home({ home, collaborators, executiveManagers }: { nav: any; footer: any; home: any; collaborators: any, executiveManagers: any }) {
   return (
     <div>
       {home.data.slices?.map((slice: any, index: number) => {
@@ -40,6 +43,25 @@ export default function Home({ home, collaborators }: { nav: any; footer: any; h
             </div>
           )
         }
+
+        if (slice.slice_type === 'executives') {
+          return (
+            <Executives
+              slice={slice}
+              index={index}
+              key={slice.slice_type}
+              slices={home.data.slices}
+              context='home-executives'
+              executiveManagers={executiveManagers}
+            />
+          )
+        }
+
+        if (slice.slice_type === 'localisation') {
+          return (
+            <Localisation slice={slice} index={index} key={slice.slice_type} slices={home.data.slices} context='home-localisation' />
+          )
+        }
       })}
     </div>
   );
@@ -52,13 +74,21 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
   const home = await client.getSingle("home");
 
   const collaborators = await client.getAllByType("collaborators");
+  const executivesSlice = home.data.slices.find(slice => slice.slice_type === 'executives')
+
+  // @ts-ignore
+  const hasExecutiveManagers = isFilled.group(executivesSlice?.primary?.executives)
+  // @ts-ignore
+  const executivesIds = executivesSlice?.primary?.executives?.map(manager => manager.executives.id)
+  const executives = hasExecutiveManagers ? await client.getByIDs(executivesIds) : []
 
   return {
     props: {
       nav: document,
       footer,
       home,
-      collaborators
+      collaborators,
+      executiveManagers: executives,
     },
   };
 }

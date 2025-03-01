@@ -11,6 +11,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "localisation": {
+              "type": "SharedSlice"
+            },
+            "executives": {
+              "type": "SharedSlice"
+            },
             "cartes_assurances": {
               "type": "SharedSlice"
             },
