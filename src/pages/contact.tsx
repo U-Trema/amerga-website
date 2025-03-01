@@ -18,7 +18,8 @@ export default function Contact({page}: InferGetStaticPropsType<typeof getStatic
           </Container>
         </header>
       </Box>
-      <Container fluid className={contactpageCVA.root()}>
+      <Box className={contactpageCVA.bg()}>
+        <Container fluid className={contactpageCVA.root()}>
         <section>
           <Space h='xl'/>
           <Space h='xl'/>
@@ -34,6 +35,7 @@ export default function Contact({page}: InferGetStaticPropsType<typeof getStatic
           <Space h='xl'/>
         </section>
       </Container>
+      </Box>
     </Box>
   )
 }

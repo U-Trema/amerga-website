@@ -7,8 +7,6 @@ export const footerCVA = {
         'text-white',
         'pt-15',
         'pb-10',
-        'mt-80',
-        'md:mt-128'
     ]),
 }
 
@@ -35,7 +33,7 @@ export const footerGridCVA = {
         'lg:gap-7',
         'xl:gap-8',
     ]),
-    firstCol: cva(['!max-w-[250px] mb-8 lg:mb-0']),
+    firstCol: cva(['md:!max-w-[250px] mb-8 lg:mb-0']),
     firstColBox: cva(['!max-w-[200px] underline text-sm']),
     col: cva(['flex flex-col gap-y-8 sm:flex-row sm:gap-x-[130px] sm:gap-y-0 mb-8']),
 }
