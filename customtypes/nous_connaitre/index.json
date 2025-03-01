@@ -6,18 +6,64 @@
   "status": true,
   "json": {
     "Main": {
-      "titre": {
-        "type": "Text",
+      "hero": {
+        "type": "Group",
         "config": {
-          "label": "titre",
-          "placeholder": "Titre"
+          "label": "Hero",
+          "repeat": false,
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": "Titre de la Hero"
+              }
+            },
+            "catchphrase": {
+              "type": "Text",
+              "config": {
+                "label": "Catchphrase",
+                "placeholder": "Phrase d'accroche"
+              }
+            }
+          }
+        }
+      },
+      "content": {
+        "type": "Group",
+        "config": {
+          "label": "Content",
+          "repeat": true,
+          "fields": {
+            "content": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Content",
+                "placeholder": "Contenue de la page",
+                "allowTargetBlank": true,
+                "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+              }
+            }
+          }
         }
       },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "collaborators": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

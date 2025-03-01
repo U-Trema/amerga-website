@@ -666,22 +666,83 @@ interface MenuDocumentData {
 export type MenuDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<MenuDocumentData>, "menu", Lang>;
 
-type NousConnaitreDocumentDataSlicesSlice = never;
+/**
+ * Item in *nous connaitre → Hero*
+ */
+export interface NousConnaitreDocumentDataHeroItem {
+  /**
+   * Image field in *nous connaitre → Hero*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nous_connaitre.hero[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *nous connaitre → Hero*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titre de la Hero
+   * - **API ID Path**: nous_connaitre.hero[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Catchphrase field in *nous connaitre → Hero*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Phrase d'accroche
+   * - **API ID Path**: nous_connaitre.hero[].catchphrase
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  catchphrase: prismic.KeyTextField;
+}
+
+/**
+ * Item in *nous connaitre → Content*
+ */
+export interface NousConnaitreDocumentDataContentItem {
+  /**
+   * Content field in *nous connaitre → Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Contenue de la page
+   * - **API ID Path**: nous_connaitre.content[].content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
+type NousConnaitreDocumentDataSlicesSlice = CollaboratorsSlice;
 
 /**
  * Content for nous connaitre documents
  */
 interface NousConnaitreDocumentData {
   /**
-   * titre field in *nous connaitre*
+   * Hero field in *nous connaitre*
    *
-   * - **Field Type**: Text
-   * - **Placeholder**: Titre
-   * - **API ID Path**: nous_connaitre.titre
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nous_connaitre.hero[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  titre: prismic.KeyTextField;
+  hero: prismic.GroupField<Simplify<NousConnaitreDocumentDataHeroItem>>;
+
+  /**
+   * Content field in *nous connaitre*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nous_connaitre.content[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  content: prismic.GroupField<Simplify<NousConnaitreDocumentDataContentItem>>;
 
   /**
    * Slice Zone field in *nous connaitre*
@@ -1653,6 +1714,8 @@ declare module "@prismicio/client" {
       MenuDocumentDataAssurancesItem,
       NousConnaitreDocument,
       NousConnaitreDocumentData,
+      NousConnaitreDocumentDataHeroItem,
+      NousConnaitreDocumentDataContentItem,
       NousConnaitreDocumentDataSlicesSlice,
       AllDocumentTypes,
       CartesAssurancesSlice,
