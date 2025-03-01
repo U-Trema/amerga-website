@@ -1,0 +1,41 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Prevent"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla enim in anim aliquip est incididunt in sint. Sint do nulla dolor veniam do quis reprehenderit commodo sit deserunt proident consequat irure nostrud laborum."
+						}
+					}
+				]
+			},
+			"link": {
+				"__TYPE__": "LinkContent",
+				"key": "76b35787-33d0-45a7-8a1d-f656af372ffb",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev",
+					"text": "garden",
+					"variant": "primary"
+				}
+			}
+		},
+		"items": []
+	}
+]
