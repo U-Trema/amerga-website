@@ -1,0 +1,215 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"number": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Fugiat anim sint amet cupidatat consectetur fugiat sint dolor magna magna eiusmod. Aliqua elit anim magna laboris tempor consequat consequat deserunt reprehenderit. Incididunt tempor incididunt dolor tempor."
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Exercitation mollit adipisicing non minim do irure ea voluptate dolor consequat id. Aliquip aliqua qui est est dolor aliquip officia consectetur non magna ullamco excepteur. Laborum dolor irure fugiat nulla consectetur adipisicing ea Lorem."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "twoNumbers",
+		"primary": {
+			"twonumbers": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"first_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ea culpa ad magna magna pariatur ea dolore. Occaecat do dolor ut velit ea tempor veniam laborum reprehenderit mollit qui excepteur mollit. Anim et duis amet ea minim proident voluptate voluptate et eu tempor nostrud culpa reprehenderit."
+											}
+										}
+									]
+								}
+							],
+							[
+								"second_number",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nostrud non eiusmod magna aute laboris nostrud officia laboris laboris. Qui ex nostrud dolore non deserunt proident cillum Lorem tempor ut do ullamco commodo."
+											}
+										}
+									]
+								}
+							],
+							[
+								"second_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Aliqua voluptate nisi esse eiusmod nostrud."
+											}
+										}
+									]
+								}
+							],
+							[
+								"first_number",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nisi ipsum mollit incididunt esse pariatur nisi mollit. Eiusmod ut labore non. Qui eiusmod ut reprehenderit exercitation excepteur ut amet."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "threeNumbers",
+		"primary": {
+			"threenumbers": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"first_number",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Consequat quis deserunt commodo officia amet tempor est non irure. Labore fugiat enim anim et duis aute reprehenderit labore nostrud id labore dolor fugiat nostrud. Veniam consectetur enim duis."
+											}
+										}
+									]
+								}
+							],
+							[
+								"first_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Esse sint est magna cillum tempor eiusmod enim. Voluptate fugiat laborum aliqua id ad laborum mollit eu quis dolore. Magna ipsum occaecat aliqua."
+											}
+										}
+									]
+								}
+							],
+							[
+								"second_number",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Culpa aute do voluptate qui in non id reprehenderit nisi. Dolor sit eu non irure consequat pariatur laboris cillum sunt veniam officia incididunt mollit ipsum. Enim non duis nulla laborum minim voluptate commodo ut sit ipsum."
+											}
+										}
+									]
+								}
+							],
+							[
+								"second_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Excepteur fugiat mollit enim ad aliquip voluptate occaecat enim pariatur reprehenderit aliqua mollit. Veniam officia reprehenderit est fugiat amet sit pariatur quis aliquip non."
+											}
+										}
+									]
+								}
+							],
+							[
+								"third_number",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Et anim magna ad aliqua excepteur anim duis do exercitation et Lorem excepteur in nulla. Adipisicing esse cillum Lorem id non veniam tempor sit Lorem nulla culpa consequat ipsum. Dolor anim ex esse reprehenderit et in reprehenderit eu fugiat officia fugiat."
+											}
+										}
+									]
+								}
+							],
+							[
+								"third_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "In ullamco fugiat voluptate id pariatur dolor ullamco. Occaecat quis aute ipsum duis dolor duis occaecat officia duis esse occaecat dolore irure nisi deserunt. Velit eu ex eiusmod aliqua ex fugiat id."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

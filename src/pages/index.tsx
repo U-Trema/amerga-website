@@ -9,6 +9,7 @@ import CartesAssurances from "@/slices/CartesAssurances";
 import {isFilled} from "@prismicio/client";
 import Executives from "@/slices/Executives";
 import Localisation from "@/slices/Localisation";
+import Numbers from "@/slices/Numbers";
 
 export default function Home({ home, collaborators, executiveManagers }: { nav: any; footer: any; home: any; collaborators: any, executiveManagers: any }) {
   return (
@@ -60,6 +61,12 @@ export default function Home({ home, collaborators, executiveManagers }: { nav: 
         if (slice.slice_type === 'localisation') {
           return (
             <Localisation slice={slice} index={index} key={slice.slice_type} slices={home.data.slices} context='home-localisation' />
+          )
+        }
+
+        if (slice.slice_type === 'numbers') {
+          return (
+            <Numbers slice={slice} index={index} key={slice.slice_type} slices={home.data.slices} context='home-numbers' />
           )
         }
       })}
