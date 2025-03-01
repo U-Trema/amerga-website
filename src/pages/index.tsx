@@ -11,6 +11,7 @@ import Executives from "@/slices/Executives";
 import Localisation from "@/slices/Localisation";
 import Numbers from "@/slices/Numbers";
 import Contact from "@/slices/Contact";
+import {Space} from "@mantine/core";
 
 export default function Home({ home, collaborators, executiveManagers }: { nav: any; footer: any; home: any; collaborators: any, executiveManagers: any }) {
   return (
@@ -77,6 +78,8 @@ export default function Home({ home, collaborators, executiveManagers }: { nav: 
           )
         }
       })}
+
+      <Space className='mt-80 md:mt-128' />
     </div>
   );
 }

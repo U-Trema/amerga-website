@@ -23,7 +23,7 @@ export function ContentSection({data} = {data: []} as any) {
           const hasText = block.some(({type}: any) => type === 'paragraph')
 
           return (
-            <Box className={contentContainerCVA.root()} key={blockIndex}>
+            <Box className={contentContainerCVA.root({ marginBottom: (blockIndex + 1) < contents.length })} key={blockIndex}>
               {block.map((item: any, itemIndex: number) => {
                 if (!hasText && item.type === 'image') {
                   return (
