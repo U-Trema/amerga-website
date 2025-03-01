@@ -6,9 +6,7 @@ export const footerCVA = {
         'bg-(--color-soft-black)',
         'text-white',
         'pt-15',
-        'pb-10',
-        'mt-80',
-        'md:mt-128'
+        'pb-10'
     ]),
 }
 

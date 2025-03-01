@@ -28,7 +28,13 @@ export const contentContainerCVA = {
   root: cva([
     'w-full',
     'm-auto',
-    'max-w-[800px]',
-    'mb-2'
-  ]),
+    'max-w-[800px]'
+  ], {
+    variants: {
+      marginBottom: {
+        true: 'mb-2',
+        false: 'mb-0'
+      }
+    }
+  }),
 }

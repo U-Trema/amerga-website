@@ -15,7 +15,7 @@ type Props = {
   } & NumbersSliceThreeNumbers | any
 }
 
-const cardClasses = 'bg-white p-32 gap-24 flex-col basis-[50%] shrink-0 justify-between'
+const cardClasses = 'bg-white p-32 gap-24 flex-col basis-[50%] shrink-0 justify-between rounded-xl'
 
 const description = {
   paragraph: ({ children }: { children: ReactNode }) => <p className='text-2xl font-semibold text-center'>{children}</p>

@@ -1,5 +1,5 @@
 export const getSize = (data: string) => {
-  if (!data) return null
+  if (!data) return 'medium'
 
   const value = Number(data);
 
