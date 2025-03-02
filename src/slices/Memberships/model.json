@@ -1,8 +1,8 @@
 {
   "id": "membership_slider",
   "type": "SharedSlice",
-  "name": "MembershipSlider",
-  "description": "MembershipSlider",
+  "name": "Memberships",
+  "description": "Memberships",
   "variations": [
     {
       "id": "default",
@@ -36,6 +36,28 @@
             ]
           }
         },
+        "collaborators": {
+          "type": "Link",
+          "config": {
+            "label": "Collaborateurs",
+            "select": "document",
+            "repeat": false,
+            "customtypes": [
+              "collaborators"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "noText",
+      "name": "No text",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
         "collaborators": {
           "type": "Link",
           "config": {

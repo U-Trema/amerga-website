@@ -1,8 +1,8 @@
 import { createClient } from "@/prismicio";
-import {homepageCVA} from "@/styles/page.styles";
+import {homePageCVA} from "@/styles/page.styles";
 import {GetStaticPropsContext} from "next";
 import HeroMosaicImages from "@/slices/HeroMosaicImages";
-import MembershipSlider from "@/slices/MembershipSlider";
+import Memberships from "@/slices/Memberships";
 import Collaborators from "@/slices/Collaborators";
 import React from "react";
 import CartesAssurances from "@/slices/CartesAssurances";
@@ -19,7 +19,7 @@ export default function Home({ home, collaborators, executiveManagers }: { nav: 
       {home.data.slices?.map((slice: any, index: number) => {
         if (slice.slice_type === 'hero_mosaic_images') {
           return (
-            <div className={homepageCVA.root()} key={slice.slice_type}>
+            <div className={homePageCVA.root()} key={slice.slice_type}>
               <HeroMosaicImages key='home-hero' slice={slice} slices={home.data.slices} index={index} context='home-hero'/>
             </div>
           );
@@ -28,7 +28,7 @@ export default function Home({ home, collaborators, executiveManagers }: { nav: 
         if (slice.slice_type === 'membership_slider') {
           return (
             <React.Fragment key={`${slice.slice_type}__${index}`}>
-              <MembershipSlider key={slice.slice_type} slice={slice} slices={home.data.slices} index={index} context='home-membership' />
+              <Memberships key={slice.slice_type} slice={slice} slices={home.data.slices} index={index} context='home-membership' />
               <Collaborators slice={collaborators[0]} index={index} slices={home.data.slices} context='home-collaborators' />
             </React.Fragment>
           )
@@ -36,7 +36,7 @@ export default function Home({ home, collaborators, executiveManagers }: { nav: 
 
         if (slice.slice_type === 'cartes_assurances') {
           return (
-            <div className={homepageCVA.root()} key={slice.slice_type}>
+            <div className={homePageCVA.root()} key={slice.slice_type}>
               <CartesAssurances
                 slice={slice}
                 index={index}

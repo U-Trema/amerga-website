@@ -1,7 +1,7 @@
 import {FC, ReactNode, useState} from "react";
 import { Content } from "@prismicio/client";
 import {PrismicRichText, SliceComponentProps} from "@prismicio/react";
-import {homepageCVA} from "@/styles/page.styles";
+import {homePageCVA} from "@/styles/page.styles";
 import {PrismicNextImage} from "@prismicio/next";
 
 import styles from './styles.module.css';
@@ -32,7 +32,7 @@ const Executives: FC<ExecutivesProps> = ({ slice, executiveManagers }) => {
 
   return (
     <section
-      className={homepageCVA.root()}
+      className={homePageCVA.root()}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

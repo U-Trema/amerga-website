@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import {Default} from "@/slices/Numbers/variations/default/Default";
-import {homepageCVA} from "@/styles/page.styles";
+import {homePageCVA} from "@/styles/page.styles";
 import {TwoNumbers} from "@/slices/Numbers/variations/twoNumbers/TwoNumbers";
 import {ThreeNumbers} from "@/slices/Numbers/variations/threeNumbers/ThreeNumbers";
 
@@ -17,7 +17,7 @@ export type NumbersProps = SliceComponentProps<Content.NumbersSlice>;
 const Numbers: FC<NumbersProps> = ({ slice }) => {
   return (
     <section
-      className={homepageCVA.root()}
+      className={homePageCVA.root()}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

@@ -10,6 +10,6 @@ export const components = {
   footer_section: dynamic(() => import("./FooterSection")),
   hero_mosaic_images: dynamic(() => import("./HeroMosaicImages")),
   localisation: dynamic(() => import("./Localisation")),
-  membership_slider: dynamic(() => import("./MembershipSlider")),
+  membership_slider: dynamic(() => import("./Memberships")),
   numbers: dynamic(() => import("./Numbers")),
 };
