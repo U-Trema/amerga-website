@@ -3,32 +3,36 @@ import {createClient} from "@/prismicio";
 import {Box, Container, Space, Text} from "@mantine/core";
 import {nousConnaitrePageCVA} from "@/styles/page.styles";
 import React from "react";
-import {PrismicRichText, SliceZone} from "@prismicio/react";
+import {PrismicImage, PrismicRichText, SliceZone} from "@prismicio/react";
 import {PrismicNextImage} from "@prismicio/next";
 
 const components = {
-  membership_slider: (props: any) => {
-    console.log({props})
-    return <Box>Membership slider</Box>
-  },
-  collaborators: (props: any) => {
-    console.log({props})
-    return <Box>Membership slider</Box>
-  },
+  collaborators: (props: any) => (
+    <Box className={'flex flex-col items-center overflow-hidden'}>
+      <Box className={'w-full h-full max-w-[115px] max-h-[115px] rounded-xl overflow-hidden'}>
+        <PrismicImage field={props.slice.primary.photo}/>
+      </Box>
+      <PrismicRichText field={props.slice.primary.name}/>
+      <PrismicRichText field={props.slice.primary.job}/>
+    </Box>
+  ),
 };
 
 export default function NousConanitre({page, employees}: InferGetStaticPropsType<typeof getStaticProps>) {
   if (!page.data) return null
 
-  const {hero, content} = page.data
-  const [{data: {slices} = {}}] = employees || [{ data: { slices: {} }}]
-  console.log({ slices })
+  const {hero, content: contents} = page.data
   const [{title, catchphrase, image} = {}] = hero || []
-  console.log({ slices })
+  const [{data: {slices} = { slices: [] }}] = employees || [{ data: { slices: [] }}];
+  const count = slices.length
 
-  const contentWithCount = content.map((content) => {
-    return content
-  });
+  const contentWithCount = contents.map(({content}) => ({
+    content: content.map((originalValue: any) => ({
+        ...originalValue,
+        text: originalValue.text.replace('{{count}}', count.toString())
+      }))
+    })
+  );
 
   return (
     <Box id='nous-connaitre-section'>
@@ -57,12 +61,12 @@ export default function NousConanitre({page, employees}: InferGetStaticPropsType
         </section>
         <Space h='xl' />
         <Space h='xl' />
-        <section>
-          <SliceZone slices={slices} components={components} />
-        </section>
-        <Space h='xl' />
-        <Space h='xl' />
       </Container>
+      <section className={'mx-3 xs:mx-4 grid items-start gap-x-4 gap-y-12 text-center grid-cols-2 sm:grid-cols-3 md:grid-cols-4'}>
+        <SliceZone slices={slices} components={components} />
+      </section>
+      <Space h='xl' />
+      <Space h='xl' />
     </Box>
   )
 }
