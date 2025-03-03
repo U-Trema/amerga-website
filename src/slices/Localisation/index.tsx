@@ -1,10 +1,11 @@
 import {FC, ReactNode} from "react";
 import { Content } from "@prismicio/client";
 import {PrismicRichText, SliceComponentProps} from "@prismicio/react";
-import {homePageCVA} from "@/styles/page.styles";
+import {homePageCVA, observerCVA} from "@/styles/page.styles";
 import {localisation} from "@/slices/Localisation/localisation.classes";
 import {PrismicNextImage} from "@prismicio/next";
 import {combineClasses} from "@/utils/combineClasses";
+import {useIntersectionObserver} from "@/utils/useIntersectionObserver";
 
 const address = {
   paragraph: ({ children }: { children: ReactNode }) => <p className={localisation.address()}>{children}</p>,
@@ -19,11 +20,14 @@ export type LocalisationProps = SliceComponentProps<Content.LocalisationSlice>;
  * Component for "Localisation" Slices.
  */
 const Localisation: FC<LocalisationProps> = ({ slice }) => {
+  const [ref, isVisible] = useIntersectionObserver();
+
   return (
     <section
-      className='pt-128'
+      ref={ref}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className={combineClasses('pt-128', observerCVA.root({ isVisible }))}
     >
       <div className={combineClasses(homePageCVA.root(), '!px-0 md:!px-(--spacing-md)')}>
         <div className={localisation.root()}>

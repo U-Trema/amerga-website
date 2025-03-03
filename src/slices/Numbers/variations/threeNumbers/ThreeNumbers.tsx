@@ -6,6 +6,9 @@ import {serializer} from "@/utils/serializer";
 import {AnimatedNumber} from "@/slices/Numbers/components/AnimatedNumber";
 import {getSize} from "@/slices/Numbers/variations/utils/getSize";
 import {PrismicRichText} from "@prismicio/react";
+import {useIntersectionObserver} from "@/utils/useIntersectionObserver";
+import {combineClasses} from "@/utils/combineClasses";
+import {observerCVA} from "@/styles/page.styles";
 
 type Props = {
   data: {
@@ -22,6 +25,8 @@ const description = {
 }
 
 export const ThreeNumbers: FC<Props> = ({ data }) => {
+  const [ref, isVisible] = useIntersectionObserver()
+
   if (!data.primary.threenumbers.length) return null
 
   const first = prismicR.serialize(data.primary.threenumbers[0].first_number, serializer)
@@ -29,7 +34,7 @@ export const ThreeNumbers: FC<Props> = ({ data }) => {
   const third = prismicR.serialize(data.primary.threenumbers[0].third_number, serializer)
 
   return (
-    <SimpleGrid cols={{ base: 1, md: 3 }} className='mt-80' spacing={{ base: 24, md: 32 }}>
+    <SimpleGrid ref={ref} cols={{ base: 1, md: 3 }} className={combineClasses('mt-80', observerCVA.root({ isVisible }))} spacing={{ base: 24, md: 32 }}>
       <Flex className={cardClasses}>
         <AnimatedNumber number={first} textSize={getSize(first[0].text)} />
         <PrismicRichText field={data.primary.threenumbers[0].first_description} components={description} />

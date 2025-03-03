@@ -1,8 +1,10 @@
 import {FC, ReactNode} from "react";
 import { Content } from "@prismicio/client";
 import {PrismicRichText, SliceComponentProps} from "@prismicio/react";
-import {homePageCVA} from "@/styles/page.styles";
+import {homePageCVA, observerCVA} from "@/styles/page.styles";
 import {Grid, GridCol} from "@mantine/core";
+import {useIntersectionObserver} from "@/utils/useIntersectionObserver";
+import {combineClasses} from "@/utils/combineClasses";
 
 /**
  * Props for `Memberships`.
@@ -18,13 +20,16 @@ const components = {
  * Component for "Memberships" Slices.
  */
 const Memberships: FC<MembershipsProps> = ({ slice }) => {
+  const [ref, isVisible] = useIntersectionObserver();
+
   if (slice.variation !== 'default') return;
 
   return (
     <section
+      ref={ref}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className='w-full bg-soft-black py-128 text-white'
+      className={combineClasses(`w-full bg-soft-black py-128 text-white`, observerCVA.root({ isVisible }))}
     >
       <div className={homePageCVA.root()}>
         <PrismicRichText field={slice.primary.title} components={components} />

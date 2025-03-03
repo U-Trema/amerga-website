@@ -23,3 +23,14 @@ export const nousConnaitrePageCVA = {
   content: cva(['text-center']),
   paragraph: cva(['mb-5']),
 }
+
+export const observerCVA = {
+  root: cva(['transition-all duration-500 ease-in-out'], {
+    variants: {
+      isVisible: {
+        true: 'opacity-100 transform translate-y-0',
+        false: 'opacity-0 transform translate-y-14'
+      }
+    }
+  })
+}
