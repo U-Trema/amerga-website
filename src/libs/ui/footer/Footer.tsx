@@ -1,21 +1,23 @@
-import {FC, ReactNode} from 'react';
-import {PrismicRichText} from '@prismicio/react';
-import {PrismicNextImage, PrismicNextLink} from '@prismicio/next';
-import {Container, Flex, Grid, GridCol} from '@mantine/core';
+import {FC, ReactNode} from 'react'
+import {PrismicRichText} from '@prismicio/react'
+import {PrismicNextImage, PrismicNextLink} from '@prismicio/next'
+import {Container, Flex, Grid, GridCol} from '@mantine/core'
 import {
   footerBottomCVA,
   footerColumnCVA,
   footerContainerCVA,
   footerCVA,
   footerGridCVA
-} from '@/libs/ui/footer/footer.classes';
+} from '@/libs/ui/footer/footer.classes'
+import Link from "next/link";
+import {linkResolver} from "@/prismicio";
 
 const slogan = {
   paragraph: ({ children }: { children: ReactNode }) => <p className='[&>strong]:font-semibold'>{children}</p>,
 }
 
 export const Footer: FC<any> = ({footer}) => {
-  if (!footer) return null;
+  if (!footer) return null
 
   return (
     <footer id='footer' className={footerCVA.root()}>
@@ -40,7 +42,7 @@ export const Footer: FC<any> = ({footer}) => {
               <Flex className={footerGridCVA.col()}>
                 {footer.data.columns.map((item: any, index: number) => (
                   <Flex key={index} direction='column' className='basis-1/2 md:basis-1/3'>
-                    <p className={footerColumnCVA.title()}>{item.title}</p>
+                    <h3 className={footerColumnCVA.title()}>{item.title}</h3>
                     <ul className='flex flex-col gap-[6px] sm:gap-8'>
                       {item.link.map((link: any) => (
                         <li key={link.key} className={footerColumnCVA.link()}>
@@ -78,5 +80,5 @@ export const Footer: FC<any> = ({footer}) => {
         </section>
       </Container>
     </footer>
-  );
-};
+  )
+}

@@ -6,7 +6,7 @@ export const footerCVA = {
         'bg-(--color-soft-black)',
         'text-white',
         'pt-15',
-        'pb-10'
+        'pb-12'
     ]),
 }
 
@@ -37,7 +37,7 @@ export const footerColumnCVA = {
     block: cva(['flex flex-col gap-2 max-w-[200px]']),
     grid: cva(['grid grid-cols-1 gap-y-8 xs:grid-cols-2 sm:grid-cols-3']),
     col: cva(['flex-col gap-4']),
-    title: cva(['text-white opacity-60 font-semibold text-sm uppercase mb-8']),
+    title: cva(['tracking-tighter text-xs text-white opacity-60 font-[700] text-sm uppercase mb-8']),
     link: cva(['hover:text-amerga-orange underline decoration-transparent hover:decoration-inherit transition duration-125 text-sm']),
 }
 
