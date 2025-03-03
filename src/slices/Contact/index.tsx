@@ -1,10 +1,11 @@
 import {FC, ReactNode} from "react";
 import { Content } from "@prismicio/client";
 import {PrismicRichText, SliceComponentProps} from "@prismicio/react";
-import {homePageCVA} from "@/styles/page.styles";
+import {homePageCVA, observerCVA} from "@/styles/page.styles";
 import {combineClasses} from "@/utils/combineClasses";
 import {globalStyles} from "@/styles/project.classname";
 import {PrismicNextLink} from "@prismicio/next";
+import {useIntersectionObserver} from "@/utils/useIntersectionObserver";
 
 /**
  * Props for `Contact`.
@@ -20,9 +21,12 @@ const components = {
  * Component for "Contact" Slices.
  */
 const Contact: FC<ContactProps> = ({ slice }) => {
+  const [ref, isVisible] = useIntersectionObserver()
+
   return (
     <section
-      className={combineClasses(homePageCVA.root(), 'mt-80 px-16')}
+      ref={ref}
+      className={combineClasses(homePageCVA.root(), 'mt-80 px-16', observerCVA.root({ isVisible }))}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

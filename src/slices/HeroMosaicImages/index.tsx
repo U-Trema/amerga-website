@@ -6,6 +6,7 @@ import {PrismicNextImage, PrismicNextLink} from "@prismicio/next";
 import styles from './styles.module.css'
 import {globalStyles} from "@/styles/project.classname";
 import {HeroMosaicImagesSliceDefaultPrimaryImagesItem, Simplify} from "../../../prismicio-types";
+import {homePageCVA} from "@/styles/page.styles"
 
 /**
  * Props for `HeroMosaicImages`.
@@ -26,34 +27,36 @@ const components = {
 const HeroMosaicImages: FC<HeroMosaicImagesProps> = ({ slice }) => {
   if (slice.slice_type === 'hero_mosaic_images') {
     return (
-      <section
-        data-slice-type={slice.slice_type}
-        data-slice-variation={slice.variation}
-        className='mt-[40px] mb-[60px] md:my-80'
-      >
-        <header className={styles.gridContainer}>
-          <div className={styles.gridItemFirst}>
-            <PrismicRichText field={slice.primary.title} components={components} />
-            <PrismicRichText field={slice.primary.sub_title} components={components} />
-            <PrismicNextLink
-              field={slice.primary.button}
-              className={globalStyles.link({ variant: slice.primary.button.variant })}
-            />
-          </div>
+      <div className={homePageCVA.root()} key={slice.slice_type}>
+        <section
+          data-slice-type={slice.slice_type}
+          data-slice-variation={slice.variation}
+          className='mt-[40px] mb-[60px] md:my-80'
+        >
+          <header className={styles.gridContainer}>
+            <div className={styles.gridItemFirst}>
+              <PrismicRichText field={slice.primary.title} components={components} />
+              <PrismicRichText field={slice.primary.sub_title} components={components} />
+              <PrismicNextLink
+                field={slice.primary.button}
+                className={globalStyles.link({ variant: slice.primary.button.variant })}
+              />
+            </div>
 
-          <div className={styles.gridTopRight}>
-            <RenderImage image={slice.primary.images[0]} />
-          </div>
+            <div className={styles.gridTopRight}>
+              <RenderImage image={slice.primary.images[0]} />
+            </div>
 
-          <div className={styles.gridBottomRight}>
-            <RenderImage image={slice.primary.images[2]} />
-          </div>
+            <div className={styles.gridBottomRight}>
+              <RenderImage image={slice.primary.images[2]} />
+            </div>
 
-          <div className={styles.gridCentered}>
-            <RenderImage image={slice.primary.images[1]} />
-          </div>
-        </header>
-      </section>
+            <div className={styles.gridCentered}>
+              <RenderImage image={slice.primary.images[1]} />
+            </div>
+          </header>
+        </section>
+      </div>
     );
   }
 

@@ -1,10 +1,12 @@
 import {FC, ReactNode, useState} from "react";
 import { Content } from "@prismicio/client";
 import {PrismicRichText, SliceComponentProps} from "@prismicio/react";
-import {homePageCVA} from "@/styles/page.styles";
+import {homePageCVA, observerCVA} from "@/styles/page.styles";
 import {PrismicNextImage} from "@prismicio/next";
 
 import styles from './styles.module.css';
+import {useIntersectionObserver} from "@/utils/useIntersectionObserver";
+import {combineClasses} from "@/utils/combineClasses";
 
 const jobTitle = {
   heading2: ({ children }: { children: ReactNode }) => <h2 className='text-5xl font-bold tracking-tight font-display-fira mb-16'>{children}</h2>,
@@ -25,14 +27,17 @@ export type ExecutivesProps = SliceComponentProps<Content.ExecutivesSlice> & {
  * Component for "Executives" Slices.
  */
 const Executives: FC<ExecutivesProps> = ({ slice, executiveManagers }) => {
+  const [ref, isVisible] = useIntersectionObserver();
+  const [active, setActive] = useState(0)
+
   if (executiveManagers.results_size === 0) return null
 
-  const [active, setActive] = useState(0)
   const handleClick = (index: number) => setActive(index)
 
   return (
     <section
-      className={homePageCVA.root()}
+      ref={ref}
+      className={combineClasses(homePageCVA.root(), observerCVA.root({ isVisible }))}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

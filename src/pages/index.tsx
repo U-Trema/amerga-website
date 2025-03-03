@@ -19,9 +19,7 @@ export default function Home({ home, collaborators, executiveManagers }: { nav: 
       {home.data.slices?.map((slice: any, index: number) => {
         if (slice.slice_type === 'hero_mosaic_images') {
           return (
-            <div className={homePageCVA.root()} key={slice.slice_type}>
-              <HeroMosaicImages key='home-hero' slice={slice} slices={home.data.slices} index={index} context='home-hero'/>
-            </div>
+            <HeroMosaicImages key='home-hero' slice={slice} slices={home.data.slices} index={index} context='home-hero'/>
           );
         }
 
@@ -36,14 +34,13 @@ export default function Home({ home, collaborators, executiveManagers }: { nav: 
 
         if (slice.slice_type === 'cartes_assurances') {
           return (
-            <div className={homePageCVA.root()} key={slice.slice_type}>
-              <CartesAssurances
-                slice={slice}
-                index={index}
-                slices={home.data.slices}
-                context='home-cartes-assurances'
-              />
-            </div>
+            <CartesAssurances
+              key={slice.slice_type}
+              slice={slice}
+              index={index}
+              slices={home.data.slices}
+              context='home-cartes-assurances'
+            />
           )
         }
 

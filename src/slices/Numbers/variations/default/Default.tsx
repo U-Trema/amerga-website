@@ -7,6 +7,9 @@ import { AnimatedNumber } from "../../components/AnimatedNumber";
 import {defaultClasses} from "@/slices/Numbers/variations/default/defaultClasses";
 import {serializer} from "@/utils/serializer";
 import {getSize} from "@/slices/Numbers/variations/utils/getSize";
+import {combineClasses} from "@/utils/combineClasses";
+import {observerCVA} from "@/styles/page.styles";
+import {useIntersectionObserver} from "@/utils/useIntersectionObserver";
 
 type Props = {
   data: {
@@ -21,10 +24,12 @@ const description = {
 }
 
 export const Default: FC<Props> = ({ data }) => {
+  const [ref, isVisible] = useIntersectionObserver();
+
   const number = prismicR.serialize(data.primary.number, serializer)
 
   return (
-    <div className={defaultClasses.root()}>
+    <div ref={ref} className={combineClasses(defaultClasses.root(), observerCVA.root({ isVisible }))}>
       <AnimatedNumber number={number} textSize={getSize(number[0].text)} />
       <PrismicRichText field={data.primary.description} components={description} />
     </div>

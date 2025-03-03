@@ -3,6 +3,9 @@ import { Content } from "@prismicio/client";
 import {PrismicRichText, PrismicText, SliceComponentProps} from "@prismicio/react";
 import {Flex, Grid, GridCol, SimpleGrid} from "@mantine/core";
 import {PrismicNextImage} from "@prismicio/next";
+import {homePageCVA, observerCVA} from "@/styles/page.styles";
+import {combineClasses} from "@/utils/combineClasses";
+import {useIntersectionObserver} from "@/utils/useIntersectionObserver";
 
 /**
  * Props for `CartesAssurances`.
@@ -22,23 +25,28 @@ const descriptionComponent = {
  * Component for "CartesAssurances" Slices.
  */
 const CartesAssurances: FC<CartesAssurancesProps> = ({ slice }) => {
-  return (
-    <section
-      className='md:pr-0 py-30 md:py-40'
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      <Flex className='gap-24 sm:gap-32' direction={{ base: 'column', sm: 'row' }}>
-        <div className='basis-full sm:basis-1/2'>
-          <PrismicRichText field={slice.primary.title} components={titleComponent} />
-        </div>
-        <div className='basis-full sm:basis-1/2'>
-          <PrismicRichText field={slice.primary.description} components={descriptionComponent} />
-        </div>
-      </Flex>
+  const [ref, isVisible] = useIntersectionObserver()
 
-      <RenderCards cards={slice.primary.cards} />
-    </section>
+  return (
+    <div ref={ref} className={combineClasses(homePageCVA.root(), observerCVA.root({ isVisible }))} key={slice.slice_type}>
+      <section
+        key={slice.slice_type}
+        className='md:pr-0 py-30 md:py-40'
+        data-slice-type={slice.slice_type}
+        data-slice-variation={slice.variation}
+      >
+        <Flex className='gap-24 sm:gap-32' direction={{ base: 'column', sm: 'row' }}>
+          <div className='basis-full sm:basis-1/2'>
+            <PrismicRichText field={slice.primary.title} components={titleComponent} />
+          </div>
+          <div className='basis-full sm:basis-1/2'>
+            <PrismicRichText field={slice.primary.description} components={descriptionComponent} />
+          </div>
+        </Flex>
+
+        <RenderCards cards={slice.primary.cards} />
+      </section>
+    </div>
   );
 };
 
