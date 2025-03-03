@@ -1,29 +1,29 @@
 import {GetStaticPropsContext, InferGetStaticPropsType} from "next";
 import {createClient} from "@/prismicio";
-import {Box, Container, Space, Title} from "@mantine/core";
+import {Box, Container, Space} from "@mantine/core";
 import {PrismicRichText} from "@prismicio/react";
 import React from "react";
-import {contactpageCVA} from "@/styles/page.styles";
+import {contactPageCVA} from "@/styles/page.styles";
 
 export default function Contact({page}: InferGetStaticPropsType<typeof getStaticProps>) {
   const {titre: title, content} = page.data
 
   return (
     <Box id='Contact-section'>
-      <Box className={contactpageCVA.hero()}>
+      <Box className={contactPageCVA.hero()}>
         <header>
-          <Container  fluid className={contactpageCVA.root()}>
-            <h1 className={contactpageCVA.title()}>{title}</h1>
+          <Container  fluid className={contactPageCVA.root()}>
+            <h1 className={contactPageCVA.title()}>{title}</h1>
             <Space h='xl'/>
           </Container>
         </header>
       </Box>
-      <Box className={contactpageCVA.bg()}>
-        <Container fluid className={contactpageCVA.root()}>
+      <Box className={contactPageCVA.bg()}>
+        <Container fluid className={contactPageCVA.root()}>
         <section>
           <Space h='xl'/>
           <Space h='xl'/>
-          <Box className={contactpageCVA.info()}>
+          <Box className={contactPageCVA.info()}>
             {content.map(({info}, index: number) => (
               <>
                 <PrismicRichText key={index} field={info}/>

@@ -1,7 +1,7 @@
 import {FC, ReactNode} from "react";
 import { Content } from "@prismicio/client";
 import {PrismicRichText, SliceComponentProps} from "@prismicio/react";
-import {homepageCVA} from "@/styles/page.styles";
+import {homePageCVA} from "@/styles/page.styles";
 import {combineClasses} from "@/utils/combineClasses";
 import {globalStyles} from "@/styles/project.classname";
 import {PrismicNextLink} from "@prismicio/next";
@@ -22,7 +22,7 @@ const components = {
 const Contact: FC<ContactProps> = ({ slice }) => {
   return (
     <section
-      className={combineClasses(homepageCVA.root(), 'mt-80 px-16')}
+      className={combineClasses(homePageCVA.root(), 'mt-80 px-16')}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

@@ -60,7 +60,7 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "collaborators": {
+            "membership_slider": {
               "type": "SharedSlice"
             }
           }
