@@ -66,6 +66,9 @@ body {
     line-height: normal;
     margin-bottom: var(--spacing-md);
   }
+  h2 {
+    font-family: var(--font-display-fira), sans-serif;
+  }
 }
 
 .orange-text {
