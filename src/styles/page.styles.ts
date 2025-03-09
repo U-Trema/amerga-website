@@ -22,6 +22,7 @@ export const nousConnaitrePageCVA = {
   catchphrase: cva(['']),
   content: cva(['text-center']),
   paragraph: cva(['mb-5']),
+  slices: cva(['mx-3 xs:mx-4 grid items-start gap-x-4 gap-y-12 text-center grid-cols-2 sm:grid-cols-3 md:grid-cols-4']),
 }
 
 export const observerCVA = {
