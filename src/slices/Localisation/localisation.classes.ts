@@ -7,6 +7,6 @@ export const localisation = {
     lg:py-80 lg:!px-80`
   ]),
   title: cva(['text-white text-6xl font-bold font-display-fira']),
-  address: cva(['text-white mt-16']),
+  address: cva(['text-white mt-16 !leading-[2rem]']),
   image: cva(['block w-full h-full object-cover aspect-square'])
 }

@@ -47,6 +47,22 @@
 						}
 					}
 				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eiusmod minim anim commodo cupidatat."
+						}
+					}
+				]
+			},
+			"arrival_date": {
+				"__TYPE__": "FieldContent",
+				"type": "Date",
+				"value": "2019-08-22"
 			}
 		},
 		"items": []

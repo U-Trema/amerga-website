@@ -40,6 +40,22 @@
             "allowTargetBlank": false,
             "multi": "paragraph"
           }
+        },
+        "arrival_date": {
+          "type": "Date",
+          "config": {
+            "label": "Arrival date",
+            "placeholder": "Date d'entrée dans l'entreprise"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "Présentation du collaborateur",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
         }
       },
       "items": {}
