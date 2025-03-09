@@ -13,8 +13,8 @@ export const contactPageCVA = {
 }
 
 export const nousConnaitrePageCVA = {
-  box: cva(['relative z-[-1]']),
-  hero: cva(['relative bg-soft-black pb-24 pt-32 text-white !py-[11rem] md:!py-[14rem] lg:!py-[18rem] mt-[-7rem]']),
+  box: cva(['relative']),
+  hero: cva(['relative bg-soft-black pb-24 pt-32 text-white !py-[11rem] md:!py-[14rem] lg:!py-[18rem] mt-[-7rem] z-[-1]']),
   heroImageContainer: cva(['']),
   heroImage: cva(['absolute bottom-0 left-0 right-0 top-0 h-full w-full object-cover object-center']),
   heroImageFilter: cva(['h-full w-full absolute inset-0 bg-black opacity-50 top-0 w-full h-auto']),

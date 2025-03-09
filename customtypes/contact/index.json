@@ -35,7 +35,11 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "localisation": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

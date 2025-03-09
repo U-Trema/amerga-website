@@ -27,7 +27,7 @@ const Localisation: FC<LocalisationProps> = ({ slice }) => {
       ref={ref}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className={combineClasses('pt-128', observerCVA.root({ isVisible }))}
+      className={combineClasses('pt-12', observerCVA.root({ isVisible }))}
     >
       <div className={combineClasses(homePageCVA.root(), '!px-0 md:!px-(--spacing-md)')}>
         <div className={localisation.root()}>
@@ -36,7 +36,7 @@ const Localisation: FC<LocalisationProps> = ({ slice }) => {
             <PrismicRichText field={slice.primary.address} components={address} />
           </div>
 
-          <div className='row-span-1 order-1 md:order-0 md:grid-cols-4 md:col-span-4 md:col-start-9'>
+          <div className='row-span-1 order-1 md:order-0 md:grid-cols-4 md:col-span-4 md:col-start-9 rounded-md overflow-hidden'>
             <PrismicNextImage field={slice.primary.image} className={localisation.image()} />
           </div>
         </div>
