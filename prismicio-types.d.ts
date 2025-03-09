@@ -220,7 +220,7 @@ export interface ContactDocumentDataContentItem {
   info: prismic.RichTextField;
 }
 
-type ContactDocumentDataSlicesSlice = never;
+type ContactDocumentDataSlicesSlice = LocalisationSlice;
 
 /**
  * Content for contact documents
@@ -496,7 +496,7 @@ type HomeDocumentDataSlicesSlice =
   | LocalisationSlice
   | ExecutivesSlice
   | CartesAssurancesSlice
-  | MembershipsSlice
+  | MembershipSliderSlice
   | HeroMosaicImagesSlice;
 
 /**
@@ -716,7 +716,7 @@ export interface NousConnaitreDocumentDataContentItem {
   content: prismic.RichTextField;
 }
 
-type NousConnaitreDocumentDataSlicesSlice = MembershipsSlice;
+type NousConnaitreDocumentDataSlicesSlice = MembershipSliderSlice;
 
 /**
  * Content for nous connaitre documents
@@ -948,6 +948,26 @@ export interface CollaboratorsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   job: prismic.RichTextField;
+
+  /**
+   * Arrival date field in *Collaborators → Default → Primary*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: Date d'entrée dans l'entreprise
+   * - **API ID Path**: collaborators.default.primary.arrival_date
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  arrival_date: prismic.DateField;
+
+  /**
+   * Description field in *Collaborators → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Présentation du collaborateur
+   * - **API ID Path**: collaborators.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
 }
 
 /**
@@ -1377,7 +1397,7 @@ export type LocalisationSlice = prismic.SharedSlice<
 /**
  * Primary content in *Memberships → Default → Primary*
  */
-export interface MembershipsSliceDefaultPrimary {
+export interface MembershipSliderSliceDefaultPrimary {
   /**
    * Titre field in *Memberships → Default → Primary*
    *
@@ -1416,16 +1436,16 @@ export interface MembershipsSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type MembershipsSliceDefault = prismic.SharedSliceVariation<
+export type MembershipSliderSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<MembershipsSliceDefaultPrimary>,
+  Simplify<MembershipSliderSliceDefaultPrimary>,
   never
 >;
 
 /**
  * Primary content in *Memberships → No text → Primary*
  */
-export interface MembershipsSliceNoTextPrimary {
+export interface MembershipSliderSliceNoTextPrimary {
   /**
    * Collaborateurs field in *Memberships → No text → Primary*
    *
@@ -1444,18 +1464,18 @@ export interface MembershipsSliceNoTextPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type MembershipsSliceNoText = prismic.SharedSliceVariation<
+export type MembershipSliderSliceNoText = prismic.SharedSliceVariation<
   "noText",
-  Simplify<MembershipsSliceNoTextPrimary>,
+  Simplify<MembershipSliderSliceNoTextPrimary>,
   never
 >;
 
 /**
  * Slice variation for *Memberships*
  */
-type MembershipsSliceVariation =
-  | MembershipsSliceDefault
-  | MembershipsSliceNoText;
+type MembershipSliderSliceVariation =
+  | MembershipSliderSliceDefault
+  | MembershipSliderSliceNoText;
 
 /**
  * Memberships Shared Slice
@@ -1464,9 +1484,9 @@ type MembershipsSliceVariation =
  * - **Description**: Memberships
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type MembershipsSlice = prismic.SharedSlice<
+export type MembershipSliderSlice = prismic.SharedSlice<
   "membership_slider",
-  MembershipsSliceVariation
+  MembershipSliderSliceVariation
 >;
 
 /**
@@ -1780,12 +1800,12 @@ declare module "@prismicio/client" {
       LocalisationSliceDefaultPrimary,
       LocalisationSliceVariation,
       LocalisationSliceDefault,
-      MembershipsSlice,
-      MembershipsSliceDefaultPrimary,
-      MembershipsSliceNoTextPrimary,
-      MembershipsSliceVariation,
-      MembershipsSliceDefault,
-      MembershipsSliceNoText,
+      MembershipSliderSlice,
+      MembershipSliderSliceDefaultPrimary,
+      MembershipSliderSliceNoTextPrimary,
+      MembershipSliderSliceVariation,
+      MembershipSliderSliceDefault,
+      MembershipSliderSliceNoText,
       NumbersSlice,
       NumbersSliceDefaultPrimary,
       NumbersSliceTwoNumbersPrimaryTwonumbersItem,

@@ -57,12 +57,6 @@ export default function Home({ home, collaborators, executiveManagers }: { nav: 
           )
         }
 
-        if (slice.slice_type === 'localisation') {
-          return (
-            <Localisation slice={slice} index={index} key={slice.slice_type} slices={home.data.slices} context='home-localisation' />
-          )
-        }
-
         if (slice.slice_type === 'numbers') {
           return (
             <Numbers slice={slice} index={index} key={slice.slice_type} slices={home.data.slices} context='home-numbers' />
