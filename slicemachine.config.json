@@ -2,5 +2,5 @@
   "repositoryName": "amerga",
   "adapter": "@slicemachine/adapter-next",
   "libraries": ["./src/slices"],
-  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+  "localSliceSimulatorURL": "https://amerga-dev.netlify.app/slice-simulator"
 }
