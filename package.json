@@ -26,14 +26,14 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@slicemachine/adapter-next": "^0.3.66",
+    "@slicemachine/adapter-next": "^0.3.69",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "postcss": "^8.5.1",
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",
-    "slice-machine-ui": "^2.12.3",
+    "slice-machine-ui": "^2.13.2",
     "tailwindcss": "^4.0.3",
     "typescript": "^5"
   }

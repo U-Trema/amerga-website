@@ -21,8 +21,8 @@ export const Collaborator = React.memo(
         className={collaboratorCVA.root()}
         onClick={onClick}
       >
-        <Box className={collaboratorCVA.img()}>
-          <PrismicImage field={collaboratorSlice.primary.photo} />
+        <Box className={collaboratorCVA.imgContainer()}>
+          <PrismicImage field={collaboratorSlice.primary.photo} className={collaboratorCVA.img()} />
         </Box>
         <Space h="xs" />
         <PrismicRichText

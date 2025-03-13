@@ -61,7 +61,7 @@ export const ModalManager = React.memo(({modalContent, opened, onClose}: ModalMa
         <Box className={modalCVA.box()}>
           <Box className={modalCVA.head()}>
             <Box className={modalCVA.img()}>
-              <PrismicImage field={modalContent.primary.photo} />
+              <PrismicImage field={modalContent.primary.photo} className={modalCVA.img()} />
             </Box>
             <Box className={modalCVA.info()}>
               <PrismicRichText field={modalContent.primary.name} components={components.title}/>

@@ -6,7 +6,7 @@ export const modalCVA = {
   container: cva(['!rounded-xl sm:p-4 overflow-hidden']),
   box: cva(['flex flex-col gap-4']),
   head: cva(['flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left']),
-  img: cva(['overflow-hidden rounded-xl max-w-[200px] max-h-[200px]']),
+  img: cva(['overflow-hidden rounded-xl max-w-[200px] max-h-[200px] w-[200px]']),
   info: cva(['flex flex-col gap-[0.5rem] items-center sm:items-start']),
   date: cva(['flex gap-2']),
 }
