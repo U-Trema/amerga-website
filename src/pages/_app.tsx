@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <MantineProvider theme={theme}>
       <Layout {...pageProps}>
         <Component {...pageProps}/>
-        <PrismicPreview repositoryName={ repositoryName }/>
+        <PrismicPreview repositoryName={repositoryName}/>
       </Layout>
     </MantineProvider>
   );

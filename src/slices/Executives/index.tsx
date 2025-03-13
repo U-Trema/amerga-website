@@ -30,7 +30,7 @@ const Executives: FC<ExecutivesProps> = ({ slice, executiveManagers }) => {
   const [ref, isVisible] = useIntersectionObserver();
   const [active, setActive] = useState(0)
 
-  if (executiveManagers.results_size === 0) return null
+  if (!executiveManagers?.results_size) return null
 
   const handleClick = (index: number) => setActive(index)
 
