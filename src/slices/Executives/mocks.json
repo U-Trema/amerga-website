@@ -12,8 +12,8 @@
 							[
 								"executives",
 								{
-									"__TYPE__": "LinkContent",
 									"key": "b5e17758-483f-4bf0-9c5c-a1450d753048",
+									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "DocumentLink",
 										"id": "mock_document_id"

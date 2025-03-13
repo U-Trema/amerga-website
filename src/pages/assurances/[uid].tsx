@@ -17,9 +17,11 @@ export default function Assurance({page}: InferGetStaticPropsType<typeof getStat
 export async function getStaticProps({params, previewData}: GetStaticPropsContext<Params>) {
   const client = createClient({previewData})
 
-  const document = await client.getSingle('menu')
-  const footer = await client.getSingle('footer')
-  const page = await client.getByUID('assurances', params!.uid)
+  const [document, footer, page] = await Promise.all([
+    client.getSingle('menu'),
+    client.getSingle('footer'),
+    client.getByUID('assurances', params!.uid),
+  ])
 
   return {
     props: {

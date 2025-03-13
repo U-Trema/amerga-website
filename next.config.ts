@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'X-Frame-Options',
-            value: 'DENY'
+            value: 'ALLOW-FROM https://amerga-dev.netlify.app'
           }
         ]
       }

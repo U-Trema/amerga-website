@@ -1,5 +1,4 @@
 import { createClient } from "@/prismicio";
-import {homePageCVA} from "@/styles/page.styles";
 import {GetStaticPropsContext} from "next";
 import HeroMosaicImages from "@/slices/HeroMosaicImages";
 import Memberships from "@/slices/Memberships";
@@ -8,7 +7,6 @@ import React from "react";
 import CartesAssurances from "@/slices/CartesAssurances";
 import {isFilled} from "@prismicio/client";
 import Executives from "@/slices/Executives";
-import Localisation from "@/slices/Localisation";
 import Numbers from "@/slices/Numbers";
 import Contact from "@/slices/Contact";
 import {Space} from "@mantine/core";
@@ -76,14 +74,14 @@ export default function Home({ home, collaborators, executiveManagers }: { nav: 
 }
 
 export async function getStaticProps({ previewData }: GetStaticPropsContext) {
-  const client = createClient({ previewData })
+  const client = createClient({previewData})
   const document = await client.getSingle("menu");
   const footer = await client.getSingle("footer");
   const home = await client.getSingle("home");
 
   const collaborators = await client.getAllByType("collaborators");
   const executivesSlice = home.data.slices.find(slice => slice.slice_type === 'executives')
-
+  console.log({ executivesSlice })
   // @ts-ignore
   const hasExecutiveManagers = isFilled.group(executivesSlice?.primary?.executives)
   // @ts-ignore
