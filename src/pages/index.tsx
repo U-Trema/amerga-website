@@ -81,7 +81,6 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
 
   const collaborators = await client.getAllByType("collaborators");
   const executivesSlice = home.data.slices.find(slice => slice.slice_type === 'executives')
-  console.log({ executivesSlice })
   // @ts-ignore
   const hasExecutiveManagers = isFilled.group(executivesSlice?.primary?.executives)
   // @ts-ignore
