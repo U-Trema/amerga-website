@@ -6,6 +6,9 @@ export const globalStyles = {
       variant: {
         primary: 'bg-amerga-orange hover:bg-amerga-orange-hover',
         secondary: 'bg-grey-secondary hover:bg-grey-primary'
+      },
+      size: {
+        small: 'p-8 text-xs'
       }
     }
   })

@@ -8,7 +8,8 @@ export const navTabCVA = {
   root: cva(['!bg-grey-primary !rounded-[14px] !p-[4px] w-fit h-[50px] items-center self-center !hidden md:!flex'], {
     variants: {
       opened: {
-        true: 'md:!hidden'
+        // true: 'md:!hidden'
+        true: ''
       }
     }
   })
@@ -37,7 +38,7 @@ export const responsiveMenuCVA = {
   root: cva(['z-10 shadow-md py-[1.5rem] w-full absolute'], {
     variants: {
       opened: {
-        true: 'block',
+        true: 'block sm:hidden',
         false: 'hidden'
       }
     }

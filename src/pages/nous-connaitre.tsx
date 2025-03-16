@@ -59,12 +59,13 @@ export default function NousConnaitre({page, employees}: InferGetStaticPropsType
 export const getStaticProps = async ({previewData}: GetStaticPropsContext) => {
   const client = createClient({previewData})
 
-  const [nav, footer, page, employees] = await Promise.all([
+  const [nav, assurances_link, footer, page, employees] = await Promise.all([
     client.getSingle("menu"),
+    client.getByUID('assurance_link', 'assurances_link'),
     client.getSingle("footer"),
     client.getSingle("nous_connaitre"),
     client.getAllByType("collaborators")
   ])
 
-  return {props: {nav, footer, page, employees}}
+  return {props: {nav, assurances_link, footer, page, employees}}
 }

@@ -1,0 +1,52 @@
+{
+  "id": "menu_link",
+  "type": "SharedSlice",
+  "name": "MenuLink",
+  "description": "MenuLink",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "description",
+            "placeholder": "Description",
+            "allowTargetBlank": false,
+            "multi": "paragraph,strong,em"
+          }
+        },
+        "sub_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "sub_description",
+            "placeholder": "Sub description",
+            "allowTargetBlank": false,
+            "multi": "paragraph,em"
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "Link",
+            "select": null,
+            "allowTargetBlank": false,
+            "allowText": true,
+            "repeat": false,
+            "variants": [
+              "primary",
+              "secondary"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

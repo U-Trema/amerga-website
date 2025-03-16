@@ -76,6 +76,7 @@ export default function Home({ home, collaborators, executiveManagers }: { nav: 
 export async function getStaticProps({ previewData }: GetStaticPropsContext) {
   const client = createClient({previewData})
   const document = await client.getSingle("menu");
+  const assurances_link = await client.getByUID('assurance_link', 'assurances_link');
   const footer = await client.getSingle("footer");
   const home = await client.getSingle("home");
 
@@ -90,6 +91,7 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
   return {
     props: {
       nav: document,
+      assurances_link,
       footer,
       home,
       collaborators,

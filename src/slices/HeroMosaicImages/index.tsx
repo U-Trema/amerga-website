@@ -31,7 +31,6 @@ const components = {
  */
 const HeroMosaicImages: FC<HeroMosaicImagesProps> = ({ slice }) => {
   if (slice.slice_type === 'hero_mosaic_images') {
-    console.log(slice.primary.images)
     const images = slice.primary.images.reduce((acc, image, index) => {
       if (index % 3 === 0) acc.first.push(image as never)
       if (index % 3 === 1) acc.second.push(image as never)

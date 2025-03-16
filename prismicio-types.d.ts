@@ -5,6 +5,75 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Item in *AssuranceLink → Assurances Link*
+ */
+export interface AssuranceLinkDocumentDataAssurancesLinkItem {
+  /**
+   * link field in *AssuranceLink → Assurances Link*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link
+   * - **API ID Path**: assurance_link.assurances_link[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * description field in *AssuranceLink → Assurances Link*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Description
+   * - **API ID Path**: assurance_link.assurances_link[].description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * icone field in *AssuranceLink → Assurances Link*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: assurance_link.assurances_link[].icone
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icone: prismic.ImageField<never>;
+}
+
+/**
+ * Content for AssuranceLink documents
+ */
+interface AssuranceLinkDocumentData {
+  /**
+   * Assurances Link field in *AssuranceLink*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: assurance_link.assurances_link[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  assurances_link: prismic.GroupField<
+    Simplify<AssuranceLinkDocumentDataAssurancesLinkItem>
+  >;
+}
+
+/**
+ * AssuranceLink document from Prismic
+ *
+ * - **API ID**: `assurance_link`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AssuranceLinkDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<AssuranceLinkDocumentData>,
+    "assurance_link",
+    Lang
+  >;
+
+/**
  * Item in *assurances → Hero*
  */
 export interface AssurancesDocumentDataHeroItem {
@@ -594,6 +663,33 @@ export interface MenuDocumentDataAssurancesItem {
 }
 
 /**
+ * Item in *menu → Assurances*
+ */
+export interface MenuDocumentDataAssurancesBisItem {
+  /**
+   * Label field in *menu → Assurances*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Label
+   * - **API ID Path**: menu.assurances_bis[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * Assurance link field in *menu → Assurances*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu.assurances_bis[].assurance_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  assurance_link: prismic.ContentRelationshipField<"assurance_link">;
+}
+
+type MenuDocumentDataSlices1Slice = MenuLinkSlice;
+
+/**
  * Content for menu documents
  */
 interface MenuDocumentData {
@@ -651,7 +747,80 @@ interface MenuDocumentData {
     unknown,
     prismic.FieldState,
     never
+  > /**
+   * home field in *menu*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Assurance
+   * - **API ID Path**: menu.home_bis
+   * - **Tab**: Menu bis
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */;
+  home_bis: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
   >;
+
+  /**
+   * Assurances field in *menu*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu.assurances_bis[]
+   * - **Tab**: Menu bis
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  assurances_bis: prismic.GroupField<
+    Simplify<MenuDocumentDataAssurancesBisItem>
+  >;
+
+  /**
+   * Contact field in *menu*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Contact
+   * - **API ID Path**: menu.contact_bis
+   * - **Tab**: Menu bis
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  contact_bis: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Nous connaître field in *menu*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Nous connaître
+   * - **API ID Path**: menu.nous_connaitre_bis
+   * - **Tab**: Menu bis
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  nous_connaitre_bis: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Slice Zone field in *menu*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu.slices1[]
+   * - **Tab**: Menu bis
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices1: prismic.SliceZone<MenuDocumentDataSlices1Slice>;
 }
 
 /**
@@ -804,6 +973,7 @@ export type NousConnaitreDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | AssuranceLinkDocument
   | AssurancesDocument
   | CollaboratorsDocument
   | ContactDocument
@@ -1490,6 +1660,77 @@ export type MembershipSliderSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *MenuLink → Default → Primary*
+ */
+export interface MenuLinkSliceDefaultPrimary {
+  /**
+   * description field in *MenuLink → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Description
+   * - **API ID Path**: menu_link.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * sub_description field in *MenuLink → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Sub description
+   * - **API ID Path**: menu_link.default.primary.sub_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_description: prismic.RichTextField;
+
+  /**
+   * Link field in *MenuLink → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Link
+   * - **API ID Path**: menu_link.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    "primary" | "secondary"
+  >;
+}
+
+/**
+ * Default variation for MenuLink Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MenuLinkSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MenuLinkSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *MenuLink*
+ */
+type MenuLinkSliceVariation = MenuLinkSliceDefault;
+
+/**
+ * MenuLink Shared Slice
+ *
+ * - **API ID**: `menu_link`
+ * - **Description**: MenuLink
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MenuLinkSlice = prismic.SharedSlice<
+  "menu_link",
+  MenuLinkSliceVariation
+>;
+
+/**
  * Item in *Numbers → TwoNumbers → Primary → TwoNumbers*
  */
 export interface NumbersSliceTwoNumbersPrimaryTwonumbersItem {
@@ -1738,6 +1979,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AssuranceLinkDocument,
+      AssuranceLinkDocumentData,
+      AssuranceLinkDocumentDataAssurancesLinkItem,
       AssurancesDocument,
       AssurancesDocumentData,
       AssurancesDocumentDataHeroItem,
@@ -1762,6 +2006,8 @@ declare module "@prismicio/client" {
       MenuDocument,
       MenuDocumentData,
       MenuDocumentDataAssurancesItem,
+      MenuDocumentDataAssurancesBisItem,
+      MenuDocumentDataSlices1Slice,
       NousConnaitreDocument,
       NousConnaitreDocumentData,
       NousConnaitreDocumentDataHeroItem,
@@ -1806,6 +2052,10 @@ declare module "@prismicio/client" {
       MembershipSliderSliceVariation,
       MembershipSliderSliceDefault,
       MembershipSliderSliceNoText,
+      MenuLinkSlice,
+      MenuLinkSliceDefaultPrimary,
+      MenuLinkSliceVariation,
+      MenuLinkSliceDefault,
       NumbersSlice,
       NumbersSliceDefaultPrimary,
       NumbersSliceTwoNumbersPrimaryTwonumbersItem,

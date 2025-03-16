@@ -2,7 +2,7 @@ import {cva} from 'class-variance-authority';
 
 
 export const contentCVA = {
-  root: cva(['overflow-visible bg-white']),
+  root: cva(['overflow-visible bg-white pb-64']),
 }
 
 export const imgCVA = {
