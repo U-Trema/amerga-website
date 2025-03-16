@@ -31,7 +31,6 @@ const OpenedMenu: FC<Props> = ({ data, links }) => {
                 key={index}
                 href={linkResolver(link.link)}
                 className='uppercase font-bold text-xs hover:bg-soft-grey transition duration-300 rounded-xl overflow-hidden p-24 cursor-pointer h-[190px]'
-                style={{ gridColumnStart: index % 5 === 0 ? '2' : 'initial' }}
               >
                 <p className='h-[25%]'>{link.link.text}</p>
                 <p className='text-sm font-normal normal-case mt-8'>{link.description}</p>

@@ -630,41 +630,6 @@ export type HomeDocument<Lang extends string = string> =
 /**
  * Item in *menu → Assurances*
  */
-export interface MenuDocumentDataAssurancesItem {
-  /**
-   * label field in *menu → Assurances*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: assurances
-   * - **API ID Path**: menu.assurances[].label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  label: prismic.KeyTextField;
-
-  /**
-   * auto field in *menu → Assurances*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: auto
-   * - **API ID Path**: menu.assurances[].auto
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  auto: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-  /**
-   * maison field in *menu → Assurances*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: maison
-   * - **API ID Path**: menu.assurances[].maison
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  maison: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-}
-
-/**
- * Item in *menu → Assurances*
- */
 export interface MenuDocumentDataAssurancesBisItem {
   /**
    * Label field in *menu → Assurances*
@@ -697,65 +662,11 @@ interface MenuDocumentData {
    * home field in *menu*
    *
    * - **Field Type**: Link
-   * - **Placeholder**: Accueil
-   * - **API ID Path**: menu.home
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  home: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-  /**
-   * Assurances field in *menu*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: menu.assurances[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  assurances: prismic.GroupField<Simplify<MenuDocumentDataAssurancesItem>>;
-
-  /**
-   * contact field in *menu*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: contact
-   * - **API ID Path**: menu.contact
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  contact: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >;
-
-  /**
-   * nous connaitre field in *menu*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: nous connaitre
-   * - **API ID Path**: menu.nous_connaitre
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  nous_connaitre: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  > /**
-   * home field in *menu*
-   *
-   * - **Field Type**: Link
    * - **Placeholder**: Assurance
    * - **API ID Path**: menu.home_bis
    * - **Tab**: Menu bis
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */;
+   */
   home_bis: prismic.LinkField<
     string,
     string,
@@ -2005,7 +1916,6 @@ declare module "@prismicio/client" {
       HomeDocumentDataSlicesSlice,
       MenuDocument,
       MenuDocumentData,
-      MenuDocumentDataAssurancesItem,
       MenuDocumentDataAssurancesBisItem,
       MenuDocumentDataSlices1Slice,
       NousConnaitreDocument,
