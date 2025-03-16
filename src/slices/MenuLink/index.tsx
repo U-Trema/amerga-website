@@ -25,7 +25,7 @@ const MenuLink: FC<MenuLinkProps> = ({ slice }) => {
 
   return (
     <div
-      className='bg-soft-grey p-24 flex flex-col gap-16'
+      className='bg-soft-grey p-24 flex flex-col gap-16 h-full'
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

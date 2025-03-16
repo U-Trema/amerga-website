@@ -21,7 +21,7 @@ const OpenedMenu: FC<Props> = ({ data, links }) => {
           component='nav'
           spacing='xl'
         >
-          <div className='rounded-xl overflow-hidden'>
+          <div className='rounded-xl overflow-hidden h-[190px]'>
             <MenuLink slices={data?.slices1} slice={data?.slices1?.[0]} index={0} context='menu-card-link' />
           </div>
 
