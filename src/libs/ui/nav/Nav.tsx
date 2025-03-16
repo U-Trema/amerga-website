@@ -15,6 +15,8 @@ import { MenuItems } from "./MenuItems";
 import {useRouter} from "next/router";
 import {linkResolver} from "@/prismicio";
 import {ArrowDown} from "@/libs/ui/icons/ArrowDown";
+import OpenedMenu from "@/libs/ui/nav/OpenedMenu";
+import MobileNav from "@/libs/ui/nav/MobileNav";
 
 const routes = {
   '/': '0',
@@ -23,11 +25,13 @@ const routes = {
   '/nous-connaitre': '3'
 }
 
-export const Nav: FC<any> = ({ nav }) => {
+export const Nav: FC<any> = ({ nav, assurances_link }) => {
   const router = useRouter()
 
   const [isOpen, setIsOpen] = useState(false)
   const toggleMenu = () => setIsOpen(!isOpen)
+  const [mobileIsOpen, setMobileIsOpen] = useState(false)
+  const toggleMobileMenu = () => setMobileIsOpen(!mobileIsOpen)
 
   const [rootRef, setRootRef] = useState<HTMLDivElement | null>(null);
   // @ts-ignore
@@ -42,12 +46,14 @@ export const Nav: FC<any> = ({ nav }) => {
     if (router.route === ('/assurances/[uid]')) {
       setValue('1')
     }
+    setIsOpen(false)
+    toggleMobileMenu()
   }, [router])
 
   if (!nav) return null
 
   return (
-    <div className={`${isOpen ? 'bg-white' : 'bg-transparent'}`}>
+    <div className={`${isOpen ? 'bg-transparent md:bg-white' : 'bg-transparent'} ${mobileIsOpen ? 'bg-white md:bg-transparent' : 'bg-transparent'}`}>
       <div className={navContainerCVA.root()}>
         <Grid
           columns={12}
@@ -58,9 +64,9 @@ export const Nav: FC<any> = ({ nav }) => {
             <Flex align="stretch" gap='80px' className='z-20 relative justify-between md:justify-start' direction='row'>
               <Link href='/' onClick={() => setValue('0')}>
                 <img
+                  style={{ width: 100, height: 'auto', display: 'block' }}
                   src="/amerga-logo_2.gif"
                   alt="Amerga"
-                  style={{ width: 100, height: 'auto', display: 'block' }}
                 />
               </Link>
 
@@ -74,16 +80,18 @@ export const Nav: FC<any> = ({ nav }) => {
                 className={navTabCVA.root({ opened: isOpen })}
               >
                 <MenuItems
-                  rootRef={rootRef} value={value}
                   setControlRef={setControlRef}
                   controlsRefs={controlsRefs}
                   setRootRef={setRootRef}
+                  toggleMenu={toggleMenu}
                   setValue={setValue}
+                  rootRef={rootRef}
+                  value={value}
                   nav={nav}
                 />
               </Tabs>
 
-              <div onClick={toggleMenu} className='md:hidden flex items-center cursor-pointer z-20'>
+              <div onClick={toggleMobileMenu} className='md:hidden flex items-center cursor-pointer z-20'>
                 <BurgerMenu />
               </div>
             </Flex>
@@ -91,83 +99,11 @@ export const Nav: FC<any> = ({ nav }) => {
         </Grid>
       </div>
 
-      <Container fluid bg='var(--color-white)' className={responsiveMenuCVA.root({ opened: isOpen })}>
-        <Flex direction='column' gap='sm'>
-          <Link
-            href={linkResolver(nav.data.home)}
-            onClick={() => {
-              setValue('0');
-              toggleMenu()
-            }}
-          >
-            <Text className={mobileLinksCVA.root({ active: value === '0', subItem: false })}>
-              {nav.data.home.text}
-            </Text>
-          </Link>
+      {!mobileIsOpen && <MobileNav nav={nav} assurances_link={assurances_link} />}
 
-          <Accordion chevronPosition='right' chevron={<ArrowDown />} unstyled>
-            <Accordion.Item
-              key='assurance-accordion'
-              value='assurance-accordion'
-              className='[&:has([data-active="true"])>button[aria-expanded="true"]]:!bg-grey-secondary [&>button]:transition-colors [&>button]:duration-300'
-            >
-              <Accordion.Control className={accordionCVA.root({ active: value === '1' })}>
-                {nav.data.assurances[0].label}
-              </Accordion.Control>
-              <Accordion.Panel>
-                <Link
-                  className={mobileLinksCVA.root({ subItem: true })}
-                  href={linkResolver(nav.data.assurances[0].auto)}
-                  onClick={() => {
-                    setValue('1');
-                    toggleMenu()
-                  }}
-                >
-                  {nav.data.assurances[0].auto.text}
-                </Link>
-              </Accordion.Panel>
-
-              <Accordion.Panel>
-                <Link
-                  className={mobileLinksCVA.root({ subItem: true })}
-                  href={linkResolver(nav.data.assurances[0].maison)}
-                  onClick={() => {
-                    setValue('1');
-                    toggleMenu()
-                  }}
-                >
-                  {nav.data.assurances[0].maison.text}
-                </Link>
-              </Accordion.Panel>
-            </Accordion.Item>
-          </Accordion>
-
-
-          <Link
-            href={linkResolver(nav.data.contact)}
-            onClick={() => {
-              setValue('2');
-              toggleMenu()
-            }}
-          >
-            <Text className={mobileLinksCVA.root({ active: value === '2', subItem: false })}>
-              {nav.data.contact.text}
-            </Text>
-          </Link>
-
-          <Link
-            href={linkResolver(nav.data.nous_connaitre)}
-            onClick={() => {
-              setValue('3');
-              toggleMenu()
-            }}
-          >
-            <Text className={mobileLinksCVA.root({ active: value === '3', subItem: false })}>
-              {nav.data.nous_connaitre.text}
-            </Text>
-          </Link>
-        </Flex>
-      </Container>
+      {isOpen && (
+        <OpenedMenu data={nav.data} links={assurances_link} />
+      )}
     </div>
   )
 }

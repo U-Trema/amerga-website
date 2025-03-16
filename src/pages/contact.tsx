@@ -52,12 +52,14 @@ export default function Contact({page}: InferGetStaticPropsType<typeof getStatic
 export async function getStaticProps({ previewData }: GetStaticPropsContext) {
   const client = createClient({ previewData })
   const nav = await client.getSingle("menu")
+  const assurances_link = await client.getByUID('assurance_link', 'assurances_link');
   const footer = await client.getSingle("footer")
   const page = await client.getSingle('contact')
 
   return {
     props: {
       nav,
+      assurances_link,
       footer,
       page
     },

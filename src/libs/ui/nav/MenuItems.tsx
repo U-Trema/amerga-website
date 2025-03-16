@@ -19,6 +19,7 @@ const indicatorCVA = {
 export const MenuItems = ({
   setControlRef,
   controlsRefs,
+  toggleMenu,
   setRootRef,
   setValue,
   rootRef,
@@ -27,55 +28,39 @@ export const MenuItems = ({
 }: any) => {
   if (!nav) return null
 
+  const onClick = () => {
+    toggleMenu();
+    setValue('1');
+  }
+
   return (
     <TabsList className={navListCVA.root()} grow={false} ref={setRootRef}>
-      <Link href={linkResolver(nav.data.home)}>
+      <Link href={linkResolver(nav.data.home_bis)}>
         <TabsTab value="0" ref={setControlRef('0')} className={tabsTabCVA.root()}>
-          {nav.data.home.text}
+          {nav.data.home_bis.text}
         </TabsTab>
       </Link>
 
       <TabsTab
         value="1"
-        ref={setControlRef('1')}
+        ref={setControlRef("1")}
         className={tabsTabCVA.root({ isDropdown: true, active: value === '1' })}
         rightSection={<ArrowDown />}
       >
-        <Menu shadow="md" offset={20} position='bottom'>
-          <Menu.Target>
-            <UnstyledButton
-              className='!text-soft-black !text-sm !font-semibold !rounded-[10px]'
-              component='div'
-            >
-              {nav.data.assurances[0].label}
-            </UnstyledButton>
-          </Menu.Target>
-
-          <Menu.Dropdown>
-            <Link href={linkResolver(nav.data.assurances[0].auto)} onClick={() => setValue('1')}>
-              <Menu.Item className='hover:!bg-grey-secondary !pl-5 !pr-10' value='assurances/auto'>
-                {nav.data.assurances[0].auto.text}
-              </Menu.Item>
-            </Link>
-
-            <Link href={linkResolver(nav.data.assurances[0].maison)} onClick={() => setValue('1')}>
-              <Menu.Item className='hover:!bg-grey-secondary !pl-5 !pr-10'>
-                {nav.data.assurances[0].maison.text}
-              </Menu.Item>
-            </Link>
-          </Menu.Dropdown>
-        </Menu>
+        <div onClick={onClick}>
+          {nav.data.assurances_bis[0].label}
+        </div>
       </TabsTab>
 
-      <Link href={linkResolver(nav.data.contact)}>
+      <Link href={linkResolver(nav.data.contact_bis)}>
         <TabsTab value="2" ref={setControlRef('2')} className={tabsTabCVA.root()}>
-          {nav.data.contact.text}
+          {nav.data.contact_bis.text}
         </TabsTab>
       </Link>
 
-      <Link href={linkResolver(nav.data.nous_connaitre)}>
+      <Link href={linkResolver(nav.data.nous_connaitre_bis)}>
         <TabsTab value="3" ref={setControlRef('3')} className={tabsTabCVA.root()}>
-          {nav.data.nous_connaitre.text}
+          {nav.data.nous_connaitre_bis.text}
         </TabsTab>
       </Link>
 

@@ -77,6 +77,77 @@
           "repeat": false
         }
       }
+    },
+    "Menu bis": {
+      "home_bis": {
+        "type": "Link",
+        "config": {
+          "label": "home",
+          "placeholder": "Assurance",
+          "select": null,
+          "allowTargetBlank": false,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "assurances_bis": {
+        "type": "Group",
+        "config": {
+          "label": "Assurances",
+          "repeat": false,
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": "Label"
+              }
+            },
+            "assurance_link": {
+              "type": "Link",
+              "config": {
+                "label": "Assurance link",
+                "select": "document",
+                "repeat": false,
+                "customtypes": ["assurance_link"]
+              }
+            }
+          }
+        }
+      },
+      "contact_bis": {
+        "type": "Link",
+        "config": {
+          "label": "Contact",
+          "placeholder": "Contact",
+          "select": null,
+          "allowTargetBlank": false,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "nous_connaitre_bis": {
+        "type": "Link",
+        "config": {
+          "label": "Nous connaître",
+          "placeholder": "Nous connaître",
+          "select": null,
+          "allowTargetBlank": false,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "slices1": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "menu_link": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
     }
   }
 }

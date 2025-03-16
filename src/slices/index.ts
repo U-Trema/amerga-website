@@ -11,5 +11,6 @@ export const components = {
   hero_mosaic_images: dynamic(() => import("./HeroMosaicImages")),
   localisation: dynamic(() => import("./Localisation")),
   membership_slider: dynamic(() => import("./Memberships")),
+  menu_link: dynamic(() => import("./MenuLink")),
   numbers: dynamic(() => import("./Numbers")),
 };
