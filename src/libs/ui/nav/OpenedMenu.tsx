@@ -17,11 +17,11 @@ const OpenedMenu: FC<Props> = ({ data, links }) => {
         <SimpleGrid
           verticalSpacing={{ base: 48 }}
           cols={{ base: 3, md: 6 }}
-          className='mx-auto p-16'
+          className='mx-auto p-16 auto-rows-fr'
           component='nav'
           spacing='xl'
         >
-          <div className='rounded-xl overflow-hidden h-[190px]'>
+          <div className='rounded-xl overflow-hidden'>
             <MenuLink slices={data?.slices1} slice={data?.slices1?.[0]} index={0} context='menu-card-link' />
           </div>
 
@@ -30,7 +30,7 @@ const OpenedMenu: FC<Props> = ({ data, links }) => {
               <Link
                 key={index}
                 href={linkResolver(link.link)}
-                className='uppercase font-bold text-xs hover:bg-soft-grey transition duration-300 rounded-xl overflow-hidden p-24 cursor-pointer h-[190px]'
+                className='uppercase font-bold text-xs hover:bg-soft-grey transition duration-300 rounded-xl overflow-hidden p-24 cursor-pointer'
               >
                 <p className='h-[25%]'>{link.link.text}</p>
                 <p className='text-sm font-normal normal-case mt-8'>{link.description}</p>
