@@ -11,7 +11,6 @@ import {homePageCVA} from "@/styles/page.styles"
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import {combineClasses} from "@/utils/combineClasses";
-import {cva} from "class-variance-authority";
 
 /**
  * Props for `HeroMosaicImages`.
@@ -57,15 +56,15 @@ const HeroMosaicImages: FC<HeroMosaicImagesProps> = ({ slice }) => {
             </div>
 
             <div className={styles.gridTopRight}>
-              <RenderCarousel images={images.first} delay={4000} height={900} />
+              <RenderCarousel images={images.first} delay={4000} height={900} aspectRatio='2/3' />
             </div>
 
             <div className={styles.gridBottomRight}>
-              <RenderCarousel images={images.third} delay={4000} />
+              <RenderCarousel images={images.third} delay={4000} aspectRatio='1/1' />
             </div>
 
             <div className={styles.gridCentered}>
-              <RenderCarousel images={images.second} delay={4000} height={400} direction='rtl' />
+              <RenderCarousel images={images.second} delay={4000} height={400} direction='rtl' aspectRatio='1/1' />
             </div>
           </header>
         </section>
@@ -81,9 +80,10 @@ export default HeroMosaicImages;
 type RenderImageProps = {
   image: Simplify<HeroMosaicImagesSliceDefaultPrimaryImagesItem> | undefined
   height?: number
+  aspectRatio?: string
 }
 
-const RenderImage: FC<RenderImageProps> = ({ image, height }) => {
+const RenderImage: FC<RenderImageProps> = ({ image, height, aspectRatio }) => {
   if (!image) return null
 
   return (
@@ -92,7 +92,7 @@ const RenderImage: FC<RenderImageProps> = ({ image, height }) => {
         field={image.image}
         className='block object-cover aspect-square md:aspect-auto h-auto'
         // @ts-ignore
-        style={{ width: '100%', height: 'auto', '@media (min-width: 768px)': { height: `${height}px` } }}
+        style={{ width: '100%', height: 'auto', aspectRatio: aspectRatio, objectFit: 'cover', '@media (min-width: 768px)': { height: `${height}px` } }}
       />
 
       <div className='absolute top-[20px] left-[20px]'>
@@ -108,9 +108,10 @@ type RenderCarouselProps = {
   delay?: number
   direction?: 'ltr' | 'rtl'
   height?: number
+  aspectRatio?: string
 }
 
-const RenderCarousel: FC<RenderCarouselProps> = ({ images, delay = 3000, direction = 'ltr', height }) => {
+const RenderCarousel: FC<RenderCarouselProps> = ({ images, delay = 3000, direction = 'ltr', height, aspectRatio }) => {
   const [emblaRef] = useEmblaCarousel({ loop: true, direction }, [
     Autoplay({ playOnInit: true, delay: delay })
   ])
@@ -124,7 +125,7 @@ const RenderCarousel: FC<RenderCarouselProps> = ({ images, delay = 3000, directi
         <div className={combineClasses(slider.embla__container, direction === 'rtl' ? 'flex-row-reverse' : 'flex-row')}>
           {images.map((item: any, index: any) => (
             <div className={slider.embla__slide} key={index}>
-              <RenderImage image={item} height={height} />
+              <RenderImage image={item} height={height} aspectRatio={aspectRatio} />
             </div>
           ))}
         </div>
