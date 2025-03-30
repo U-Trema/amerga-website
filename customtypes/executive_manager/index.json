@@ -19,6 +19,13 @@
           "placeholder": "Nom Prénom"
         }
       },
+      "arrival_date": {
+        "type": "Date",
+        "config": {
+          "label": "arrival_date",
+          "placeholder": "Date d'arrivée"
+        }
+      },
       "job_title": {
         "type": "StructuredText",
         "config": {

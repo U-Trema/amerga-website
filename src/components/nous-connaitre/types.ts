@@ -31,6 +31,6 @@ export type OpenModalProps = {
 }
 
 export type SliceSectionProps = {
-  slices: Content.CollaboratorsSlice[]
+  slices: Content.CollaboratorsSlice[] & Content.ExecutivesSlice[]
   components: ReturnType<any>
 }
