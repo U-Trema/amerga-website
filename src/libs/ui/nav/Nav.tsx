@@ -1,20 +1,15 @@
 import {
-  Accordion,
-  Container,
   Flex,
   Grid,
   GridCol,
-  Tabs,
-  Text
+  Tabs
 } from "@mantine/core"
 import Link from "next/link"
-import {accordionCVA, mobileLinksCVA, navContainerCVA, navTabCVA, responsiveMenuCVA} from "./nav.classes"
+import {navContainerCVA, navTabCVA} from "./nav.classes"
 import {BurgerMenu} from "@/libs/ui/icons/BurgerMenu"
 import {FC, useEffect, useState} from "react";
 import { MenuItems } from "./MenuItems";
 import {useRouter} from "next/router";
-import {linkResolver} from "@/prismicio";
-import {ArrowDown} from "@/libs/ui/icons/ArrowDown";
 import OpenedMenu from "@/libs/ui/nav/OpenedMenu";
 import MobileNav from "@/libs/ui/nav/MobileNav";
 
