@@ -16,6 +16,24 @@ export const Collaborator = React.memo(
     const {slice: collaboratorSlice} = slice
     const onClick = () => openModal(collaboratorSlice)
 
+    if (slice.slice.type === "executive_manager") {
+      return (
+        <Box
+          className={collaboratorCVA.root()}
+          onClick={onClick}
+        >
+          <Box className={collaboratorCVA.imgContainer()}>
+            <PrismicImage field={slice.slice.data.photo} className={collaboratorCVA.img()} />
+          </Box>
+          <Space h="xs" />
+          <h2 className={collaboratorCVA.paragraph()}>
+            <b>{slice.slice.data.name}</b>
+          </h2>
+          <PrismicRichText field={slice.slice.data.job_title} />
+        </Box>
+      )
+    }
+
     return (
       <Box
         className={collaboratorCVA.root()}

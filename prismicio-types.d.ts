@@ -392,6 +392,17 @@ interface ExecutiveManagerDocumentData {
   name: prismic.KeyTextField;
 
   /**
+   * arrival_date field in *executive_managers*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: Date d'arrivée
+   * - **API ID Path**: executive_manager.arrival_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  arrival_date: prismic.DateField;
+
+  /**
    * Job title field in *executive_managers*
    *
    * - **Field Type**: Title

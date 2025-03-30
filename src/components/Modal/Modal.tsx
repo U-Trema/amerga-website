@@ -29,11 +29,12 @@ export const ModalManager = React.memo(({modalContent, opened, onClose}: ModalMa
     timingFunction: "ease",
   }
   const overlayProps = {blur: 3}
+  const arrival_date = modalContent.primary?.arrival_date || modalContent.data?.arrival_date
 
   const formattedDate = React.useMemo(() => {
-    if (!modalContent.primary.arrival_date) return null
+    if (!arrival_date) return null
 
-    const rawDate = new Date(modalContent.primary.arrival_date)
+    const rawDate = new Date(arrival_date)
     const localizedDate = new Intl.DateTimeFormat("fr-FR", {
       month: "long",
       year: "numeric",
@@ -45,7 +46,39 @@ export const ModalManager = React.memo(({modalContent, opened, onClose}: ModalMa
         <p>{localizedDate.charAt(0).toUpperCase() + localizedDate.slice(1)}</p>
       </Box>
     )
-  }, [modalContent.primary.arrival_date])
+  }, [arrival_date])
+
+  if (modalContent.type === 'executive_manager') {
+    return (
+      <Modal
+        opened={opened}
+        onClose={onClose}
+        withCloseButton={false}
+        transitionProps={transitionProps}
+        size="100%"
+        overlayProps={overlayProps}
+        classNames={{content: modalCVA.root()}}
+      >
+        <Box className={modalCVA.container()}>
+          <Box className={modalCVA.box()}>
+            <Box className={modalCVA.head()}>
+              <Box className={modalCVA.img()}>
+                <PrismicImage field={modalContent.data.photo} className={modalCVA.img()} />
+              </Box>
+              <Box className={modalCVA.info()}>
+                <h2 className={paragraphCVA.title()}><b>{modalContent.data.name}</b></h2>
+                <PrismicRichText field={modalContent.data.job_title} components={components.text}/>
+                {formattedDate}
+              </Box>
+            </Box>
+
+            {/* Description */}
+            <PrismicRichText field={modalContent.data.job_description} />
+          </Box>
+        </Box>
+      </Modal>
+    )
+  }
 
   return (
     <Modal
