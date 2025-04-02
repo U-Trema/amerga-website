@@ -86,7 +86,7 @@ const Carousel: FC<{ slides: any[]; }> = ({ slides }) => {
 const AnnonceSlide: FC<{ annonce: any; textColor: string; }> = memo(({ annonce, textColor }) => (
   <div className="flex-[0_0_100%] min-w-0 transition-all ease-in-out">
     <div
-      className="h-[49px] m-auto! w-[calc(100%-4rem)] mx-4 rounded-xl px-4 py-2 text-center flex items-center justify-between"
+      className="h-[49px] m-auto! w-[calc(100%-2rem)] mx-4 rounded-xl px-4 py-2 text-center flex items-center justify-between"
       style={{ backgroundColor: annonce.primary.background, color: textColor }}
     >
       <div className="h-full m-auto inline-flex items-center gap-2">
