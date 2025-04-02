@@ -590,6 +590,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | AnnoncesSlice
   | ContactSlice
   | NumbersSlice
   | LocalisationSlice
@@ -924,6 +925,71 @@ export type AllDocumentTypes =
   | HomeDocument
   | MenuDocument
   | NousConnaitreDocument;
+
+/**
+ * Primary content in *Annonces → Default → Primary*
+ */
+export interface AnnoncesSliceDefaultPrimary {
+  /**
+   * Couleur field in *Annonces → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: Couleur du background de l'annonce
+   * - **API ID Path**: annonces.default.primary.background
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  background: prismic.ColorField;
+
+  /**
+   * Texte field in *Annonces → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Le text de l'annonce
+   * - **API ID Path**: annonces.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * Bouton field in *Annonces → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Lien par bouton
+   * - **API ID Path**: annonces.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for Annonces Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnnoncesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AnnoncesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Annonces*
+ */
+type AnnoncesSliceVariation = AnnoncesSliceDefault;
+
+/**
+ * Annonces Shared Slice
+ *
+ * - **API ID**: `annonces`
+ * - **Description**: Annonces
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnnoncesSlice = prismic.SharedSlice<
+  "annonces",
+  AnnoncesSliceVariation
+>;
 
 /**
  * Item in *CartesAssurances → Default → Primary → Cartes*
@@ -1984,6 +2050,10 @@ declare module "@prismicio/client" {
       NousConnaitreDocumentDataContentItem,
       NousConnaitreDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AnnoncesSlice,
+      AnnoncesSliceDefaultPrimary,
+      AnnoncesSliceVariation,
+      AnnoncesSliceDefault,
       CartesAssurancesSlice,
       CartesAssurancesSliceDefaultPrimaryCardsItem,
       CartesAssurancesSliceDefaultPrimary,

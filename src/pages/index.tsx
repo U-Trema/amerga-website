@@ -10,11 +10,19 @@ import Executives from "@/slices/Executives";
 import Numbers from "@/slices/Numbers";
 import Contact from "@/slices/Contact";
 import {Space} from "@mantine/core";
+import Annonces from "@/slices/Annonces";
 
 export default function Home({ home, collaborators, executiveManagers }: { nav: any; footer: any; home: any; collaborators: any, executiveManagers: any }) {
+  console.log({ tt: home.data.slices })
   return (
     <div>
       {home.data.slices?.map((slice: any, index: number) => {
+        if (slice.slice_type === 'annonces') {
+          return (
+            <Annonces key='home-annonces' slice={slice} slices={home.data.slices} index={index} context='home-annonces'/>
+          );
+        }
+
         if (slice.slice_type === 'hero_mosaic_images') {
           return (
             <HeroMosaicImages key='home-hero' slice={slice} slices={home.data.slices} index={index} context='home-hero'/>
