@@ -1,0 +1,34 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Quis ullamco labore id cupidatat proident enim. Et dolor excepteur ad nulla aliqua labore elit adipisicing excepteur dolor cillum culpa. Ex esse qui cillum pariatur id et nisi velit."
+						}
+					}
+				]
+			},
+			"button": {
+				"key": "2f34616e-db2f-4b7f-bb9e-1c3a8ba177f2",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev",
+					"text": "pride"
+				}
+			},
+			"background": {
+				"__TYPE__": "FieldContent",
+				"value": "#4c1a6e",
+				"type": "Color"
+			}
+		},
+		"items": []
+	}
+]

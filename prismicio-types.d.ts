@@ -4,6 +4,40 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type AgencesDocumentDataSlicesSlice = LocalisationSlice;
+
+/**
+ * Content for Agences documents
+ */
+interface AgencesDocumentData {
+  /**
+   * Slice Zone field in *Agences*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: agences.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AgencesDocumentDataSlicesSlice>;
+}
+
+/**
+ * Agences document from Prismic
+ *
+ * - **API ID**: `agences`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AgencesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<AgencesDocumentData>,
+    "agences",
+    Lang
+  >;
+
 /**
  * Item in *AssuranceLink → Assurances Link*
  */
@@ -274,22 +308,7 @@ export type CollaboratorsDocument<Lang extends string = string> =
     Lang
   >;
 
-/**
- * Item in *contact → Content*
- */
-export interface ContactDocumentDataContentItem {
-  /**
-   * Info field in *contact → Content*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Détails de contact ici
-   * - **API ID Path**: contact.content[].info
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  info: prismic.RichTextField;
-}
-
-type ContactDocumentDataSlicesSlice = LocalisationSlice;
+type ContactDocumentDataSlicesSlice = never;
 
 /**
  * Content for contact documents
@@ -307,15 +326,15 @@ interface ContactDocumentData {
   titre: prismic.KeyTextField;
 
   /**
-   * Content field in *contact*
+   * Liste Agences field in *contact*
    *
-   * - **Field Type**: Group
+   * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: contact.content[]
+   * - **API ID Path**: contact.liste_agences
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  content: prismic.GroupField<Simplify<ContactDocumentDataContentItem>>;
+  liste_agences: prismic.ContentRelationshipField<"agences">;
 
   /**
    * Slice Zone field in *contact*
@@ -571,6 +590,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | AnnoncesSlice
   | ContactSlice
   | NumbersSlice
   | LocalisationSlice
@@ -895,6 +915,7 @@ export type NousConnaitreDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | AgencesDocument
   | AssuranceLinkDocument
   | AssurancesDocument
   | CollaboratorsDocument
@@ -904,6 +925,71 @@ export type AllDocumentTypes =
   | HomeDocument
   | MenuDocument
   | NousConnaitreDocument;
+
+/**
+ * Primary content in *Annonces → Default → Primary*
+ */
+export interface AnnoncesSliceDefaultPrimary {
+  /**
+   * Couleur field in *Annonces → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: Couleur du background de l'annonce
+   * - **API ID Path**: annonces.default.primary.background
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  background: prismic.ColorField;
+
+  /**
+   * Texte field in *Annonces → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Le text de l'annonce
+   * - **API ID Path**: annonces.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * Bouton field in *Annonces → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Lien par bouton
+   * - **API ID Path**: annonces.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for Annonces Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnnoncesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AnnoncesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Annonces*
+ */
+type AnnoncesSliceVariation = AnnoncesSliceDefault;
+
+/**
+ * Annonces Shared Slice
+ *
+ * - **API ID**: `annonces`
+ * - **Description**: Annonces
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnnoncesSlice = prismic.SharedSlice<
+  "annonces",
+  AnnoncesSliceVariation
+>;
 
 /**
  * Item in *CartesAssurances → Default → Primary → Cartes*
@@ -1422,9 +1508,36 @@ export type HeroMosaicImagesSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Localisation → Default → Primary → Content*
+ */
+export interface LocalisationSliceDefaultPrimaryContentItem {
+  /**
+   * Info field in *Localisation → Default → Primary → Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Informations concernant l'agence
+   * - **API ID Path**: localisation.default.primary.content[].info
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  info: prismic.RichTextField;
+}
+
+/**
  * Primary content in *Localisation → Default → Primary*
  */
 export interface LocalisationSliceDefaultPrimary {
+  /**
+   * Content field in *Localisation → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: localisation.default.primary.content[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  content: prismic.GroupField<
+    Simplify<LocalisationSliceDefaultPrimaryContentItem>
+  >;
+
   /**
    * titre field in *Localisation → Default → Primary*
    *
@@ -1901,6 +2014,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AgencesDocument,
+      AgencesDocumentData,
+      AgencesDocumentDataSlicesSlice,
       AssuranceLinkDocument,
       AssuranceLinkDocumentData,
       AssuranceLinkDocumentDataAssurancesLinkItem,
@@ -1914,7 +2030,6 @@ declare module "@prismicio/client" {
       CollaboratorsDocumentDataSlicesSlice,
       ContactDocument,
       ContactDocumentData,
-      ContactDocumentDataContentItem,
       ContactDocumentDataSlicesSlice,
       ExecutiveManagerDocument,
       ExecutiveManagerDocumentData,
@@ -1935,6 +2050,10 @@ declare module "@prismicio/client" {
       NousConnaitreDocumentDataContentItem,
       NousConnaitreDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AnnoncesSlice,
+      AnnoncesSliceDefaultPrimary,
+      AnnoncesSliceVariation,
+      AnnoncesSliceDefault,
       CartesAssurancesSlice,
       CartesAssurancesSliceDefaultPrimaryCardsItem,
       CartesAssurancesSliceDefaultPrimary,
@@ -1964,6 +2083,7 @@ declare module "@prismicio/client" {
       HeroMosaicImagesSliceVariation,
       HeroMosaicImagesSliceDefault,
       LocalisationSlice,
+      LocalisationSliceDefaultPrimaryContentItem,
       LocalisationSliceDefaultPrimary,
       LocalisationSliceVariation,
       LocalisationSliceDefault,

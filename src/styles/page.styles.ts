@@ -1,4 +1,4 @@
-import {cva} from "class-variance-authority";
+import {cva} from "class-variance-authority"
 
 export const homePageCVA = {
   root: cva(['!px-(--spacing-md) lg:px-[0] max-w-[1280px] mx-auto'])
@@ -31,6 +31,32 @@ export const observerCVA = {
       isVisible: {
         true: 'opacity-100 transform translate-y-0',
         false: 'opacity-0 transform translate-y-14'
+      }
+    }
+  })
+}
+
+export const tabsListCVA = {
+  root: cva(['!rounded-[14px] !p-[4px] items-center self-center w-fit mx-auto mb-[40px] relative !gap-1 bg-[#F1EFE9]']),
+}
+
+export const tabCVA = {
+  root: cva(['rounded-[10px] !z-1 relative !font-semibold hover:!bg-grey-secondary'], {
+    variants: {
+      active: {
+        true: '!bg-grey-secondary !outline-amerga-orange !outline-1',
+        false: ''
+      }
+    }
+  })
+}
+
+export const indicatorCVA = {
+  root: cva(['bg-transparent !rounded-[10px] z-0'], {
+    variants: {
+      active: {
+        true: '!bg-grey-secondary',
+        false: ''
       }
     }
   })

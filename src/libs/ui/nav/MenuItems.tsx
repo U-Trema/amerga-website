@@ -1,5 +1,5 @@
 import {navListCVA, tabsTabCVA} from "@/libs/ui/nav/nav.classes";
-import {FloatingIndicator, Menu, TabsList, TabsTab, UnstyledButton} from "@mantine/core";
+import {FloatingIndicator, TabsList, TabsTab} from "@mantine/core";
 import {ArrowDown} from "@/libs/ui/icons/ArrowDown";
 import Link from "next/link";
 import {cva} from "class-variance-authority";
