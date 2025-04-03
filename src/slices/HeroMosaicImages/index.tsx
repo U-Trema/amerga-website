@@ -112,7 +112,7 @@ type RenderCarouselProps = {
 }
 
 const RenderCarousel: FC<RenderCarouselProps> = ({ images, delay = 3000, direction = 'ltr', height, aspectRatio }) => {
-  const [emblaRef] = useEmblaCarousel({ loop: true, direction }, [
+  const [emblaRef] = useEmblaCarousel({ loop: true, direction, watchDrag: false }, [
     Autoplay({ playOnInit: true, delay: delay })
   ])
 

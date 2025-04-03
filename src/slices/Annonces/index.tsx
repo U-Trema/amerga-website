@@ -3,6 +3,7 @@ import {Content} from "@prismicio/client";
 import {PrismicRichText, SliceComponentProps} from "@prismicio/react";
 import useEmblaCarousel from "embla-carousel-react";
 import {getContrastYIQ} from "@/utils/getContrastYIQ";
+import Autoplay from "embla-carousel-autoplay";
 
 type AnnoncesProps = SliceComponentProps<Content.AnnoncesSlice>;
 
@@ -12,16 +13,19 @@ const TEXT_COMPONENT = {
   ),
 };
 
-const AUTOPLAY_DELAY = 50000;
+const AUTOPLAY_DELAY = 5000;
 
 const Carousel: FC<{ slides: any[]; }> = ({ slides }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
-    align: "center",
-    skipSnaps: false,
-    duration: 25,
-    direction: "ltr",
-  });
+    // align: "center",
+    // skipSnaps: false,
+    // duration: 25,
+    // direction: "ltr",
+    // watchDrag: false,
+  }, [
+    Autoplay({ playOnInit: true, delay: AUTOPLAY_DELAY, stopOnFocusIn: true })
+  ]);
 
   const isPausedRef = useRef(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -31,41 +35,41 @@ const Carousel: FC<{ slides: any[]; }> = ({ slides }) => {
     [slides]
   );
 
-  const startAutoplay = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
+  // const startAutoplay = useCallback(() => {
+  //   if (intervalRef.current) clearInterval(intervalRef.current);
+  //
+  //   intervalRef.current = setInterval(() => {
+  //     if (!isPausedRef.current && emblaApi?.canScrollNext()) {
+  //       emblaApi.scrollNext();
+  //     }
+  //   }, AUTOPLAY_DELAY);
+  // }, [emblaApi]);
+  //
+  // useEffect(() => {
+  //   if (!emblaApi) return;
+  //
+  //   startAutoplay();
+  //   return () => {
+  //     intervalRef.current && clearInterval(intervalRef.current);
+  //   };
+  // }, [emblaApi, startAutoplay]);
 
-    intervalRef.current = setInterval(() => {
-      if (!isPausedRef.current && emblaApi?.canScrollNext()) {
-        emblaApi.scrollNext();
-      }
-    }, AUTOPLAY_DELAY);
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    startAutoplay();
-    return () => {
-      intervalRef.current && clearInterval(intervalRef.current);
-    };
-  }, [emblaApi, startAutoplay]);
-
-  const handleMouseEnter = useCallback(() => {
-    isPausedRef.current = true;
-    intervalRef.current && clearInterval(intervalRef.current);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    isPausedRef.current = false;
-    startAutoplay();
-  }, [startAutoplay]);
+  // const handleMouseEnter = useCallback(() => {
+  //   isPausedRef.current = true;
+  //   intervalRef.current && clearInterval(intervalRef.current);
+  // }, []);
+  //
+  // const handleMouseLeave = useCallback(() => {
+  //   isPausedRef.current = false;
+  //   startAutoplay();
+  // }, [startAutoplay]);
 
   return (
     <div className="grid w-full [grid-template-columns:1fr_min(1280px,100%)_1fr] [&>*]:col-start-2">
       <div
         className="relative w-full mx-auto"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        // onMouseEnter={handleMouseEnter}
+        // onMouseLeave={handleMouseLeave}
       >
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
