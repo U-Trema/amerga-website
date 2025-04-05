@@ -102,6 +102,10 @@ const AnnonceSlide: FC<{ annonce: any; textColor: string; }> = memo(({ annonce, 
           <a
             href={annonce.primary.button.url}
             className="h-full inline-flex items-center px-2 py-1 text-sm font-medium text-white bg-black hover:bg-black/80 rounded-md transition-colors"
+            style={{
+              color: textColor === 'white' ? 'black' : 'white',
+              backgroundColor: textColor === 'white' ? 'white' : 'black'
+            }}
           >
             {annonce.primary.button.text}
           </a>
