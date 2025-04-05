@@ -90,18 +90,20 @@ const Carousel: FC<{ slides: any[]; }> = ({ slides }) => {
 const AnnonceSlide: FC<{ annonce: any; textColor: string; }> = memo(({ annonce, textColor }) => (
   <div className="flex-[0_0_100%] min-w-0 transition-all ease-in-out">
     <div
-      className="h-[49px] m-auto! w-[calc(100%-2rem)] mx-4 rounded-xl px-4 py-2 text-center flex items-center justify-between"
+      className="min-h-[49px] md:h-[49px] m-auto! w-[calc(100%-2rem)] mx-4 rounded-xl px-4 py-2 text-center flex flex-col md:flex-row md:items-center md:justify-between"
       style={{ backgroundColor: annonce.primary.background, color: textColor }}
     >
-      <div className="h-full m-auto inline-flex items-center gap-2">
-        <PrismicRichText
-          field={annonce.primary.text}
-          components={TEXT_COMPONENT}
-        />
+      <div className="flex flex-col md:flex-row items-center gap-2 md:m-auto md:inline-flex md:items-center md:gap-2">
+        <div className="flex-grow md:flex-grow-0">
+          <PrismicRichText
+            field={annonce.primary.text}
+            components={TEXT_COMPONENT}
+          />
+        </div>
         {annonce.primary.button.url && (
           <a
             href={annonce.primary.button.url}
-            className="h-full inline-flex items-center px-2 py-1 text-sm font-medium text-white bg-black hover:bg-black/80 rounded-md transition-colors"
+            className="mt-1 md:mt-0 inline-flex items-center justify-center px-2 py-1 text-sm font-medium transition-colors hover:opacity-80 rounded-md"
             style={{
               color: textColor === 'white' ? 'black' : 'white',
               backgroundColor: textColor === 'white' ? 'white' : 'black'
