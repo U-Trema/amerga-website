@@ -13,13 +13,12 @@ import {Space} from "@mantine/core";
 import Annonces from "@/slices/Annonces";
 
 export default function Home({ home, collaborators, executiveManagers }: { nav: any; footer: any; home: any; collaborators: any, executiveManagers: any }) {
-  console.log({ tt: home.data.slices })
   return (
     <div>
       {home.data.slices?.map((slice: any, index: number) => {
         if (slice.slice_type === 'annonces') {
           return (
-            <Annonces key='home-annonces' slice={slice} slices={home.data.slices} index={index} context='home-annonces'/>
+            <Annonces key={`${index}-home-annonces`} slice={slice} slices={home.data.slices} index={index} context='home-annonces'/>
           );
         }
 
