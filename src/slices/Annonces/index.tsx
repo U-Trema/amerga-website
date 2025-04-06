@@ -32,22 +32,15 @@ const Carousel: FC<{ slides: any[]; }> = ({ slides }) => {
   );
 
   return (
-    <div
-      // className="grid w-full [grid-template-columns:1fr_min(1280px,100%)_1fr] [&>*]:col-start-2"
-    >
-      <div className="">
-        <div ref={emblaRef}
-             className={styles.embla__viewport}>
-          <div className={styles.embla__container}>
-            {slides.map((annonce, index) => (
-              <AnnonceSlide
-                key={index}
-                annonce={annonce}
-                textColor={textColors[index]}
-              />
-            ))}
-          </div>
-        </div>
+    <div ref={emblaRef} className={styles.embla__viewport}>
+      <div className={styles.embla__container}>
+        {slides.map((annonce, index) => (
+          <AnnonceSlide
+            key={index}
+            annonce={annonce}
+            textColor={textColors[index]}
+          />
+        ))}
       </div>
     </div>
   );
