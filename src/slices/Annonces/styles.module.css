@@ -22,3 +22,9 @@
   min-width: 0;
   padding-left: var(--slide-spacing);
 }
+
+@media screen and (max-width: 768px) {
+  .embla {
+    margin-top: var(--spacing-32)
+  }
+}
