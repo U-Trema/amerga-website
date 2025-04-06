@@ -5,6 +5,7 @@ import Localisation from "@/slices/Localisation"
 import {Box, Container, FloatingIndicator, Space, Tabs, TabsList, TabsPanel, TabsTab} from "@mantine/core"
 import {contactPageCVA, homePageCVA, indicatorCVA, tabCVA, tabsListCVA} from "@/styles/page.styles"
 import {PrismicRichText, SliceZone} from "@prismicio/react"
+import {combineClasses} from "@/utils/combineClasses";
 
 
 const components = {localisation: Localisation}
@@ -57,10 +58,9 @@ export default function Contact({page, documentsLies}: InferGetStaticPropsType<t
 
   return (
     <Box id='Contact-section'>
-      <Box className={contactPageCVA.hero()}>
+      <Box className={combineClasses(contactPageCVA.root(), '!px-[16px]')}>
         <Container fluid className={contactPageCVA.root()}>
           <h1 className={contactPageCVA.title()}>{title}</h1>
-          <Space h='xl' />
         </Container>
       </Box>
 
