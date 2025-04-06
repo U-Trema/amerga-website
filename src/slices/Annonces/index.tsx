@@ -5,6 +5,8 @@ import useEmblaCarousel from "embla-carousel-react";
 import {getContrastYIQ} from "@/utils/getContrastYIQ";
 import Autoplay from "embla-carousel-autoplay";
 
+import styles from './styles.module.css';
+
 type AnnoncesProps = SliceComponentProps<Content.AnnoncesSlice>;
 
 const TEXT_COMPONENT = {
@@ -16,63 +18,27 @@ const TEXT_COMPONENT = {
 const AUTOPLAY_DELAY = 5000;
 
 const Carousel: FC<{ slides: any[]; }> = ({ slides }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
+  const [emblaRef] = useEmblaCarousel({
     loop: true,
-    // align: "center",
-    // skipSnaps: false,
-    // duration: 25,
-    // direction: "ltr",
-    // watchDrag: false,
+    watchDrag: false,
+    duration: 35,
   }, [
     Autoplay({ playOnInit: true, delay: AUTOPLAY_DELAY, stopOnFocusIn: true })
   ]);
-
-  const isPausedRef = useRef(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const textColors = useMemo(
     () => slides.map(({ primary }) => getContrastYIQ(primary.background)),
     [slides]
   );
 
-  // const startAutoplay = useCallback(() => {
-  //   if (intervalRef.current) clearInterval(intervalRef.current);
-  //
-  //   intervalRef.current = setInterval(() => {
-  //     if (!isPausedRef.current && emblaApi?.canScrollNext()) {
-  //       emblaApi.scrollNext();
-  //     }
-  //   }, AUTOPLAY_DELAY);
-  // }, [emblaApi]);
-  //
-  // useEffect(() => {
-  //   if (!emblaApi) return;
-  //
-  //   startAutoplay();
-  //   return () => {
-  //     intervalRef.current && clearInterval(intervalRef.current);
-  //   };
-  // }, [emblaApi, startAutoplay]);
-
-  // const handleMouseEnter = useCallback(() => {
-  //   isPausedRef.current = true;
-  //   intervalRef.current && clearInterval(intervalRef.current);
-  // }, []);
-  //
-  // const handleMouseLeave = useCallback(() => {
-  //   isPausedRef.current = false;
-  //   startAutoplay();
-  // }, [startAutoplay]);
-
   return (
-    <div className="grid w-full [grid-template-columns:1fr_min(1280px,100%)_1fr] [&>*]:col-start-2">
-      <div
-        className="relative w-full mx-auto"
-        // onMouseEnter={handleMouseEnter}
-        // onMouseLeave={handleMouseLeave}
-      >
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex">
+    <div
+      // className="grid w-full [grid-template-columns:1fr_min(1280px,100%)_1fr] [&>*]:col-start-2"
+    >
+      <div className="">
+        <div ref={emblaRef}
+             className={styles.embla__viewport}>
+          <div className={styles.embla__container}>
             {slides.map((annonce, index) => (
               <AnnonceSlide
                 key={index}
@@ -88,7 +54,7 @@ const Carousel: FC<{ slides: any[]; }> = ({ slides }) => {
 };
 
 const AnnonceSlide: FC<{ annonce: any; textColor: string; }> = memo(({ annonce, textColor }) => (
-  <div className="flex-[0_0_100%] min-w-0 transition-all ease-in-out  mt-12 md:mt-0">
+  <div className={styles.embla__slide}>
     <div
       className="min-h-[49px] md:h-[49px] m-auto! w-[calc(100%-2rem)] mx-4 rounded-xl px-4 py-2 text-center flex flex-col md:flex-row md:items-center md:justify-between"
       style={{ backgroundColor: annonce.primary.background, color: textColor }}
@@ -127,8 +93,10 @@ const Annonces: FC<AnnoncesProps> = ({ slice, slices, index }) => {
 
   return (
     <section
+      className={styles.embla}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+
     >
       <Carousel slides={annonces} />
     </section>
