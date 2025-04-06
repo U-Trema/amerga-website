@@ -5,9 +5,9 @@ export const homePageCVA = {
 }
 
 export const contactPageCVA = {
-  root: cva(['w-full m-auto !max-w-(--spacing-container) !px-(--spacing-md) lg:px-[0] max-w-[1280px] mx-auto']),
+  root: cva(['w-full m-auto !max-w-(--spacing-container) !px-[0] lg:px-[0] max-w-[1280px] mx-auto']),
   hero: cva(['w-full pt-[13rem] mt-[-10rem]']),
-  title: cva(['mb-5 !text-[56px] !leading-[56px]']),
+  title: cva(['mb-[0] py-(--spacing-48) !text-[56px] !leading-[56px]']),
   bg: cva(['w-full bg-white']),
   info: cva(['text-[18px]']),
 }
