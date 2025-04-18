@@ -9,7 +9,7 @@
 					{
 						"type": "heading1",
 						"content": {
-							"text": "Choose"
+							"text": "Whistle"
 						}
 					}
 				]
@@ -20,14 +20,14 @@
 					{
 						"type": "heading2",
 						"content": {
-							"text": "Terrible"
+							"text": "Personal"
 						}
 					}
 				]
 			},
 			"button": {
-				"__TYPE__": "LinkContent",
 				"key": "4a661e12-2108-4eba-8784-41851915eead",
+				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
 					"url": "https://prismic.io",
