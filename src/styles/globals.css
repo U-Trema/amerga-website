@@ -82,3 +82,7 @@ body {
 .blue-text {
   color: var(--color-light-blue);
 }
+
+.dark-text {
+  color: var(--color-soft-black);
+}
