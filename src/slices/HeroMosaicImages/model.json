@@ -18,7 +18,12 @@
             "label": "Titre",
             "placeholder": "Titre",
             "allowTargetBlank": false,
-            "multi": "heading1"
+            "multi": "heading1",
+            "labels": [
+              "orange-text",
+              "blue-text",
+              "dark-text"
+            ]
           }
         },
         "sub_title": {
@@ -27,7 +32,12 @@
             "label": "Sous titre",
             "placeholder": "Sous titre",
             "allowTargetBlank": false,
-            "multi": "heading2"
+            "multi": "heading2",
+            "labels": [
+              "orange-text",
+              "blue-text",
+              "dark-text"
+            ]
           }
         },
         "button": {
