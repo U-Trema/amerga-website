@@ -95,7 +95,7 @@ const RenderImage: FC<RenderImageProps> = ({ image, height, aspectRatio }) => {
         style={{ width: '100%', height: 'auto', aspectRatio: aspectRatio, objectFit: 'cover', '@media (min-width: 768px)': { height: `${height}px` } }}
       />
 
-      <div className='absolute top-[20px] left-[20px]'>
+      <div className='absolute top-[20px] left-[20px] z-2'>
         <PrismicRichText field={image.image_title} components={components} />
         <PrismicRichText field={image.image_sub_title} components={components} />
       </div>

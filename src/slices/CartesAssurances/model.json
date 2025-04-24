@@ -61,6 +61,17 @@
                   "label": "Description",
                   "placeholder": "Description (courte: 3 ou 4 mots)"
                 }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Lien assurance",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "assurances"
+                  ]
+                }
               }
             }
           }

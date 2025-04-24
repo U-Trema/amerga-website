@@ -1024,6 +1024,16 @@ export interface CartesAssurancesSliceDefaultPrimaryCardsItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   description: prismic.KeyTextField;
+
+  /**
+   * Lien assurance field in *CartesAssurances → Default → Primary → Cartes*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cartes_assurances.default.primary.cards[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.ContentRelationshipField<"assurances">;
 }
 
 /**
