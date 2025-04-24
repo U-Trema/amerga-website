@@ -78,6 +78,17 @@
 									"value": "brain",
 									"type": "Text"
 								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "ac0985f3-7dbc-48bc-bf2b-5f44bbcb48db",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
 							]
 						]
 					}

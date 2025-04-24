@@ -6,6 +6,8 @@ import {PrismicNextImage} from "@prismicio/next";
 import {homePageCVA, observerCVA} from "@/styles/page.styles";
 import {combineClasses} from "@/utils/combineClasses";
 import {useIntersectionObserver} from "@/utils/useIntersectionObserver";
+import Link from "next/link";
+import {linkResolver} from "@/prismicio";
 
 /**
  * Props for `CartesAssurances`.
@@ -63,11 +65,11 @@ const RenderCards: FC<{ cards: any }> = ({ cards }) => {
     <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing={{ base: 24, md: 32 }} verticalSpacing={{ base: 24, md: 32 }} className='mt-32 md:mt-80'>
       {cards.map((item: any, index: number) => {
         return (
-          <div key={index} className='bg-white rounded-2xl p-24'>
+          <Link key={index}  href={linkResolver(item.link)} className='bg-white rounded-2xl p-24 hover:shadow-md transition-all duration-300'>
             <PrismicNextImage field={item.logo} style={{ width: '60px', display: 'block' }} />
             <PrismicRichText field={item.title} components={cardTitleComponent} />
             <p>{item.description}</p>
-          </div>
+          </Link>
         )
       })}
     </SimpleGrid>
