@@ -453,6 +453,17 @@ interface ExecutiveManagerDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   photo: prismic.ImageField<never>;
+
+  /**
+   * Order field in *executive_managers*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: To be sorted in ascending order
+   * - **API ID Path**: executive_manager.order
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  order: prismic.NumberField;
 }
 
 /**

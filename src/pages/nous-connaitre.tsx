@@ -1,8 +1,8 @@
-import React, {useMemo, useState} from "react"
+import React, {useMemo} from "react"
 import {GetStaticPropsContext, InferGetStaticPropsType} from "next"
 import {createClient} from "@/prismicio"
-import {Box, Space, Tabs, TabsList, TabsPanel, TabsTab} from "@mantine/core"
-import {homePageCVA, nousConnaitrePageCVA} from "@/styles/page.styles"
+import {Box, Space} from "@mantine/core"
+import {nousConnaitrePageCVA} from "@/styles/page.styles"
 import {ModalManager} from "@/components/Modal/Modal"
 import {ContentSection} from "@/components/nous-connaitre/Content/Content"
 import {SliceSection} from "@/components/nous-connaitre/Slices/Slice"
@@ -10,9 +10,6 @@ import {Header} from "@/components/nous-connaitre/Header/Header"
 import {useModal} from "@/hooks/useModal/useModal"
 import {ContentBlock, ProcessedContent, RichTextComponentsProps, SliceType} from "@/components/nous-connaitre/types"
 import {CollaboratorSlice} from "@/components/nous-connaitre/Collaborator/Collaborator"
-import {isFilled} from "@prismicio/client";
-import {combineClasses} from "@/utils/combineClasses";
-import {cva} from "class-variance-authority";
 
 
 const processContent = (contents: any[], count: number): ProcessedContent[] => (
@@ -64,7 +61,7 @@ export default function NousConnaitre({page, employees, executives}: InferGetSta
 export const getStaticProps = async ({previewData}: GetStaticPropsContext) => {
   const client = createClient({previewData})
 
-  const [nav, assurances_link, footer, page, employees, executives] = await Promise.all([
+  const [nav, assurances_link, footer, page, employees, executivesManagers] = await Promise.all([
     client.getSingle("menu"),
     client.getByUID('assurance_link', 'assurances_link'),
     client.getSingle("footer"),
@@ -72,6 +69,11 @@ export const getStaticProps = async ({previewData}: GetStaticPropsContext) => {
     client.getAllByType("collaborators"),
     client.getAllByType('executive_manager')
   ])
+  const executives = executivesManagers.sort((a, b) => {
+    const orderA = a.data.order ?? Number.MAX_SAFE_INTEGER
+    const orderB = b.data.order ?? Number.MAX_SAFE_INTEGER
+    return orderA - orderB
+  })
 
   return {props: {nav, assurances_link, footer, page, employees, executives}}
 }

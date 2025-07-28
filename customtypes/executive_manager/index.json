@@ -51,6 +51,13 @@
           "constraint": {},
           "thumbnails": []
         }
+      },
+      "order": {
+        "type": "Number",
+        "config": {
+          "label": "Order",
+          "placeholder": "To be sorted in ascending order"
+        }
       }
     }
   }
