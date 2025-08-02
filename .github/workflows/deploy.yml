@@ -29,7 +29,6 @@ jobs:
       - name: Build Next.js site (static export)
         run: |
           npm run build
-          npm run export
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
