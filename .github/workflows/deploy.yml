@@ -11,6 +11,8 @@ jobs:
   build-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+    env:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
     steps:
       - name: 🚚 Get latest code
