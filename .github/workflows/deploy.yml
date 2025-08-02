@@ -1,0 +1,41 @@
+name: 🚀 Deploy website
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - master
+
+jobs:
+  build-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Next.js site (static export)
+        run: |
+          npm run build
+          npm run export
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+         # server: ${{ secrets.FTP_HOST }}
+         # username: ${{ secrets.FTP_USERNAME }}
+          #password: ${{ secrets.FTP_PASSWORD }}
+          server: ftpupload.net
+          username: b22_39619064
+          password: dN6Qb7DKP2cKXBD
+          local-dir: ./next
