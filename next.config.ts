@@ -5,19 +5,21 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   typescript: { ignoreBuildErrors: true },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'ALLOW-FROM https://amerga-dev.netlify.app'
-          }
-        ]
-      }
-    ];
-  }
+  output: 'export',
+  images: { unoptimized: true },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/(.*)',
+  //       headers: [
+  //         {
+  //           key: 'X-Frame-Options',
+  //           value: 'ALLOW-FROM https://amerga-dev.netlify.app'
+  //         }
+  //       ]
+  //     }
+  //   ];
+  // }
 };
 
 export default nextConfig;
