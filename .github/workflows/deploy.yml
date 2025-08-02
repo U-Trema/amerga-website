@@ -40,3 +40,4 @@ jobs:
           username: b22_39619064
           password: dN6Qb7DKP2cKXBD
           local-dir: ./out/
+          server-dir: /htdocs/
