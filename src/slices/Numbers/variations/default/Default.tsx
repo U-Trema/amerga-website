@@ -20,7 +20,7 @@ type Props = {
 }
 
 const description = {
-  paragraph: ({ children }: { children: ReactNode }) => <p className='text-5xl font-bold leading-[50px] text-center mt-24'>{children}</p>
+  paragraph: ({ children }: { children: ReactNode }) => <p className='text-4xl md:text-5xl font-bold leading-[50px] text-center mt-24'>{children}</p>
 }
 
 export const Default: FC<Props> = ({ data }) => {
